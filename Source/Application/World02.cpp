@@ -1,18 +1,87 @@
 #include "World02.h"
 #include "Framework/Framework.h"
-#include "Renderer/Renderer.h"
 #include "Input/InputSystem.h"
 
 namespace nc
 {
     bool World02::Initialize()
     {
-        for (int i = 0; i < 10; i++)
+        // shaders
+        const char* vertexShader =
+            "#version 430\n"
+            "layout (location=0) in vec3 position;"
+            "layout (location=1) in vec3 color;"
+            "layout (location=0) out vec3 ocolor;"
+            "void main() {"
+            "  ocolor = color;"
+            "  gl_Position = vec4(position, 1.0);"
+            "}";
+
+        const char* fragmentShader =
+            "#version 430\n"
+            "layout (location=0) in vec3 color;"
+            "out vec4 ocolor;"
+            "void main() {"
+            "  ocolor = vec4(color, 1);"
+            "}";
+
+        GLuint vs = glCreateShader(GL_VERTEX_SHADER);
+        glShaderSource(vs, 1, &vertexShader, NULL);
+        glCompileShader(vs);
+
+        GLuint fs = glCreateShader(GL_FRAGMENT_SHADER);
+        glShaderSource(fs, 1, &fragmentShader, NULL);
+        glCompileShader(fs);
+
+        // attach the shader
+        GLuint program = glCreateProgram();
+        glAttachShader(program, vs);
+        glAttachShader(program, fs);
+        // link them together
+        glLinkProgram(program);
+        // now tell it to use the program
+        glUseProgram(program);
+
+
+
+        //vertex data
+        float positionData[] = {
+            -0.8f, -0.8f, 0.0f,
+             0.8f, -0.8f, 0.0f,
+             0.0f,  0.8f, 0.0f
+        };
+
+        //color data
+        float colorData[] =
         {
-            m_positions.push_back({ randomf(-1, 1), randomf(-1, 1) });
-        }
+            1.0f, 0.0f, 0.0f,
+            0.0f, 1.0f, 0.0f,
+            0.0f, 0.0f, 1.0f
+        };
 
+        // create buffer
+        GLuint vbo[2]; //Vertex Buffer Object -> buffer is just a block of memory
+        glGenBuffers(2, vbo); // get address of vbo
+        glBindBuffer(GL_ARRAY_BUFFER, vbo[0]);
+        glBufferData(GL_ARRAY_BUFFER, sizeof(positionData), positionData, GL_STATIC_DRAW);
 
+        glBindBuffer(GL_ARRAY_BUFFER, vbo[1]);
+        glBufferData(GL_ARRAY_BUFFER, sizeof(colorData), colorData, GL_STATIC_DRAW);
+
+        glGenVertexArrays(1, &m_vao);
+        glBindVertexArray(m_vao);
+        
+        // position
+        glEnableVertexAttribArray(0);
+        glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, 0);
+        glBindVertexBuffer(0, vbo[0], 0, 3 * sizeof(GLfloat));
+
+        // color
+        glEnableVertexAttribArray(1);
+        glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 0, 0);
+        glBindVertexBuffer(1, vbo[1], 0, 3 * sizeof(GLfloat));
+
+ 
         return true;
     }
 
@@ -35,6 +104,8 @@ namespace nc
         renderer.BeginFrame();
         
         // render
+        glBindVertexArray(m_vao);
+        glDrawArrays(GL_TRIANGLES, 0, 3);
 
 
         // post-render

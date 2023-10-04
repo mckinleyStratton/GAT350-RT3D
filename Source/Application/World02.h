@@ -1,6 +1,7 @@
 #pragma once
 #include "Framework/World.h"
 #include "Core/Math/Vector2.h"
+#include "Renderer/Renderer.h"
 #include <vector>
 
 namespace nc
@@ -18,5 +19,7 @@ namespace nc
 		float m_time;
 		vec2 m_position;
 		std::vector<vec2> m_positions;
+
+		GLuint m_vao; //Vertex Array Object
 	};
 }
