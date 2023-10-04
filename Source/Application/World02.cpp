@@ -1,11 +1,11 @@
-#include "World01.h"
+#include "World02.h"
 #include "Framework/Framework.h"
 #include "Renderer/Renderer.h"
 #include "Input/InputSystem.h"
 
 namespace nc
 {
-    bool World01::Initialize()
+    bool World02::Initialize()
     {
         for (int i = 0; i < 10; i++)
         {
@@ -16,11 +16,11 @@ namespace nc
         return true;
     }
 
-    void World01::Shutdown()
+    void World02::Shutdown()
     {
     }
 
-    void World01::Update(float dt)
+    void World02::Update(float dt)
     {
         m_angle += 90 * dt;
 
@@ -29,7 +29,7 @@ namespace nc
         m_time += dt;
     }
 
-    void World01::Draw(Renderer& renderer)
+    void World02::Draw(Renderer& renderer)
     {
         // pre-render
         renderer.BeginFrame();
