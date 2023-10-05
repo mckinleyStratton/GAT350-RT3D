@@ -5,8 +5,12 @@ in layout(location = 1) vec3 color;
 
 out layout(location = 0) vec3 ocolor;
 
+uniform	float time;
+
 void main()
 {
 	ocolor = color;
-	gl_Position = vec4(position * 0.9, 1.0);
+
+	float xo = sin(time * 3 + position.y) * 0.1;
+	gl_Position = vec4(position + vec3(xo, 0, 0), 1.0);
 }
