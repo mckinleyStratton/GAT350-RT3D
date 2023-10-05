@@ -2,6 +2,8 @@
 #include "Framework/Framework.h"
 #include "Input/InputSystem.h"
 
+#define INTERLEAVE
+
 namespace nc
 {
     bool World02::Initialize()
@@ -42,8 +44,38 @@ namespace nc
         // now tell it to use the program
         glUseProgram(program);
 
+#ifdef INTERLEAVE
 
+        //vertex data
+        float vertexData[] = {
+             -0.8f, -0.8f, 0.0f, 1.0f, 0.0f, 0.0f,
+             0.8f, -0.8f, 0.0f, 0.0f, 1.0f, 0.0f,
+             0.8f,  0.8f, 0.0f, 0.0f, 0.0f, 1.0f,
+             -0.8f,  0.8f, 0.0f, 1.0f, 1.0f, 1.0f
+        };
 
+        // create buffer
+        GLuint vbo; //Vertex Buffer Object -> buffer is just a block of memory
+        glGenBuffers(1, &vbo); // get address of vbo
+        glBindBuffer(GL_ARRAY_BUFFER, vbo);
+        glBufferData(GL_ARRAY_BUFFER, sizeof(vertexData), vertexData, GL_STATIC_DRAW);
+
+        glGenVertexArrays(1, &m_vao);
+        glBindVertexArray(m_vao);
+
+        glBindVertexBuffer(0, vbo, 0, 6 * sizeof(GLfloat));
+        
+        // position
+        glEnableVertexAttribArray(0);
+        glVertexAttribFormat(0, 3, GL_FLOAT, GL_FALSE, 0);
+        glVertexAttribBinding(0, 0);
+
+        // color
+        glEnableVertexAttribArray(1);
+        glVertexAttribFormat(1, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(GLfloat));
+        glVertexAttribBinding(1, 0);
+
+#else
         //vertex data
         float positionData[] = {
             -0.8f, -0.8f, 0.0f,
@@ -82,6 +114,7 @@ namespace nc
         glEnableVertexAttribArray(1);
         glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 0, 0);
         glBindVertexBuffer(1, vbo[1], 0, 3 * sizeof(GLfloat));
+#endif
 
  
         return true;
@@ -109,6 +142,7 @@ namespace nc
         glBindVertexArray(m_vao);
         //glDrawArrays(GL_TRIANGLES, 0, 3);
         glDrawArrays(GL_QUADS, 0, 4);
+        //glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
 
         // post-render
         renderer.EndFrame();
