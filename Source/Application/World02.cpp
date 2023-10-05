@@ -48,7 +48,8 @@ namespace nc
         float positionData[] = {
             -0.8f, -0.8f, 0.0f,
              0.8f, -0.8f, 0.0f,
-             0.0f,  0.8f, 0.0f
+             0.8f,  0.8f, 0.0f,
+             -0.8f,  0.8f, 0.0f
         };
 
         //color data
@@ -56,7 +57,8 @@ namespace nc
         {
             1.0f, 0.0f, 0.0f,
             0.0f, 1.0f, 0.0f,
-            0.0f, 0.0f, 1.0f
+            0.0f, 0.0f, 1.0f,
+            1.0f, 1.0f, 1.0f
         };
 
         // create buffer
@@ -105,8 +107,8 @@ namespace nc
         
         // render
         glBindVertexArray(m_vao);
-        glDrawArrays(GL_TRIANGLES, 0, 3);
-
+        //glDrawArrays(GL_TRIANGLES, 0, 3);
+        glDrawArrays(GL_QUADS, 0, 4);
 
         // post-render
         renderer.EndFrame();
