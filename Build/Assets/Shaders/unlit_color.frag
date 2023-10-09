@@ -4,14 +4,7 @@ in layout(location = 0) vec3 color;
 
 out layout(location = 0) vec4 ocolor;
 
-uniform	float time;
-
 void main()
 {
-	vec3 ncolor = (color * (sin(time) + 1) * 0.5);
-	//black and white
-	//vec3 ncolor = vec3((color.r + color.g + color.b) / 3);
-
-
-	ocolor = vec4(ncolor, 1);
+	ocolor = vec4(color, 1);
 }

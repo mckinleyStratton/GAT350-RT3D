@@ -2,6 +2,8 @@
 #include "Framework/Framework.h"
 #include "Input/InputSystem.h"
 
+#include <glm/glm/gtc/type_ptr.hpp>
+
 #define INTERLEAVE
 
 namespace nc
@@ -14,12 +16,13 @@ namespace nc
 
 #ifdef INTERLEAVE
 
-        //vertex data
+       //vertex data
         float vertexData[] = {
-             -0.8f, -0.8f, 0.0f, 1.0f, 0.0f, 0.0f,
-             0.8f, -0.8f, 0.0f, 0.0f, 1.0f, 0.0f,
-             0.8f,  0.8f, 0.0f, 0.0f, 0.0f, 1.0f,
-             -0.8f,  0.8f, 0.0f, 1.0f, 1.0f, 1.0f
+         -0.8f, -0.8f, 0.0f, 1.0f, 0.0f, 0.0f,
+         -0.8f,  0.8f, 0.0f, 0.0f, 1.0f, 0.0f,
+          0.8f, -0.8f, 0.0f, 0.0f, 0.0f, 1.0f,
+          0.8f,  0.8f, 0.0f, 1.0f, 1.0f, 1.0f
+
         };
 
         // create buffer
@@ -46,10 +49,10 @@ namespace nc
 #else
         //vertex data
         float positionData[] = {
-            -0.8f, -0.8f, 0.0f,
-             0.8f, -0.8f, 0.0f,
-             0.8f,  0.8f, 0.0f,
-             -0.8f,  0.8f, 0.0f
+            -0.8f,  -0.8f, 0.0f,
+            -0.8f,   0.8f, 0.0f,
+             0.8f,  -0.8f, 0.0f,
+             0.8f,   0.8f, 0.0f
         };
 
         //color data
@@ -83,7 +86,7 @@ namespace nc
         glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 0, 0);
         glBindVertexBuffer(1, vbo[1], 0, 3 * sizeof(GLfloat));
 #endif
-
+        //m_position.z = -10.0f;
  
         return true;
     }
@@ -96,13 +99,31 @@ namespace nc
     {
         m_angle += 90 * dt;
 
-        m_position.x += ENGINE.GetSystem<InputSystem>()->GetKeyDown(SDL_SCANCODE_A) ? -dt : 0;
-        m_position.x += ENGINE.GetSystem<InputSystem>()->GetKeyDown(SDL_SCANCODE_D) ? +dt : 0;
+        m_position.x += ENGINE.GetSystem<InputSystem>()->GetKeyDown(SDL_SCANCODE_A) ? m_speed * -dt : 0;
+        m_position.x += ENGINE.GetSystem<InputSystem>()->GetKeyDown(SDL_SCANCODE_D) ? m_speed * +dt : 0;
+        m_position.z += ENGINE.GetSystem<InputSystem>()->GetKeyDown(SDL_SCANCODE_W) ? m_speed * -dt : 0;
+        m_position.z += ENGINE.GetSystem<InputSystem>()->GetKeyDown(SDL_SCANCODE_S) ? m_speed * +dt : 0;
+
         m_time += dt;
 
+        // model matrix
+        glm::mat4 position = glm::translate(glm::mat4{ 1 }, m_position);
+        glm::mat4 rotation = glm::rotate(glm::mat4{ 1 }, glm::radians(m_angle), glm::vec3{ 0, 0, 1 });
+        glm::mat4 model = position * rotation; //PEMDAS MATTERS!
+        //glm::mat4 model = rotation * position; //PEMDAS MATTERS! Very different from position * rotation
 
-        GLint uniform = glGetUniformLocation(m_program->m_program, "time");
-        glUniform1f(uniform, m_time);
+        GLint uniform = glGetUniformLocation(m_program->m_program, "model");
+        glUniformMatrix4fv(uniform, 1, GL_FALSE, glm::value_ptr(model));
+
+        //view matrix
+        glm::mat4 view = glm::lookAt(glm::vec3{ 0, 4, 5}, glm::vec3{ 0, 0, 0 }, glm::vec3{ 0, 1, 0 });
+        uniform = glGetUniformLocation(m_program->m_program, "view");
+        glUniformMatrix4fv(uniform, 1, GL_FALSE, glm::value_ptr(view));
+
+        // projection matrix
+        glm::mat4 projection = glm::perspective(glm::radians(70.0f), 800.0f / 600.0f, 0.01f, 100.0f);
+        uniform = glGetUniformLocation(m_program->m_program, "projection");
+        glUniformMatrix4fv(uniform, 1, GL_FALSE, glm::value_ptr(projection));
 
     }
 
@@ -114,8 +135,8 @@ namespace nc
         // render
         glBindVertexArray(m_vao);
         //glDrawArrays(GL_TRIANGLES, 0, 3);
-        glDrawArrays(GL_QUADS, 0, 4);
-        //glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
+        //glDrawArrays(GL_QUADS, 0, 4);
+        glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
 
         // post-render
         renderer.EndFrame();
