@@ -97,21 +97,18 @@ namespace nc
 
     void World03::Update(float dt)
     {
-        m_angle += 90 * dt;
+        //m_angle += 90 * dt;
+        m_transform.rotation.z += 180 * dt;
 
-        m_position.x += ENGINE.GetSystem<InputSystem>()->GetKeyDown(SDL_SCANCODE_A) ? m_speed * -dt : 0;
-        m_position.x += ENGINE.GetSystem<InputSystem>()->GetKeyDown(SDL_SCANCODE_D) ? m_speed * +dt : 0;
-        m_position.z += ENGINE.GetSystem<InputSystem>()->GetKeyDown(SDL_SCANCODE_W) ? m_speed * -dt : 0;
-        m_position.z += ENGINE.GetSystem<InputSystem>()->GetKeyDown(SDL_SCANCODE_S) ? m_speed * +dt : 0;
+        m_transform.position.x += ENGINE.GetSystem<InputSystem>()->GetKeyDown(SDL_SCANCODE_A) ? m_speed * -dt : 0;
+        m_transform.position.x += ENGINE.GetSystem<InputSystem>()->GetKeyDown(SDL_SCANCODE_D) ? m_speed * +dt : 0;
+        m_transform.position.z += ENGINE.GetSystem<InputSystem>()->GetKeyDown(SDL_SCANCODE_W) ? m_speed * -dt : 0;
+        m_transform.position.z += ENGINE.GetSystem<InputSystem>()->GetKeyDown(SDL_SCANCODE_S) ? m_speed * +dt : 0;
 
         m_time += dt;
-
-        // model matrix
-        glm::mat4 position = glm::translate(glm::mat4{ 1 }, m_position);
-        glm::mat4 rotation = glm::rotate(glm::mat4{ 1 }, glm::radians(m_angle), glm::vec3{ 0, 0, 1 });
-        glm::mat4 model = position * rotation; //PEMDAS MATTERS!
-        //glm::mat4 model = rotation * position; //PEMDAS MATTERS! Very different from position * rotation
-        m_program->SetUniform("model", model);
+        
+        //model matrix
+        m_program->SetUniform("model", m_transform.GetMatrix());
 
 
         //view matrix
