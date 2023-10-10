@@ -5,6 +5,7 @@
 #include "Texture.h"
 #include "Shader.h"
 #include "Program.h"
+#include "Gui.h"
 
 
 #include <glad/include/glad/glad.h>
@@ -37,8 +38,8 @@ namespace nc
 		int GetWidth() const { return m_width; }
 		int GetHeight() const { return m_height; }
 
-		friend class Text;
 		friend class Texture;
+		friend class Gui;
 
 	private:
 		int m_width = 0;

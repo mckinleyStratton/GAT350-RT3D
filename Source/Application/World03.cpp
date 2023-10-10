@@ -97,7 +97,14 @@ namespace nc
 
     void World03::Update(float dt)
     {
-        //m_angle += 90 * dt;
+        ENGINE.GetSystem<Gui>()->BeginFrame();
+
+        ImGui::Begin("Transform");
+        ImGui::DragFloat3("Position", &m_transform.position[0]);
+        ImGui::DragFloat3("Rotation", &m_transform.rotation[0]);
+        ImGui::DragFloat3("Scale", &m_transform.scale[0]);
+        ImGui::End();
+        
         m_transform.rotation.z += 180 * dt;
 
         m_transform.position.x += ENGINE.GetSystem<InputSystem>()->GetKeyDown(SDL_SCANCODE_A) ? m_speed * -dt : 0;
@@ -119,6 +126,8 @@ namespace nc
         // projection matrix
         glm::mat4 projection = glm::perspective(glm::radians(70.0f), 800.0f / 600.0f, 0.01f, 100.0f);
         m_program->SetUniform("projection", projection);
+
+        ENGINE.GetSystem<Gui>()->EndFrame();
     }
 
     void World03::Draw(Renderer& renderer)
@@ -131,6 +140,8 @@ namespace nc
         //glDrawArrays(GL_TRIANGLES, 0, 3);
         //glDrawArrays(GL_QUADS, 0, 4);
         glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
+
+        ENGINE.GetSystem<Gui>()->Draw();
 
         // post-render
         renderer.EndFrame();
