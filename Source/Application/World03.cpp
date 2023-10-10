@@ -111,20 +111,17 @@ namespace nc
         glm::mat4 rotation = glm::rotate(glm::mat4{ 1 }, glm::radians(m_angle), glm::vec3{ 0, 0, 1 });
         glm::mat4 model = position * rotation; //PEMDAS MATTERS!
         //glm::mat4 model = rotation * position; //PEMDAS MATTERS! Very different from position * rotation
+        m_program->SetUniform("model", model);
 
-        GLint uniform = glGetUniformLocation(m_program->m_program, "model");
-        glUniformMatrix4fv(uniform, 1, GL_FALSE, glm::value_ptr(model));
 
         //view matrix
         glm::mat4 view = glm::lookAt(glm::vec3{ 0, 4, 5}, glm::vec3{ 0, 0, 0 }, glm::vec3{ 0, 1, 0 });
-        uniform = glGetUniformLocation(m_program->m_program, "view");
-        glUniformMatrix4fv(uniform, 1, GL_FALSE, glm::value_ptr(view));
+        m_program->SetUniform("view", view);
+
 
         // projection matrix
         glm::mat4 projection = glm::perspective(glm::radians(70.0f), 800.0f / 600.0f, 0.01f, 100.0f);
-        uniform = glGetUniformLocation(m_program->m_program, "projection");
-        glUniformMatrix4fv(uniform, 1, GL_FALSE, glm::value_ptr(projection));
-
+        m_program->SetUniform("projection", projection);
     }
 
     void World03::Draw(Renderer& renderer)
