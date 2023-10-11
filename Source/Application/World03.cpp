@@ -131,7 +131,8 @@ namespace nc
 
 
         //view matrix
-        glm::mat4 view = glm::lookAt(glm::vec3{ 0, 4, 5}, glm::vec3{ 0, 0, 0 }, glm::vec3{ 0, 1, 0 });
+        // function below is the camera view
+        glm::mat4 view = glm::lookAt(glm::vec3{ 0, 0, 5}, glm::vec3{ 0, 0, 0 }, glm::vec3{ 0, 1, 0 });
         m_program->SetUniform("view", view);
 
 
