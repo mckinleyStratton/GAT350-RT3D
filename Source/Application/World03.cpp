@@ -125,6 +125,9 @@ namespace nc
         m_transform.position.z += ENGINE.GetSystem<InputSystem>()->GetKeyDown(SDL_SCANCODE_S) ? m_speed * +dt : 0;
 
         m_time += dt;
+
+        m_program->SetUniform("offset", glm::vec2{m_time, 0});
+        m_program->SetUniform("tiling", glm::vec2{2, 2});
         
         //model matrix
         m_program->SetUniform("model", m_transform.GetMatrix());
