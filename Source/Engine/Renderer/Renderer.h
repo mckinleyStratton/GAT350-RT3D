@@ -7,6 +7,7 @@
 #include "Program.h"
 #include "Gui.h"
 #include "Renderer/VertexBuffer.h"
+#include "Renderer/Material.h"
 
 
 #include <glad/include/glad/glad.h>
