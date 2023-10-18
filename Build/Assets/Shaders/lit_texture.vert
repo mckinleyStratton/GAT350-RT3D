@@ -13,16 +13,19 @@ uniform mat4 model;
 uniform mat4 view;
 uniform mat4 projection;
 
-uniform vec4 color;
-uniform vec2 offset;
-uniform vec2 tiling;
+uniform struct Material
+{
+	vec4 color;
+	vec2 offset;
+	vec2 tiling;
+} material;
 
 
 void main()
 {
-	otexcoord = (vtexcoord * tiling) + offset;
+	otexcoord = (vtexcoord * material.tiling) + material.offset;
 	onormal = vnormal;
-	ocolor = color;
+	ocolor = material.color;
 
 	mat4 mvp = projection * view * model;
 	gl_Position = mvp * vec4(vposition, 1.0);
