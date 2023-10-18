@@ -1,8 +1,9 @@
 #pragma once
 #include "Object.h"
 #include "Core/Core.h"
-#include "Renderer/Model.h"
+#include "Renderer/Renderer.h"
 #include "Components/Component.h"
+
 #include <memory>
 
 namespace nc
