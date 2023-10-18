@@ -59,6 +59,8 @@ namespace nc
         glm::mat4 projection = glm::perspective(glm::radians(70.0f), 800.0f / 600.0f, 0.01f, 100.0f);
         material->GetProgram()->SetUniform("projection", projection);
 
+        // get material get light gui
+
         ENGINE.GetSystem<Gui>()->EndFrame();
     }
 
@@ -68,6 +70,7 @@ namespace nc
         renderer.BeginFrame();
 
         // render
+        //glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
         m_model->Draw(GL_TRIANGLES);
         ENGINE.GetSystem<Gui>()->Draw();
 

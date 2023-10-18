@@ -70,6 +70,11 @@ namespace nc
 		glEnable(GL_DEPTH_TEST);
 		glDepthFunc(GL_LESS);
 
+		//if objects are facing away from us then they will not be drawn (back of objects)
+		glEnable(GL_CULL_FACE);
+		glCullFace(GL_BACK);
+		glFrontFace(GL_CCW);
+
 	}
 
 	void Renderer::BeginFrame()

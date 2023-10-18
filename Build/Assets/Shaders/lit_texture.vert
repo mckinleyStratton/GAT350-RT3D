@@ -20,7 +20,15 @@ uniform struct Material
 	vec2 tiling;
 } material;
 
+uniform struct Light
+{
+	vec3 position;
+	vec3 color;
+} light;
+
+
 vec3 ambientLight = vec3(0.2, 0.2, 0.2);
+
 vec3 diffuseLight = vec3(1, 1, 1);
 vec3 lightPosition = vec3(0, 8, 0);
 
