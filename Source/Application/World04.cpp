@@ -14,7 +14,6 @@ namespace nc
         m_model->SetMaterial(material);
         m_model->Load("models/sphere.obj");
 
-
         return true;
     }
 
@@ -56,12 +55,35 @@ namespace nc
 
 
         // projection matrix
-        glm::mat4 projection = glm::perspective(glm::radians(70.0f), 800.0f / 600.0f, 0.01f, 100.0f);
+        glm::mat4 projection = glm::perspective(glm::radians(70.0f), ENGINE.GetSystem<Renderer>()->GetWidth() / (float)ENGINE.GetSystem<Renderer>()->GetHeight(), 0.01f, 100.0f);
         material->GetProgram()->SetUniform("projection", projection);
 
-        // get material get light gui
+
+
+        // get material get light GUI - HOMEWORK
+        ImGui::Begin("Light Controls");
+
+        //ambient
+        glm::vec3 ambientLight = { 1.0f, 1.0f, 1.0f };
+        ImGui::DragFloat3("Ambient Light", glm::value_ptr(ambientLight));
+        material->GetProgram()->SetUniform("ambientLight", ambientLight);
+
+        // position
+        glm::vec3 lightPosition = { 1.0f, 1.0f, 1.0f };
+        ImGui::DragFloat3("Light Position", glm::value_ptr(lightPosition));
+        material->GetProgram()->SetUniform("light.position", lightPosition);
+
+        //diffuse
+        glm::vec3 lightColor = { 1.0f, 1.0f, 1.0f };
+        ImGui::ColorEdit3("Light Diffuse Color", glm::value_ptr(lightColor));
+        material->GetProgram()->SetUniform("light.color", lightColor);
+
+
+        ImGui::End();
+
 
         ENGINE.GetSystem<Gui>()->EndFrame();
+        
     }
 
     void World04::Draw(Renderer& renderer)
