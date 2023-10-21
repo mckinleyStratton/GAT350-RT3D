@@ -22,7 +22,7 @@ namespace nc
 		glm::vec3 m_lightPosition{ 0, 8, 0 };
 		glm::vec3 m_lightColor{ 1 };
 		glm::vec3 m_ambientColor{ 0.2f };
-		glm::vec3 ambientLight{ 5 };
+		glm::vec3 ambientLight{ 1 };
 
 		Transform m_transform;
 

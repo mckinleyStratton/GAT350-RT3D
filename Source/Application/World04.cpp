@@ -33,9 +33,9 @@ namespace nc
         ImGui::End();
 
         ImGui::Begin("Light");
-        ImGui::DragFloat3("Position", glm::value_ptr(m_lightPosition), 1.0f);
-        ImGui::DragFloat3("Color", glm::value_ptr(m_lightColor));
-        ImGui::DragFloat3("Ambient Color", glm::value_ptr(m_ambientColor));
+        ImGui::DragFloat3("Position", glm::value_ptr(m_lightPosition), 0.5f);
+        ImGui::DragFloat3("Color", glm::value_ptr(m_lightColor), 0.01f);
+        ImGui::DragFloat3("Ambient Color", glm::value_ptr(m_ambientColor), 0.01f);
         ImGui::End();
         
         //m_transform.rotation.z += 180 * dt;
@@ -68,33 +68,6 @@ namespace nc
         // projection matrix
         glm::mat4 projection = glm::perspective(glm::radians(70.0f), ENGINE.GetSystem<Renderer>()->GetWidth() / (float)ENGINE.GetSystem<Renderer>()->GetHeight(), 0.01f, 100.0f);
         material->GetProgram()->SetUniform("projection", projection);
-
-
-
-        // get material get light GUI - HOMEWORK
-        
-        
-        
-        
-        //ImGui::Begin("Light Controls");
-
-        ////ambient
-        //glm::vec3 ambientLight = { 1.0f, 1.0f, 1.0f };
-        //ImGui::DragFloat3("Ambient Light", glm::value_ptr(ambientLight));
-        //material->GetProgram()->SetUniform("ambientLight", ambientLight);
-
-        //// position
-        //glm::vec3 lightPosition = { 1.0f, 1.0f, 1.0f };
-        //ImGui::DragFloat3("Light Position", glm::value_ptr(lightPosition));
-        //material->GetProgram()->SetUniform("light.position", lightPosition);
-
-        ////diffuse
-        //glm::vec3 lightColor = { 1.0f, 1.0f, 1.0f };
-        //ImGui::ColorEdit3("Light Diffuse Color", glm::value_ptr(lightColor));
-        //material->GetProgram()->SetUniform("light.color", lightColor);
-
-
-        //ImGui::End();
 
 
         ENGINE.GetSystem<Gui>()->EndFrame();
