@@ -3,6 +3,7 @@
 #include "Input/InputSystem.h"
 #include "Renderer/VertexBuffer.h"
 
+
 #include <glm/glm/gtc/type_ptr.hpp>
 
 namespace nc
@@ -30,6 +31,12 @@ namespace nc
         ImGui::DragFloat3("Rotation", &m_transform.rotation[0]);
         ImGui::DragFloat3("Scale", &m_transform.scale[0], 1.0f);
         ImGui::End();
+
+        ImGui::Begin("Light");
+        ImGui::DragFloat3("Position", glm::value_ptr(m_lightPosition), 1.0f);
+        ImGui::DragFloat3("Color", glm::value_ptr(m_lightColor));
+        ImGui::DragFloat3("Ambient Color", glm::value_ptr(m_ambientColor));
+        ImGui::End();
         
         //m_transform.rotation.z += 180 * dt;
 
@@ -41,12 +48,16 @@ namespace nc
         m_time += dt;
 
         auto material = m_model->GetMaterial();
+
         material->ProcessGui();
         material->Bind();
-        
+
+        material->GetProgram()->SetUniform("light.position", m_lightPosition);
+        material->GetProgram()->SetUniform("light.color", m_lightColor);
+        material->GetProgram()->SetUniform("ambientLight", m_ambientColor);
+
         //model matrix
         material->GetProgram()->SetUniform("model", m_transform.GetMatrix());
-
 
         //view matrix
         // function below is the camera view
@@ -61,25 +72,29 @@ namespace nc
 
 
         // get material get light GUI - HOMEWORK
-        ImGui::Begin("Light Controls");
+        
+        
+        
+        
+        //ImGui::Begin("Light Controls");
 
-        //ambient
-        glm::vec3 ambientLight = { 1.0f, 1.0f, 1.0f };
-        ImGui::DragFloat3("Ambient Light", glm::value_ptr(ambientLight));
-        material->GetProgram()->SetUniform("ambientLight", ambientLight);
+        ////ambient
+        //glm::vec3 ambientLight = { 1.0f, 1.0f, 1.0f };
+        //ImGui::DragFloat3("Ambient Light", glm::value_ptr(ambientLight));
+        //material->GetProgram()->SetUniform("ambientLight", ambientLight);
 
-        // position
-        glm::vec3 lightPosition = { 1.0f, 1.0f, 1.0f };
-        ImGui::DragFloat3("Light Position", glm::value_ptr(lightPosition));
-        material->GetProgram()->SetUniform("light.position", lightPosition);
+        //// position
+        //glm::vec3 lightPosition = { 1.0f, 1.0f, 1.0f };
+        //ImGui::DragFloat3("Light Position", glm::value_ptr(lightPosition));
+        //material->GetProgram()->SetUniform("light.position", lightPosition);
 
-        //diffuse
-        glm::vec3 lightColor = { 1.0f, 1.0f, 1.0f };
-        ImGui::ColorEdit3("Light Diffuse Color", glm::value_ptr(lightColor));
-        material->GetProgram()->SetUniform("light.color", lightColor);
+        ////diffuse
+        //glm::vec3 lightColor = { 1.0f, 1.0f, 1.0f };
+        //ImGui::ColorEdit3("Light Diffuse Color", glm::value_ptr(lightColor));
+        //material->GetProgram()->SetUniform("light.color", lightColor);
 
 
-        ImGui::End();
+        //ImGui::End();
 
 
         ENGINE.GetSystem<Gui>()->EndFrame();
