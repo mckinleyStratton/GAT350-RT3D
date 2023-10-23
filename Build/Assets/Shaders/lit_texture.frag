@@ -59,7 +59,8 @@ vec3 ads(vec3 position, vec3 normal) {
     
     
     float intensity = max(dot(lightDir, normal), 0);
-    vec3 diffuse = material.diffuse * (light.color * intensity * spotIntensity);
+    vec3 diffuse = material.diffuse * (light.color * intensity);
+    //vec3 diffuse = material.diffuse * (light.color * intensity * spotIntensity);
 
 
 
@@ -70,7 +71,8 @@ vec3 ads(vec3 position, vec3 normal) {
     {
         vec3 reflection = reflect(-lightDir, normal);
         vec3 viewDir = normalize(-position);
-        intensity = max(dot(reflection, viewDir), 0);
+        float intensity = max(dot(lightDir, normal), 0) * spotIntensity;
+        //intensity = max(dot(reflection, viewDir), 0);
         intensity = pow(intensity, material.shininess);
         specular = material.specular * intensity;
     }
