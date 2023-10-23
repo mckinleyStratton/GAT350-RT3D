@@ -1,5 +1,10 @@
 #version 430
 
+#define POINT       0
+#define DIRECTIONAL 1
+#define SPOT        2
+
+
 // input for modelview space - 3D position, 3D normal vecor, 2D texture coordinates
 in vec3 fposition;
 in vec3 fnormal;
@@ -13,7 +18,8 @@ out vec4 ocolor;
 layout(binding = 0) uniform sampler2D tex;
 
 // material properties
-uniform struct Material {
+uniform struct Material 
+{
     vec3 diffuse;
     vec3 specular;
     float shininess;
@@ -23,8 +29,11 @@ uniform struct Material {
 } material;
 
 // light properties
-uniform struct Light {
+uniform struct Light 
+{
+    int type;
     vec3 position;
+    vec3 direction;
     vec3 color;
 } light;
 
@@ -38,7 +47,7 @@ vec3 ads(vec3 position, vec3 normal) {
     vec3 ambient = ambientLight;
 
     // DIFFUSE
-    vec3 lightDir = normalize(light.position - position);
+    vec3 lightDir = (light.type == DIRECTIONAL) ? normalize(-light.direction) : normalize(light.position - position);
     float intensity = max(dot(lightDir, normal), 0);
     vec3 diffuse = material.diffuse * (light.color * intensity);
 

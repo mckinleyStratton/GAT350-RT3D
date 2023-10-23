@@ -18,6 +18,7 @@ namespace nc
 
         m_light.type = light_t::eType::Point;
         m_light.position = glm::vec3{ 0, 5, 0};
+        m_light.direction = glm::vec3{ 0, -1, 0 };
         m_light.color = glm::vec3{ 1, 1, 1 };
 
         return true;
@@ -38,7 +39,12 @@ namespace nc
         ImGui::End();
 
         ImGui::Begin("Light");
+        const char* types[] = {"Point", "Directional", "Spot"};
+        ImGui::Combo("Type", (int*)(&m_light.type), types, 3);
+
+
         ImGui::DragFloat3("Position", glm::value_ptr(m_light.position), 0.5f);
+        ImGui::DragFloat3("Direction", glm::value_ptr(m_light.direction), 0.5f);
         ImGui::DragFloat3("Color", glm::value_ptr(m_light.color), 0.01f);
         ImGui::DragFloat3("Ambient Color", glm::value_ptr(m_ambientColor), 0.01f);
         ImGui::End();
@@ -57,7 +63,9 @@ namespace nc
         material->ProcessGui();
         material->Bind();
 
+        material->GetProgram()->SetUniform("light.type", m_light.type);
         material->GetProgram()->SetUniform("light.position", m_light.position);
+        material->GetProgram()->SetUniform("light.direction", m_light.direction);
         material->GetProgram()->SetUniform("light.color", m_light.color);
         material->GetProgram()->SetUniform("ambientLight", m_ambientColor);
 
