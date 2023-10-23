@@ -13,7 +13,8 @@ namespace nc
         auto material = GET_RESOURCE(Material, "materials/grid.mtrl");
         m_model = std::make_shared<Model>();
         m_model->SetMaterial(material);
-        m_model->Load("models/teapot.obj", glm::vec3{ 0 }, glm::vec3{-90, 0, 0});
+        m_model->Load("models/plane.obj");
+        m_transform.position.y = -1;
 
         return true;
     }
