@@ -5,8 +5,26 @@
 
 #include <vector>
 
+
 namespace nc
 {
+	struct light_t
+	{
+		enum eType
+		{
+			Point,
+			Directional,
+			Spot
+		};
+
+
+		eType type;
+		glm::vec3 position;
+		glm::vec3 direction;
+		glm::vec3 color;
+	};
+
+
 	class World04 : public World
 	{
 	public:
@@ -19,10 +37,9 @@ namespace nc
 		float m_time = 0;
 		float m_speed = 10;
 
-		glm::vec3 m_lightPosition{ 1, 0.5f, 0 };
-		glm::vec3 m_lightColor{ 1 };
+		light_t m_light;
 		glm::vec3 m_ambientColor{ 0.2f };
-		glm::vec3 ambientLight{ 1 };
+		//glm::vec3 ambientLight{ 1 };
 
 		Transform m_transform;
 

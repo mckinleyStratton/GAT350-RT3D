@@ -16,6 +16,10 @@ namespace nc
         m_model->Load("models/plane.obj");
         m_transform.position.y = -1;
 
+        m_light.type = light_t::eType::Point;
+        m_light.position = glm::vec3{ 0, 5, 0};
+        m_light.color = glm::vec3{ 1, 1, 1 };
+
         return true;
     }
 
@@ -34,8 +38,8 @@ namespace nc
         ImGui::End();
 
         ImGui::Begin("Light");
-        ImGui::DragFloat3("Position", glm::value_ptr(m_lightPosition), 0.5f);
-        ImGui::DragFloat3("Color", glm::value_ptr(m_lightColor), 0.01f);
+        ImGui::DragFloat3("Position", glm::value_ptr(m_light.position), 0.5f);
+        ImGui::DragFloat3("Color", glm::value_ptr(m_light.color), 0.01f);
         ImGui::DragFloat3("Ambient Color", glm::value_ptr(m_ambientColor), 0.01f);
         ImGui::End();
         
@@ -53,8 +57,8 @@ namespace nc
         material->ProcessGui();
         material->Bind();
 
-        material->GetProgram()->SetUniform("light.position", m_lightPosition);
-        material->GetProgram()->SetUniform("light.color", m_lightColor);
+        material->GetProgram()->SetUniform("light.position", m_light.position);
+        material->GetProgram()->SetUniform("light.color", m_light.color);
         material->GetProgram()->SetUniform("ambientLight", m_ambientColor);
 
         //model matrix
