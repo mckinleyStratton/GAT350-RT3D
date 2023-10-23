@@ -23,7 +23,7 @@ namespace nc
 	public:
 		glm::vec3 diffuse{ 1 };
 		glm::vec3 specular{ 1 };
-		float shininess = 2;
+		float shininess = 25.0f;
 
 		glm::vec2 tiling{ 1, 1 };
 		glm::vec2 offset{ 0, 0 };

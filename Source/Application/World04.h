@@ -19,7 +19,7 @@ namespace nc
 		float m_time = 0;
 		float m_speed = 10;
 
-		glm::vec3 m_lightPosition{ 0, 8, 0 };
+		glm::vec3 m_lightPosition{ 1, 0.5f, 0 };
 		glm::vec3 m_lightColor{ 1 };
 		glm::vec3 m_ambientColor{ 0.2f };
 		glm::vec3 ambientLight{ 1 };
