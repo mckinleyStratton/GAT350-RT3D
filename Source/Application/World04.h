@@ -23,6 +23,7 @@ namespace nc
 		glm::vec3 direction;
 		glm::vec3 color;
 		float intensity;
+		float range;
 		float innerAngle;
 		float outerAngle;
 	};
@@ -41,7 +42,11 @@ namespace nc
 		float m_speed = 10;
 
 		light_t m_light;
+		light_t m_lights[3];
+		int m_selected = 0;
 		glm::vec3 m_ambientColor{ 0.2f };
+		
+		
 		//glm::vec3 ambientLight{ 1 };
 
 		Transform m_transform;
