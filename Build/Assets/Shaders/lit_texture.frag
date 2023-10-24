@@ -35,6 +35,7 @@ uniform struct Light
     vec3 position;
     vec3 direction;
     vec3 color;
+    float intensity;
     float innerAngle;
     float outerAngle;
 } light;
@@ -78,7 +79,7 @@ vec3 ads(vec3 position, vec3 normal) {
     }
 
     // calculate lighting contributions
-    return ambient + diffuse + specular;
+    return ambient + (diffuse + specular) * light.intensity;
 }
 
 void main() {

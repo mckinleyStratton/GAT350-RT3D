@@ -19,6 +19,7 @@ namespace nc
         m_light.position = glm::vec3{ 0, 5, 0};
         m_light.direction = glm::vec3{ 0, -1, 0 };
         m_light.color = glm::vec3{ 1, 1, 1 };
+        m_light.intensity = 1.0f;
         m_light.innerAngle = 10.0f;
         m_light.outerAngle = 30.0f;
 
@@ -53,6 +54,8 @@ namespace nc
             ImGui::DragFloat("Outer Angle", &m_light.outerAngle, 1, m_light.innerAngle, 90);
         }
 
+        ImGui::DragFloat("Intensity", &m_light.intensity, 0.1f, 0, 10);
+
         ImGui::DragFloat3("Color", glm::value_ptr(m_light.color), 0.01f);
         ImGui::DragFloat3("Ambient Color", glm::value_ptr(m_ambientColor), 0.01f);
         ImGui::End();
@@ -73,8 +76,9 @@ namespace nc
 
         material->GetProgram()->SetUniform("light.type", m_light.type);
         material->GetProgram()->SetUniform("light.position", m_light.position);
-        material->GetProgram()->SetUniform("light.direction", m_light.direction);
+        material->GetProgram()->SetUniform("light.direction", glm::normalize(m_light.direction));
         material->GetProgram()->SetUniform("light.color", m_light.color);
+        material->GetProgram()->SetUniform("light.intensity", m_light.intensity);
         material->GetProgram()->SetUniform("light.innerAngle", glm::radians(m_light.innerAngle));
         material->GetProgram()->SetUniform("light.outerAngle", glm::radians(m_light.outerAngle));
 
