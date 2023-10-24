@@ -35,7 +35,8 @@ uniform struct Light
     vec3 position;
     vec3 direction;
     vec3 color;
-    float cutoff;
+    float innerAngle;
+    float outerAngle;
 } light;
 
 // ambient light color
@@ -54,13 +55,13 @@ vec3 ads(vec3 position, vec3 normal) {
     if (light.type == SPOT)
     {
         float angle = acos(dot(light.direction, -lightDir));
-        if (angle > light.cutoff) spotIntensity = 0;
+        //if (angle > light.innerAngle) spotIntensity = 0;
+        spotIntensity = smoothstep(light.outerAngle + 0.001, light.innerAngle, angle);
     }
     
     
-    float intensity = max(dot(lightDir, normal), 0);
+    float intensity = max(dot(lightDir, normal), 0) * spotIntensity;
     vec3 diffuse = material.diffuse * (light.color * intensity);
-    //vec3 diffuse = material.diffuse * (light.color * intensity * spotIntensity);
 
 
 
@@ -71,10 +72,9 @@ vec3 ads(vec3 position, vec3 normal) {
     {
         vec3 reflection = reflect(-lightDir, normal);
         vec3 viewDir = normalize(-position);
-        float intensity = max(dot(lightDir, normal), 0) * spotIntensity;
-        //intensity = max(dot(reflection, viewDir), 0);
+        float intensity = max(dot(reflection, viewDir), 0);
         intensity = pow(intensity, material.shininess);
-        specular = material.specular * intensity;
+        specular = material.specular * intensity * spotIntensity;
     }
 
     // calculate lighting contributions

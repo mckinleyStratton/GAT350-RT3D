@@ -19,7 +19,8 @@ namespace nc
         m_light.position = glm::vec3{ 0, 5, 0};
         m_light.direction = glm::vec3{ 0, -1, 0 };
         m_light.color = glm::vec3{ 1, 1, 1 };
-        m_light.cutoff = 30.0f;
+        m_light.innerAngle = 10.0f;
+        m_light.outerAngle = 30.0f;
 
         return true;
     }
@@ -45,7 +46,12 @@ namespace nc
 
         if (m_light.type != light_t::Directional)   ImGui::DragFloat3("Position", glm::value_ptr(m_light.position), 0.5f);
         if (m_light.type != light_t::Point)         ImGui::DragFloat3("Direction", glm::value_ptr(m_light.direction), 0.5f);
-        if (m_light.type == light_t::Spot)          ImGui::DragFloat("Cuttoff", &m_light.cutoff, 1, 0, 90);
+        
+        if (m_light.type == light_t::Spot)
+        {
+            ImGui::DragFloat("Inner Angle", &m_light.innerAngle, 1, 0, m_light.outerAngle);
+            ImGui::DragFloat("Outer Angle", &m_light.outerAngle, 1, m_light.innerAngle, 90);
+        }
 
         ImGui::DragFloat3("Color", glm::value_ptr(m_light.color), 0.01f);
         ImGui::DragFloat3("Ambient Color", glm::value_ptr(m_ambientColor), 0.01f);
@@ -69,8 +75,8 @@ namespace nc
         material->GetProgram()->SetUniform("light.position", m_light.position);
         material->GetProgram()->SetUniform("light.direction", m_light.direction);
         material->GetProgram()->SetUniform("light.color", m_light.color);
-        material->GetProgram()->SetUniform("light.cutoff", glm::radians(m_light.cutoff));
-
+        material->GetProgram()->SetUniform("light.innerAngle", glm::radians(m_light.innerAngle));
+        material->GetProgram()->SetUniform("light.outerAngle", glm::radians(m_light.outerAngle));
 
         material->GetProgram()->SetUniform("ambientLight", m_ambientColor);
 
@@ -86,7 +92,6 @@ namespace nc
         // projection matrix
         glm::mat4 projection = glm::perspective(glm::radians(70.0f), ENGINE.GetSystem<Renderer>()->GetWidth() / (float)ENGINE.GetSystem<Renderer>()->GetHeight(), 0.01f, 100.0f);
         material->GetProgram()->SetUniform("projection", projection);
-
 
         ENGINE.GetSystem<Gui>()->EndFrame();
         
