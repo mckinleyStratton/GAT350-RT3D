@@ -13,7 +13,7 @@ namespace nc
         auto material = GET_RESOURCE(Material, "materials/multi.mtrl");
         m_model = std::make_shared<Model>();
         m_model->SetMaterial(material);
-        m_model->Load("models/plane.obj");
+        m_model->Load("models/dragon.obj");
         m_transform.position.y = -1;
 
         for (int i = 0; i < 3; i++)
