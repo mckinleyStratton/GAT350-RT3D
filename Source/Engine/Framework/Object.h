@@ -41,6 +41,6 @@ namespace nc
 	public:
 		std::string name;
 		bool active = true;
-		bool giuSelect = false;
+		bool guiSelect = false;
 	};
 }
