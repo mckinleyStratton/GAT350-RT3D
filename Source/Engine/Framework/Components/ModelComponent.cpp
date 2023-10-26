@@ -19,7 +19,10 @@ namespace nc
 
 	void ModelComponent::Draw(Renderer& renderer)
 	{
-		//m_model->Draw(renderer, m_owner->transform);
+		auto material = model->GetMaterial();
+		material->Bind();
+		material->GetProgram()->SetUniform("model", m_owner->transform.GetMatrix());
+		model->Draw();
 	}
 
 	void ModelComponent::Read(const json_t& value)
