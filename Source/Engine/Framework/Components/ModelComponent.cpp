@@ -8,7 +8,16 @@ namespace nc
 
 	bool ModelComponent::Initialize()
 	{
-		//if (!modelName.empty()) model = GET_RESOURCE(Model, modelName);
+		if (!modelName.empty())
+		{
+			model = std::make_shared<Model>();
+			model->Load(modelName);
+			//ADD_RESOURCE(modelName, model);
+		}
+		if (model && !materialName.empty())
+		{
+			model->SetMaterial(GET_RESOURCE(Material, materialName));
+		}
 
 		return true;
 	}
@@ -28,5 +37,6 @@ namespace nc
 	void ModelComponent::Read(const json_t& value)
 	{
 		READ_DATA(value, modelName);
+		READ_DATA(value, materialName);
 	}
 }
