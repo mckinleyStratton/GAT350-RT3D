@@ -85,4 +85,35 @@ namespace nc
 
 	}
 
+	void Scene::ProcessGui()
+	{
+		ImGui::Begin("Scene");
+		ImGui::ColorEdit3("Ambient", glm::value_ptr(ambientColor));
+		ImGui::Separator();
+
+
+
+		for (auto& actor : m_actors)
+		{
+			if (ImGui::Selectable(actor->name.c_str(), actor->guiSelect))
+			{
+				// set all actors gui to false
+				std::for_each(m_actors.begin(), m_actors.end(), [](auto& a) { a->guiSelect = false; });
+				// set selected actor gui to true
+				actor->guiSelect = true;
+			}
+		}
+		ImGui::End();
+
+
+
+		ImGui::Begin("Inspector");
+		auto iter = std::find_if(m_actors.begin(), m_actors.end(), [](auto& a) { return a->guiSelect; });
+		if (iter != m_actors.end())
+		{
+			(*iter)->ProcessGui();
+		}
+		ImGui::End();
+	}
+
 }

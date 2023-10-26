@@ -51,10 +51,8 @@ namespace nc
         ENGINE.GetSystem<Gui>()->BeginFrame();
 
         m_scene->Update(dt);
-        //m_scene->ProcessGui();
+        m_scene->ProcessGui();
 
-
-        
         //m_transform.rotation.z += 180 * dt;
 
         auto actor = m_scene->GetActorByName<Actor>("actor1");
