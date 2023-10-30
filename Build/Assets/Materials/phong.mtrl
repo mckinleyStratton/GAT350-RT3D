@@ -1,6 +1,8 @@
 {
   "program": "shaders/lit_phong.prog",
-  "albedoTexture": [ "textures/squirrel_diffuse.png" ],
+  "albedoTexture": "Textures/lava_diffuse.png",
+  "specularTexture": "Textures/lava_specular.png",
+  "emissiveTexture": "Textures/lava_emissive.png",
   "albedo": [
     1,
     1,
@@ -11,12 +13,12 @@
     0.4,
     0.4
   ],
-  "emissive": [
-    0,
-    0,
-    0
-  ],
   "shininess": 2,
+  "emissive": [
+    0.0,
+    0.0,
+    0.0
+  ],
   "tiling": [ 1, 1 ],
   "offset": [ 0, 0 ]
 }

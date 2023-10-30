@@ -9,7 +9,7 @@ namespace nc
 	public:
 		CLASS_DECLARATION(CameraComponent)
 
-		bool Initialize() override;
+			bool Initialize() override;
 		void Update(float dt) override;
 		void ProcessGui() override;
 

@@ -4,10 +4,3 @@ INFO: Factory.h(74) Class registered: EnginePhysicsComponent
 INFO: Factory.h(74) Class registered: CameraComponent
 INFO: Factory.h(74) Class registered: Actor
 INFO: Main.cpp(14) Initialize Engine...
-WARNING: Texture.cpp(37) Could not create surface: 
-WARNING: ResourceManager.h(45) Could not create resource: 
-WARNING: Texture.cpp(37) Could not create surface: 
-WARNING: ResourceManager.h(45) Could not create resource: 
-WARNING: Texture.cpp(37) Could not create surface: 
-WARNING: ResourceManager.h(45) Could not create resource: 
-WARNING: Program.cpp(165) Could not find uniform location: material.emissive

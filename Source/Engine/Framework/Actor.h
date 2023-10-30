@@ -8,14 +8,13 @@
 
 namespace nc
 {
-	// Actors are objects that hold components to define their behavior and have a transform.
-	// Actors are contained in a scene and are updated and drawn each frame.
+
 	class Actor : public Object
 	{
 	public:
 		CLASS_DECLARATION(Actor)
 
-		Actor() = default;
+			Actor() = default;
 		Actor(const nc::Transform& transform) :
 			transform{ transform }
 		{}

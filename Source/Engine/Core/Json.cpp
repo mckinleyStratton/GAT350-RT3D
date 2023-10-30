@@ -52,7 +52,7 @@ namespace nc
 
 		data = value[name.c_str()].GetFloat();
 
- 		return true;
+		return true;
 	}
 
 	bool Json::Read(const rapidjson::Value& value, const std::string& name, bool& data, bool required)
@@ -133,7 +133,6 @@ namespace nc
 
 		return true;
 	}
-
 
 	bool Json::Read(const rapidjson::Value& value, const std::string& name, glm::vec4& data, bool required)
 	{
