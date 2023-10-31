@@ -1,5 +1,4 @@
 #include "StringUtils.h"
-#include <cctype>
 
 namespace nc
 {
