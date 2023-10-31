@@ -1,4 +1,5 @@
 #version 430
+// PIXEL SPACE (called per pixel)
 
 // light types
 #define POINT		0
@@ -10,11 +11,16 @@
 #define NORMAL_TEXTURE_MASK		(1 << 2)
 #define EMISSIVE_TEXTURE_MASK	(1 << 3)
 
-in vec3 fposition; 
+in vec3 fposition; // will receive interpolated vertex positions for each fragment 
 in vec3 fnormal;
 in vec2 ftexcoord;
 
-out vec4 ocolor;
+//in layout(location = 3) vec4 fcolor; 
+//flat in layout(location = 2) vec4 fcolor; // "flat" one mormal per polygon, one lighting computuation per polygon
+
+out vec4 ocolor; // this is the pixel we draw to the screen 
+
+// this is bound to channel 0
 
 uniform struct Material
 {
@@ -59,34 +65,33 @@ float attenuation(in vec3 position1, in vec3 position2, in float range)
  
 	return attenuation;
 }
-
 void phong(in Light light, in vec3 position, in vec3 normal, out vec3 diffuse, out vec3 specular)
 {
-	// DIFFUSE 
+	// DIFFUSE lighting component based on the light direction and surface normal 
 	vec3 lightDir = (light.type == DIRECTIONAL) ?  normalize(-light.direction) : normalize(light.position - position); 
 	
 	float spotIntensity = 1;
 	if (light.type == SPOT)
 	{
-		float angle = acos(dot(light.direction, -lightDir));
+		float angle = acos(dot(light.direction, -lightDir)); // light.direction = direction light is pointing / lightDir is direction from surface we're lighting to the light 
 		//if (angle > light.innerAngle) spotIntensity = 0;
 		spotIntensity = smoothstep(light.outerAngle + 0.001, light.innerAngle, angle);
 	}
 
 	float intensity = max(dot(lightDir, normal), 0) * spotIntensity;
-	diffuse = (light.color * intensity);
+	diffuse = (light.color * intensity); // still diffuse lighting but albedo texture
 	
 
 
-	// SPECULAR
+	// SPECULAR lighting component, contributing only if the surface is facing the light 
 	specular = vec3(0);
-	if (intensity > 0) 
+	if (intensity > 0) // checks whether the surface is facing the light source 
 	{
-		vec3 reflection = reflect(-lightDir, normal);
-		vec3 viewDir = normalize(-position); 
-		float intensity = max(dot(reflection, viewDir), 0);
-		intensity = pow(intensity, material.shininess); 
-		specular = vec3(intensity * spotIntensity); 
+		vec3 reflection = reflect(-lightDir, normal); // calculate reflection vector (which direction light bounces off surface)
+		vec3 viewDir = normalize(-position); // calc view dir vector (normalized vector pointing from frag position to camera)
+		float intensity = max(dot(reflection, viewDir), 0); // dot product of reflection vector and view direction (angle between ref vector and view vector)
+		intensity = pow(intensity, material.shininess); // raise intensity to power of shininess setting in material 
+		specular = vec3(intensity * spotIntensity); // final specular color 
 	}
 
 }
@@ -99,7 +104,7 @@ void main()
 	vec4 specularColor = bool(material.params & SPECULAR_TEXTURE_MASK) ? texture(specularTexture, ftexcoord) : vec4(material.specular, 1);
 	vec4 emissiveColor = bool(material.params & EMISSIVE_TEXTURE_MASK) ? texture(emissiveTexture, ftexcoord) : vec4(material.emissive, 1);
 
-	// set ambient light
+	// set ambient light // modulated by albedoColor
 	ocolor = vec4(ambientLight, 1) * albedoColor + emissiveColor;
  
 	// set lights

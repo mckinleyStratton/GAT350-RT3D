@@ -31,14 +31,19 @@ uniform struct Material
 
 void main()
 {
+	// calculate model-view matrix by * view matrix by model matrix 
 	mat4 modelView = view * model;
 
+	// transforms  vertex positions to view space
 	oposition = vec3(modelView * vec4(vposition, 1));
 
+	// transforms the normal vectors to view space and normalizes them 
 	onormal = normalize(mat3(modelView) * vnormal);
 
+	// calculate texture coordinates, applying tiling and offset as defined in the material struct 
 	otexcoord = (vtexcoord * material.tiling) + material.offset;
 
+	// calculates the final position of the vertex in clip space and assigns to gl_Position
 	mat4 mvp = projection * view * model; 
 	gl_Position = mvp * vec4(vposition, 1.0);
 }

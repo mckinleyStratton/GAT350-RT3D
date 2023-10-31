@@ -9,10 +9,10 @@
 namespace nc
 {
 
-
-
 	class World05 : public World
 	{
+
+
 	public:
 		bool Initialize() override;
 		void Shutdown() override;
@@ -21,10 +21,9 @@ namespace nc
 
 	private:
 		float m_time = 0;
-		float m_speed = 10;
+		float m_speed = 5;
 
 		glm::vec3 m_ambientColor{ 0.2f };
-		
 
 	};
 }

@@ -25,22 +25,11 @@ namespace nc
 
 	void Scene::Draw(Renderer& renderer)
 	{
-
-		// get camera component
-		CameraComponent* camera = nullptr;
-		for (auto& actor : m_actors)
-		{
-			if (!actor->active) continue;
-
-			auto camera = actor->GetComponent<CameraComponent>();
-			if (camera) break;
-		}
-
 		// get light components
 		std::vector<LightComponent*> lights;
-		for (auto& actor : m_actors)
+		for (auto& actor : m_actors) // go through all actors
 		{
-			if (!actor->active) continue;
+			if (!actor->active) continue; // skip the rest if not actor 
 
 			auto component = actor->GetComponent<LightComponent>();
 			if (component)
@@ -49,14 +38,28 @@ namespace nc
 			}
 		}
 
+		// get camera component
+		CameraComponent* camera = nullptr;
+		for (auto& actor : m_actors)
+		{
+			if (!actor->active) continue;
+
+			camera = actor->GetComponent<CameraComponent>();
+			if (camera != nullptr) // if component is valid... 
+			{
+				break; // ... break out of for loop 
+			}
+		}
+
 		// get all shader programs in the resource system
 		auto programs = ResourceManager::Instance().GetAllOfType<Program>();
+		
 		// set all shader programs camera and lights uniforms
 		for (auto& program : programs)
-		{
+		{	// current program
 			program->Use();
 
-			// set camera in shader program
+			// set camera in shader program 
 			if (camera) camera->SetProgram(program);
 
 			// set lights in shader program
@@ -66,9 +69,10 @@ namespace nc
 				std::string name = "lights[" + std::to_string(index++) + "]";
 
 
-
 				light->SetProgram(program, name);
 			}
+
+
 
 			program->SetUniform("numLights", index);
 			program->SetUniform("ambientLight", ambientColor);
@@ -80,7 +84,6 @@ namespace nc
 		{
 			if (actor->active) actor->Draw(renderer);
 		}
-
 	}
 
 	void Scene::Add(std::unique_ptr<Actor> actor)
@@ -150,16 +153,11 @@ namespace nc
 		for (auto& actor : m_actors)
 		{
 			if (ImGui::Selectable(actor->name.c_str(), actor->guiSelect))
-			{
-				// set all actors gui to false
 				std::for_each(m_actors.begin(), m_actors.end(), [](auto& a) { a->guiSelect = false; });
-				// set selected actor gui to true
 				actor->guiSelect = true;
 			}
 		}
 		ImGui::End();
-
-
 
 		ImGui::Begin("Inspector");
 		auto iter = std::find_if(m_actors.begin(), m_actors.end(), [](auto& a) { return a->guiSelect; });
