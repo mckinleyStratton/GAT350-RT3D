@@ -11,6 +11,30 @@ using namespace std;
 
 int main(int argc, char* argv[])
 {
+
+
+	//testing the strings
+	std::string testString = "Hello World!";
+	std::cout << "Original string: " << testString << std::endl;
+
+	// to uppercase
+	std::string upperString = nc::StringUtils::ToUpper(testString);
+	std::cout << "Uppercase string: " << upperString << std::endl;
+
+	// to lowercase
+	std::string lowerString = nc::StringUtils::ToLower(testString);
+	std::cout << "Lowercase string: " << lowerString << std::endl;
+
+	// equal strings?
+	std::string testString1 = "HeLLo WoRLd!";
+	bool isEqual = nc::StringUtils::IsEqual(testString, testString1);
+	std::cout << "Are they equal? " << (isEqual ? "true" : "false") << std::endl;
+	
+	// unique
+	std::string uniqueString = nc::StringUtils::CreateUnique(testString);
+	std::cout << "Unique string: " << uniqueString << std::endl;
+
+
 	INFO_LOG("Initialize Engine...")
 
 	//nc::MemoryTracker::Initialize();
@@ -35,6 +59,7 @@ int main(int argc, char* argv[])
 		// draw
 		world->Draw(*ENGINE.GetSystem<nc::Renderer>());
 	}
+
 
 	world->Shutdown();
 	ENGINE.Shutdown();

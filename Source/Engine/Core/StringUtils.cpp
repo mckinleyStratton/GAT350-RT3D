@@ -21,7 +21,7 @@ namespace nc
         return result;
     }
 
-    bool StringUtils::IsEqualIgnoreCase(const std::string& str1, const std::string& str2) {
+    bool StringUtils::IsEqual(const std::string& str1, const std::string& str2) {
         if (str1.size() != str2.size()) {
             return false;
         }
