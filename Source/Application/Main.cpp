@@ -11,29 +11,17 @@ using namespace std;
 
 int main(int argc, char* argv[])
 {
+	// testing string utils
+	std::cout << "ToUpper: " << nc::StringUtils::ToUpper("this is the to upper") << std::endl;
 
+	std::cout << "ToLower: " << nc::StringUtils::ToLower("THIS IS THE TO LOWER") << std::endl;
 
-	//testing the strings
-	std::string testString = "Hello World!";
-	std::cout << "Original string: " << testString << std::endl;
- 
-	// to uppercase
-	std::string upperString = nc::StringUtils::ToUpper(testString);
-	std::cout << "Uppercase string: " << upperString << std::endl;
+	std::cout << "IsEqualIgnoreCase: " << (nc::StringUtils::IsEqualIgnoreCase("isequalignorecase", "ISEQUALIGNORECASE") ? "Equal" : "Not Equal") << std::endl;
+	std::cout << "IsEqualIgnoreCase: " << (nc::StringUtils::IsEqualIgnoreCase("Hello", "World") ? "Equal" : "Not Equal") << std::endl;
 
-	// to lowercase
-	std::string lowerString = nc::StringUtils::ToLower(testString);
-	std::cout << "Lowercase string: " << lowerString << std::endl;
-
-	// equal strings?
-	std::string testString1 = "HeLLo WoRLd!";
-	bool isEqual = nc::StringUtils::IsEqual(testString, testString1);
-	std::cout << "Are they equal? " << (isEqual ? "true" : "false") << std::endl;
-	
-	// unique
-	std::string uniqueString = nc::StringUtils::CreateUnique(testString);
-	std::cout << "Unique string: " << uniqueString << std::endl;
-
+	std::cout << "CreateUnique: " << nc::StringUtils::CreateUnique("THIS IS NUMBER ") << std::endl;
+	std::cout << "CreateUnique: " << nc::StringUtils::CreateUnique("THIS IS NUMBER ") << std::endl;
+	std::cout << "CreateUnique: " << nc::StringUtils::CreateUnique("THIS IS NUMBER ") << std::endl;
 
 	INFO_LOG("Initialize Engine...")
 
@@ -59,7 +47,6 @@ int main(int argc, char* argv[])
 		// draw
 		world->Draw(*ENGINE.GetSystem<nc::Renderer>());
 	}
-
 
 	world->Shutdown();
 	ENGINE.Shutdown();

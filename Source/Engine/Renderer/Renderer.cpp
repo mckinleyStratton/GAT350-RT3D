@@ -72,7 +72,7 @@ namespace nc
 
 		//if objects are facing away from us then they will not be drawn (back of objects)
 		glEnable(GL_CULL_FACE);
-		glCullFace(GL_BACK);
+		glCullFace(GL_FRONT);
 		glFrontFace(GL_CCW);
 
 	}

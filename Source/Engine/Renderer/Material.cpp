@@ -1,6 +1,7 @@
 #include "Material.h"
 #include "Program.h"
 #include "Texture.h"
+#include "Cubemap.h"
 #include "Core/Core.h"
 
 namespace nc
@@ -57,18 +58,15 @@ namespace nc
 			normalTexture = GET_RESOURCE(Texture, normalTextureName);
 		}
 
+
 		std::string cubemapName;
-		READ_NAME_DATA(document, "cubeMap", cubemapName);
-		if (!cubemapName.empty())
+		if (READ_NAME_DATA(document, "cubemap", cubemapName))
 		{
-			params |= NORMAL_TEXTURE_MASK;
+			params |= CUBEMAP_TEXTURE_MASK;
 			std::vector<std::string> cubemaps;
 			READ_DATA(document, cubemaps);
-
-			cubemapTexture = GET_RESOURCE(Texture, cubemapName);
+			cubemapTexture = GET_RESOURCE(Cubemap, cubemapName, cubemaps);
 		}
-
-
 
 		READ_DATA(document, albedo);
 		READ_DATA(document, specular);
@@ -114,8 +112,6 @@ namespace nc
 			emissiveTexture->SetActive(GL_TEXTURE3);
 			emissiveTexture->Bind();
 		}
-
-
 
 	}
 	void Material::ProcessGui()

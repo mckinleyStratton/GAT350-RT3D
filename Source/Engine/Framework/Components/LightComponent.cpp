@@ -5,7 +5,7 @@ namespace nc
 {
 	CLASS_DEFINITION(LightComponent)
 
-	bool LightComponent::Initialize()
+		bool LightComponent::Initialize()
 	{
 		return true;
 	}
@@ -46,6 +46,6 @@ namespace nc
 
 	void LightComponent::Read(const nc::json_t& value)
 	{
-
+		// read json file
 	}
 }

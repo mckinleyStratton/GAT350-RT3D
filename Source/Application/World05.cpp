@@ -21,7 +21,7 @@ namespace nc
 			actor->transform.position = glm::vec3{ 3, 3, 3 };
 			auto lightComponent = CREATE_CLASS(LightComponent);
 			lightComponent->type = LightComponent::eType::Point;
-			lightComponent->color = glm::rgbColor(glm::vec3{ randomf() * 360, 1, 1 });
+			lightComponent->color = glm::vec3{ 1, 1, 1 }; // glm::rgbColor(glm::vec3{ randomf() * 360, 1, 1 });
 			lightComponent->intensity = 1;
 			lightComponent->range = 20;
 			lightComponent->innerAngle = 10.0f;
