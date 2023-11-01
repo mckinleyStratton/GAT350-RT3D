@@ -57,6 +57,19 @@ namespace nc
 			normalTexture = GET_RESOURCE(Texture, normalTextureName);
 		}
 
+		std::string cubemapName;
+		READ_NAME_DATA(document, "cubeMap", cubemapName);
+		if (!cubemapName.empty())
+		{
+			params |= NORMAL_TEXTURE_MASK;
+			std::vector<std::string> cubemaps;
+			READ_DATA(document, cubemaps);
+
+			cubemapTexture = GET_RESOURCE(Texture, cubemapName);
+		}
+
+
+
 		READ_DATA(document, albedo);
 		READ_DATA(document, specular);
 		READ_DATA(document, shininess);
