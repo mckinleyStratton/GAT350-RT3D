@@ -16,7 +16,7 @@ int main(int argc, char* argv[])
 	//testing the strings
 	std::string testString = "Hello World!";
 	std::cout << "Original string: " << testString << std::endl;
-
+ 
 	// to uppercase
 	std::string upperString = nc::StringUtils::ToUpper(testString);
 	std::cout << "Uppercase string: " << upperString << std::endl;
