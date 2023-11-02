@@ -2,6 +2,7 @@
 #include "Framework/Framework.h"
 #include "Input/InputSystem.h"
 
+
 #include <glm/glm/gtc/type_ptr.hpp>
 #include <glm/glm/gtx/color_space.hpp>
 
@@ -9,7 +10,6 @@
 namespace nc
 {
 	bool World05::Initialize()
-
 	{
 		m_scene = std::make_unique<Scene>();
 		m_scene->Load("Scenes/scene.json");
@@ -72,6 +72,7 @@ namespace nc
 		auto material = actor->GetComponent<ModelComponent>()->model->GetMaterial();
 
 		auto program = material->GetProgram();
+
 		if (!material) {
 			std::cerr << "Error: Material is null." << std::endl;
 			return;
@@ -80,12 +81,29 @@ namespace nc
 		material->ProcessGui();
 		material->Bind();
 
-		material->GetProgram()->SetUniform("ambientLight", m_ambientColor);
+		material = GET_RESOURCE(Material, "materials/refraction.mtrl"); // shaders
+		if (material)
+		{
+			ImGui::Begin("Refraction");
+
+			m_refraction = 1.0f + std::fabs(std::sin(m_time));
+
+			ImGui::DragFloat("IOR", &m_refraction, 0.01f, 1, 3);
+			auto program = material->GetProgram();
+			program->Use();
+			program->SetUniform("ior", m_refraction);
+
+			ImGui::End();
+
+		}
+
 
 		m_time += dt;
 
 		ENGINE.GetSystem<Gui>()->EndFrame();
 
+		// comment out for now
+		// material->GetProgram()->SetUniform("ambientLight", m_ambientColor);
 	}
 
 	void World05::Draw(Renderer& renderer)
