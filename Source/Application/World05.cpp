@@ -70,8 +70,8 @@ namespace nc
 		actor->transform.position.z += ENGINE.GetSystem<InputSystem>()->GetKeyDown(SDL_SCANCODE_W) ? m_speed * -dt : 0; // going into screen 
 		actor->transform.position.z += ENGINE.GetSystem<InputSystem>()->GetKeyDown(SDL_SCANCODE_S) ? m_speed * +dt : 0; // coming out of screen
 
-
-		auto material = actor->GetComponent<ModelComponent>()->model->GetMaterial();
+		
+		auto material = actor->GetComponent<ModelComponent>()->material;
 
 		auto program = material->GetProgram();
 

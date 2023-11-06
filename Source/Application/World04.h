@@ -54,9 +54,9 @@ namespace nc
 		GLuint m_vao; //Vertex Array Object
 		res_t<Program> m_program;
 		res_t<Texture> m_texture;
-		res_t<Material> m_material;
 		res_t<VertexBuffer> m_vertexBuffer;
 		res_t<Model> m_model;
+		res_t<Material> m_material;
 
 	};
 }
