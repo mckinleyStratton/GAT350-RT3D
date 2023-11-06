@@ -104,9 +104,6 @@
     <None Include="..\..\Build\Assets\Materials\grid.mtrl">
       <Filter>Materials</Filter>
     </None>
-    <None Include="..\..\Build\Assets\Materials\moo.mtrl">
-      <Filter>Materials</Filter>
-    </None>
     <None Include="..\..\Build\Assets\Materials\quad.mtrl">
       <Filter>Materials</Filter>
     </None>
@@ -168,6 +165,9 @@
       <Filter>Shaders\Cubemap</Filter>
     </None>
     <None Include="..\..\Build\Assets\Materials\refraction.mtrl">
+      <Filter>Materials</Filter>
+    </None>
+    <None Include="..\..\Build\Assets\Materials\moo.mtrl">
       <Filter>Materials</Filter>
     </None>
   </ItemGroup>

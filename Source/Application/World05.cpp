@@ -61,7 +61,9 @@ namespace nc
 		//m_transform.rotation.z += 0 * dt;
 
 		auto actor = m_scene->GetActorByName<Actor>("actor1");
-		//actor = m_scene->GetActorByName<Actor>("actor2");
+		// extra actors
+		actor = m_scene->GetActorByName<Actor>("actor2");
+		actor = m_scene->GetActorByName<Actor>("actor3");
 
 		actor->transform.position.x += ENGINE.GetSystem<InputSystem>()->GetKeyDown(SDL_SCANCODE_A) ? m_speed * -dt : 0;
 		actor->transform.position.x += ENGINE.GetSystem<InputSystem>()->GetKeyDown(SDL_SCANCODE_D) ? m_speed * +dt : 0;

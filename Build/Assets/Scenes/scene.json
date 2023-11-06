@@ -24,15 +24,49 @@
 			"name": "actor1",
 			"persistent": true,
 			"transform": {
-				"position": [ 0, 0, 15 ],
+				"position": [ 0, -0.5, 15 ],
 				"scale": [ 1, 1, 1 ],
-				"rotation": [ 0, 0, 0 ]
+				"rotation": [ 0, 180, 0 ]
 			},
 			"components": [
 				{
 					"type": "ModelComponent",
-					"modelName": "models/ogre.obj",
+					"modelName": "models/moo.obj",
 					"materialName": "materials/refraction.mtrl"
+				}
+			]
+		},
+		{
+			"type": "Actor",
+			"name": "actor2",
+			"persistent": true,
+			"transform": {
+				"position": [ 1, -0.5, 15 ],
+				"scale": [ 1, 1, 1 ],
+				"rotation": [ 0, 180, 0 ]
+			},
+			"components": [
+				{
+					"type": "ModelComponent",
+					"modelName": "models/moo.obj",
+					"materialName": "materials/reflection.mtrl"
+				}
+			]
+		},
+		{
+			"type": "Actor",
+			"name": "actor3",
+			"persistent": true,
+			"transform": {
+				"position": [ -1, -0.5, 15 ],
+				"scale": [ 1, 1, 1 ],
+				"rotation": [ 0, 180, 0 ]
+			},
+			"components": [
+				{
+					"type": "ModelComponent",
+					"modelName": "models/moo.obj",
+					"materialName": "materials/moo.mtrl"
 				}
 			]
 		}
