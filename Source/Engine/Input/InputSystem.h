@@ -29,7 +29,7 @@ namespace nc
 		// Get mouse position relative to the top left of the screen in pixel coordinates.
 		const glm::vec2& GetMousePosition() const { return m_mousePosition; }
 		// Get mouse position relative to previous mouse position.
-		const glm::vec2& GetMouseRelative() const { return m_mousePosition - m_prevMousePosition; }
+		glm::vec2 GetMouseRelative() const { return m_mousePosition - m_prevMousePosition; }
 		// Use (0 = left, 1 = middle, 2 = right) to check if the mouse button is down this frame.
 		bool GetMouseButtonDown(uint32_t button) { return m_mouseButtonState[button]; }
 		// Use (0 = left, 1 = middle, 2 = right) to check if the mouse button was down last frame.
