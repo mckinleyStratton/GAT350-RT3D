@@ -23,6 +23,16 @@ void main()
 {
 	otexcoord = (vtexcoord * material.tiling) + material.offset;
 
-	mat4 mvp = projection * view * model;
-	gl_Position = mvp * vec4(vposition, 1.0);
+	// get world position
+	vec3 position = model[3].xyz;
+	// get view right direction
+	vec3 right = vec3(view[0][0], view[1][0], view[2][0]);
+	// get view up direction
+	vec3 up = vec3(view[0][1], view[1][1], view[2][1]);
+
+	// set vertex position (local) using world position and view direction
+	position = position + (vposition.x * right) + (vposition.y * up);
+
+	mat4 vp = projection * view;
+	gl_Position = vp * vec4(position, 1.0);
 }
