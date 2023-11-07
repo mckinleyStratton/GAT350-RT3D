@@ -12,16 +12,16 @@ using namespace std;
 int main(int argc, char* argv[])
 {
 	// testing string utils
-	std::cout << "ToUpper: " << nc::StringUtils::ToUpper("this is the to upper") << std::endl;
+	std::cout << "ToUpper: " << nc::ToUpper("this is the to upper") << std::endl;
 
-	std::cout << "ToLower: " << nc::StringUtils::ToLower("THIS IS THE TO LOWER") << std::endl;
+	std::cout << "ToLower: " << nc::ToLower("THIS IS THE TO LOWER") << std::endl;
 
-	std::cout << "IsEqualIgnoreCase: " << (nc::StringUtils::IsEqualIgnoreCase("isequalignorecase", "ISEQUALIGNORECASE") ? "Equal" : "Not Equal") << std::endl;
-	std::cout << "IsEqualIgnoreCase: " << (nc::StringUtils::IsEqualIgnoreCase("Hello", "World") ? "Equal" : "Not Equal") << std::endl;
+	std::cout << "IsEqualIgnoreCase: " << (nc::IsEqualIgnoreCase("isequalignorecase", "ISEQUALIGNORECASE") ? "Equal" : "Not Equal") << std::endl;
+	std::cout << "IsEqualIgnoreCase: " << (nc::IsEqualIgnoreCase("Hello", "World") ? "Equal" : "Not Equal") << std::endl;
 
-	std::cout << "CreateUnique: " << nc::StringUtils::CreateUnique("THIS IS NUMBER ") << std::endl;
-	std::cout << "CreateUnique: " << nc::StringUtils::CreateUnique("THIS IS NUMBER ") << std::endl;
-	std::cout << "CreateUnique: " << nc::StringUtils::CreateUnique("THIS IS NUMBER ") << std::endl;
+	std::cout << "CreateUnique: " << nc::CreateUnique("THIS IS NUMBER ") << std::endl;
+	std::cout << "CreateUnique: " << nc::CreateUnique("THIS IS NUMBER ") << std::endl;
+	std::cout << "CreateUnique: " << nc::CreateUnique("THIS IS NUMBER ") << std::endl;
 
 	INFO_LOG("Initialize Engine...")
 

@@ -25,13 +25,18 @@ void main()
 
 	// get world position
 	vec3 position = model[3].xyz;
+
+	// get size
+	vec2 size = vec2(length(model[0]), length(model[1]));
+
 	// get view right direction
 	vec3 right = vec3(view[0][0], view[1][0], view[2][0]);
+
 	// get view up direction
 	vec3 up = vec3(view[0][1], view[1][1], view[2][1]);
 
 	// set vertex position (local) using world position and view direction
-	position = position + (vposition.x * right) + (vposition.y * up);
+	position = position + (vposition.x * right * size.x) + (vposition.y * up * size.y);
 
 	mat4 vp = projection * view;
 	gl_Position = vp * vec4(position, 1.0);

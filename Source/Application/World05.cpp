@@ -20,6 +20,7 @@ namespace nc
 			actor->name = "light1";
 			actor->transform.position = glm::vec3{ 3, 3, 3 };
 
+
 			auto lightComponent = CREATE_CLASS(LightComponent);
 			lightComponent->type = LightComponent::eType::Point;
 			lightComponent->color = glm::vec3{ 1, 1, 1 }; // glm::rgbColor(glm::vec3{ randomf() * 360, 1, 1 });
@@ -53,11 +54,15 @@ namespace nc
 			m_scene->Add(std::move(actor));
 		}
 
-		for (int i = 0; i < 300; i++)
+		for (int i = 0; i < 5; i++)
 		{
 
 			auto actor = CREATE_CLASS_BASE(Actor, "tree");
-			actor->transform.position = glm::vec3{ randomf(-10, 10), 0, randomf(-100, 100) };
+			actor->name = nc::CreateUnique("tree");
+			actor->transform.scale = glm::vec3{ randomf(0.5f, 3.0f), randomf(0.5f, 3.0f), 0 };
+
+
+			actor->transform.position = glm::vec3{ randomf(-5, 5), 0, randomf(-5, 5) };
 			actor->Initialize();
 			m_scene->Add(std::move(actor));
 
