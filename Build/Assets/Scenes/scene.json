@@ -23,7 +23,7 @@
 			"type": "Actor",
 			"name": "actor1",
 			"persistent": true,
-			"active":  false,
+			"active": false,
 			"transform": {
 				"position": [ 0, -0.5, 15 ],
 				"scale": [ 1, 1, 1 ],
@@ -41,7 +41,7 @@
 			"type": "Actor",
 			"name": "actor2",
 			"persistent": true,
-			"active":  false,
+			"active": false,
 			"transform": {
 				"position": [ 1, -0.5, 15 ],
 				"scale": [ 1, 1, 1 ],
@@ -69,6 +69,24 @@
 					"type": "ModelComponent",
 					"modelName": "models/moo.obj",
 					"materialName": "materials/moo.mtrl"
+				}
+			]
+		},
+		{
+			"type": "Actor",
+			"name": "sprite",
+			"persistent": true,
+			"active": true,
+			"transform": {
+				"position": [ 1, 0, 15 ],
+				"scale": [ 1, 1, 1 ],
+				"rotation": [ 0, 0, 0 ]
+			},
+			"components": [
+				{
+					"type": "ModelComponent",
+					"modelName": "models/quad.obj",
+					"materialName": "materials/sprite.mtrl"
 				}
 			]
 		}
