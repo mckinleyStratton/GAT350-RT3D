@@ -1,6 +1,6 @@
 {
-  "program": "shaders/unlit_sprite.prog",
-  "albedoTexture": "textures/llama.jpg",
+  "program": "shaders/unlit_billboard.prog",
+  "albedoTexture": "textures/tree.tga",
   "albedo": [
     1,
     1,
