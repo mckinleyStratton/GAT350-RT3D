@@ -1,17 +1,23 @@
 #version 430
 
-in layout(location = 0) vec2 texcoord;
+in layout(location = 0) vec2 ftexcoord;
 
 out layout(location = 0) vec4 ocolor;
 
-uniform vec4 color;
-uniform vec2 offset;
-uniform vec2 tiling;
+
+uniform struct Material
+{
+	vec3 albedo;
+	
+	vec2 offset;
+	vec2 tiling;
+} material;
+
 
 layout(binding = 0) uniform sampler2D tex;
 
 void main()
 {
-	vec4 texcolor = texture(tex, (texcoord * tiling) + offset);
+	vec4 texcolor = texture(tex, ftexcoord);
 	ocolor = texcolor;
 }
