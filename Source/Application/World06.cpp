@@ -12,7 +12,7 @@ namespace nc
 	bool World06::Initialize()
 	{
 		m_scene = std::make_unique<Scene>();
-		m_scene->Load("Scenes/scene.json");
+		m_scene->Load("Scenes/scene_framebuffer.json");
 		m_scene->Initialize();
 
 		{
