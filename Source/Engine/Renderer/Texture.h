@@ -21,6 +21,7 @@ namespace nc
 
 
 		friend class Renderer;
+		friend class Framebuffer;
 
 	protected:
 		GLuint m_texture = 0;

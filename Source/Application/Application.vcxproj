@@ -138,6 +138,7 @@
     <ClCompile Include="World03.cpp" />
     <ClCompile Include="World04.cpp" />
     <ClCompile Include="World05.cpp" />
+    <ClCompile Include="World06.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Engine\Core\Core.vcxproj">
@@ -159,6 +160,7 @@
     <ClInclude Include="World03.h" />
     <ClInclude Include="World04.h" />
     <ClInclude Include="World05.h" />
+    <ClInclude Include="World06.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\Build\Assets\Materials\grid.mtrl" />
