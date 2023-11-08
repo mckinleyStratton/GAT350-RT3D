@@ -35,7 +35,7 @@ namespace nc
 		{
 			auto actor = CREATE_CLASS(Actor);
 			actor->name = "light1";
-			actor->transform.position = glm::vec3{ 3, 3, 3 };
+			actor->transform.position = glm::vec3{ 0, -8, -12 };
 
 
 			auto lightComponent = CREATE_CLASS(LightComponent);
@@ -53,7 +53,7 @@ namespace nc
 		{
 			auto actor = CREATE_CLASS(Actor);
 			actor->name = "camera1";
-			actor->transform.position = glm::vec3{ 0, 0, 18 };
+			actor->transform.position = glm::vec3{ 0, 0, 3 };
 			actor->transform.rotation = glm::radians(glm::vec3{ 0, 180, 0 });
 
 			auto cameraComponent = CREATE_CLASS(CameraComponent);
@@ -95,17 +95,28 @@ namespace nc
 
 	void World06::Draw(Renderer& renderer)
 	{
-		// pre-render
-		renderer.BeginFrame();
+		// **** PASS 1 *****
+		m_scene->GetActorByName("cube")->active = false;
 
-		// render
-		//glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
-		//glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+		auto framebuffer = GET_RESOURCE(Framebuffer, "fb");
+		renderer.SetViewport(framebuffer->GetSize().x, framebuffer->GetSize().y);
+		framebuffer->Bind();
+
+		renderer.BeginFrame(glm::vec3{ 0, 1, 0});
 		m_scene->Draw(renderer);
 
-		ENGINE.GetSystem<Gui>()->Draw();
+		framebuffer->Unbind();
+
+		// ***** PASS 2 *****
+		m_scene->GetActorByName("cube")->active = true;
+
+		renderer.ResetViewport();
+		renderer.BeginFrame();
+		m_scene->Draw(renderer);
+
 
 		// post-render
+		ENGINE.GetSystem<Gui>()->Draw();
 		renderer.EndFrame();
 	}
 }

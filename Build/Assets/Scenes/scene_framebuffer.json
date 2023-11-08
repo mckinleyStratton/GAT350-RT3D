@@ -5,7 +5,7 @@
 			"name": "actor1",
 			"persistent": true,
 			"transform": {
-				"position": [ 0, 0, 15 ],
+				"position": [ 0, 0, 0 ],
 				"scale": [ 1, 1, 1 ],
 				"rotation": [ 0, 180, 0 ]
 			},
@@ -24,7 +24,7 @@
 			"active": true,
 			"prototype": false,
 			"transform": {
-				"position": [ 2, 0, 15 ],
+				"position": [ 1.5, 0, 0 ],
 				"scale": [ 1, 1, 1 ],
 				"rotation": [ 0, 0, 0 ]
 			},
