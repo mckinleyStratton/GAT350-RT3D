@@ -15,6 +15,14 @@ namespace nc
 		m_scene->Load("Scenes/scene_framebuffer.json");
 		m_scene->Initialize();
 
+		auto texture = std::make_shared<Texture>();
+		texture->CreateTexture(512, 512);
+		ADD_RESOURCE("fb_texture", texture);
+
+		auto framebuffer = std::make_shared<Framebuffer>();
+		framebuffer->CreateFramebuffer(texture);
+		ADD_RESOURCE("fb", framebuffer);
+
 		{
 			auto actor = CREATE_CLASS(Actor);
 			actor->name = "light1";
@@ -54,20 +62,6 @@ namespace nc
 			m_scene->Add(std::move(actor));
 		}
 
-		for (int i = 0; i < 5; i++)
-		{
-
-			auto actor = CREATE_CLASS_BASE(Actor, "tree");
-			actor->name = nc::CreateUnique("tree");
-			actor->transform.scale = glm::vec3{ randomf(0.5f, 3.0f), randomf(0.5f, 3.0f), 0 };
-
-
-			actor->transform.position = glm::vec3{ randomf(-5, 5), 0, randomf(-5, 5) };
-			actor->Initialize();
-			m_scene->Add(std::move(actor));
-
-		}
-
 
 		return true;
 	};
@@ -79,59 +73,15 @@ namespace nc
 
 	void World06::Update(float dt)
 	{
+		m_time += dt;
+		
 		ENGINE.GetSystem<Gui>()->BeginFrame();
 
 		m_scene->Update(dt);
 		m_scene->ProcessGui();
 
-		//m_transform.rotation.z += 0 * dt;
-
-		auto actor = m_scene->GetActorByName<Actor>("actor1");
-		// extra actors
-		actor = m_scene->GetActorByName<Actor>("actor2");
-		actor = m_scene->GetActorByName<Actor>("actor3");
-
-		//actor->transform.position.x += ENGINE.GetSystem<InputSystem>()->GetKeyDown(SDL_SCANCODE_A) ? m_speed * -dt : 0;
-		//actor->transform.position.x += ENGINE.GetSystem<InputSystem>()->GetKeyDown(SDL_SCANCODE_D) ? m_speed * +dt : 0;
-		//actor->transform.position.z += ENGINE.GetSystem<InputSystem>()->GetKeyDown(SDL_SCANCODE_W) ? m_speed * -dt : 0; // going into screen 
-		//actor->transform.position.z += ENGINE.GetSystem<InputSystem>()->GetKeyDown(SDL_SCANCODE_S) ? m_speed * +dt : 0; // coming out of screen
-
-		
-		auto material = actor->GetComponent<ModelComponent>()->material;
-
-		auto program = material->GetProgram();
-
-		if (!material) {
-			std::cerr << "Error: Material is null." << std::endl;
-			return;
-		}
-
-		material->ProcessGui();
-		material->Bind();
-
-		material = GET_RESOURCE(Material, "materials/refraction.mtrl"); // shaders
-		if (material)
-		{
-			ImGui::Begin("Refraction");
-
-			m_refraction = 1.0f + std::fabs(std::sin(m_time));
-
-			ImGui::DragFloat("IOR", &m_refraction, 0.01f, 1, 3);
-			auto program = material->GetProgram();
-			program->Use();
-			program->SetUniform("ior", m_refraction);
-
-			ImGui::End();
-
-		}
-
-
-		m_time += dt;
-
 		ENGINE.GetSystem<Gui>()->EndFrame();
 
-		// comment out for now
-		// material->GetProgram()->SetUniform("ambientLight", m_ambientColor);
 	}
 
 	void World06::Draw(Renderer& renderer)

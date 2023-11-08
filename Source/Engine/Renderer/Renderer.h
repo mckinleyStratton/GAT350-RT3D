@@ -7,6 +7,7 @@
 #include "Shader.h"
 #include "Program.h"
 #include "Gui.h"
+#include "Framebuffer.h"
 #include "Renderer/VertexBuffer.h"
 #include "Renderer/Material.h"
 

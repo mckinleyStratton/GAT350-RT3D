@@ -163,6 +163,7 @@
     <ClInclude Include="World06.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\..\Build\Assets\Materials\framebuffer.mtrl" />
     <None Include="..\..\Build\Assets\Materials\grid.mtrl" />
     <None Include="..\..\Build\Assets\Materials\moo.mtrl" />
     <None Include="..\..\Build\Assets\Materials\multi.mtrl" />
