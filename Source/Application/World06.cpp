@@ -23,6 +23,15 @@ namespace nc
 		framebuffer->CreateFramebuffer(texture);
 		ADD_RESOURCE("fb", framebuffer);
 
+		auto material = GET_RESOURCE(Material, "materials/framebuffer.mtrl");
+		if (material)
+		{
+			material->albedoTexture = texture;
+
+		}
+
+
+
 		{
 			auto actor = CREATE_CLASS(Actor);
 			actor->name = "light1";
