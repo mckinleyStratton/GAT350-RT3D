@@ -2,7 +2,7 @@
 	"actors": [
 		{
 			"type": "Actor",
-			"name": "actor1",
+			"name": "COW",
 			"persistent": true,
 			"transform": {
 				"position": [ 0, 0, 0 ],
@@ -19,7 +19,7 @@
 		},
 		{
 			"type": "Actor",
-			"name": "cube",
+			"name": "Cube",
 			"persistent": true,
 			"active": true,
 			"prototype": false,

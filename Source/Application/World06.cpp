@@ -34,7 +34,7 @@ namespace nc
 
 		{
 			auto actor = CREATE_CLASS(Actor);
-			actor->name = "light1";
+			actor->name = "Light 1";
 			actor->transform.position = glm::vec3{ 0, -8, -12 };
 
 
@@ -52,7 +52,7 @@ namespace nc
 
 		{
 			auto actor = CREATE_CLASS(Actor);
-			actor->name = "camera1";
+			actor->name = "Camera";
 			actor->transform.position = glm::vec3{ 0, 0, 3 };
 			actor->transform.rotation = glm::radians(glm::vec3{ 0, 180, 0 });
 
@@ -96,7 +96,7 @@ namespace nc
 	void World06::Draw(Renderer& renderer)
 	{
 		// **** PASS 1 *****
-		m_scene->GetActorByName("cube")->active = false;
+		m_scene->GetActorByName("Cube")->active = false;
 
 		auto framebuffer = GET_RESOURCE(Framebuffer, "fb");
 		renderer.SetViewport(framebuffer->GetSize().x, framebuffer->GetSize().y);
@@ -108,7 +108,7 @@ namespace nc
 		framebuffer->Unbind();
 
 		// ***** PASS 2 *****
-		m_scene->GetActorByName("cube")->active = true;
+		m_scene->GetActorByName("Cube")->active = true;
 
 		renderer.ResetViewport();
 		renderer.BeginFrame();
