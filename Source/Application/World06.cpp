@@ -92,6 +92,17 @@ namespace nc
 		// set postprocess gui
 		ImGui::Begin("Post-Process");
 		ImGui::SliderFloat("Blend", &m_blend, 0, 1);
+		bool effect = m_params & INVERT_MASK;
+		if (ImGui::Checkbox("Invert", &effect))
+		{
+			(effect) ? m_params |= INVERT_MASK : m_params ^= INVERT_MASK;
+		}
+		effect = m_params & GRAYSCALE_MASK;
+		if (ImGui::Checkbox("Greyscale", &effect))
+		{
+			(effect) ? m_params |= GRAYSCALE_MASK : m_params ^= GRAYSCALE_MASK;
+		}
+
 		ImGui::End();
 
 
@@ -101,6 +112,7 @@ namespace nc
 		{
 			program->Use();
 			program->SetUniform("blend", m_blend);
+			program->SetUniform("params", m_params);
 		}
 
 		ENGINE.GetSystem<Gui>()->EndFrame();

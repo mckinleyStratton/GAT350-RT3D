@@ -29,7 +29,7 @@ namespace nc
 		float m_speed = 5;
 		float m_blend = 1;
 
-		uint32_t params{ 0 };
+		uint32_t m_params{ 0 };
 
 		float m_refraction{ 1 };
 		glm::vec3 m_ambientColor{ 0.2f };
