@@ -2,7 +2,6 @@
 #include "Framework/Framework.h"
 #include "Input/InputSystem.h"
 
-
 #include <glm/glm/gtc/type_ptr.hpp>
 #include <glm/glm/gtx/color_space.hpp>
 
@@ -92,6 +91,8 @@ namespace nc
 		// set postprocess gui
 		ImGui::Begin("Post-Process");
 		ImGui::SliderFloat("Blend", &m_blend, 0, 1);
+
+		// create effects on gui
 		bool effect = m_params & INVERT_MASK;
 		if (ImGui::Checkbox("Invert", &effect))
 		{
@@ -102,6 +103,9 @@ namespace nc
 		{
 			(effect) ? m_params |= GRAYSCALE_MASK : m_params ^= GRAYSCALE_MASK;
 		}
+
+
+
 
 		ImGui::End();
 
@@ -128,7 +132,7 @@ namespace nc
 		renderer.SetViewport(framebuffer->GetSize().x, framebuffer->GetSize().y);
 		framebuffer->Bind();
 
-		renderer.BeginFrame(glm::vec3{ 1, 1, 1});
+		renderer.BeginFrame(glm::vec3{ 0.5, 0.8, 0.5 });
 		m_scene->Draw(renderer);
 
 		framebuffer->Unbind();

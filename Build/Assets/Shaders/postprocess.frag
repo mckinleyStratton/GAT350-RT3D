@@ -21,8 +21,12 @@ vec4 invert(in vec4 color)
 
 vec4 grayscale(in vec4 color)
 {
-	return vec4(vec3((color.r + color.b + color.g) / 3), color.a);
+	return vec4(vec3(0.2126 * color.r + 0.7152 * color.g + 0.0722 * color.b), color.a);
 }
+
+// color tints
+// grain one 
+// scan line - every other pixel line is black
 
 void main()
 {
