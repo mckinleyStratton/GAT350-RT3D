@@ -10,13 +10,35 @@
 			},
 			"components": [
 				{
-					"type":  "LightComponent",
+					"type": "LightComponent",
 					"lightType": "point",
 					"color": [ 1, 1, 1 ],
 					"intensity": 1,
 					"range": 20,
 					"innerAngle": 10,
-					"outerAngle":  20
+					"outerAngle": 20
+				}
+			]
+		},
+		{
+			"type": "Actor",
+			"name": "CAMERA",
+			"persistent": true,
+			"transform": {
+				"position": [ 0, 0, 3 ],
+				"rotation": [ 0, 180, 0 ]
+			},
+			"components": [
+				{
+					"type": "CameraComponent",
+					"fov": 70.0,
+					"near": 0.1,
+					"far": 100
+				},
+				{
+					"type": "CameraController",
+					"speed": 5.0,
+					"sensitivity":  0.5
 				}
 			]
 		},

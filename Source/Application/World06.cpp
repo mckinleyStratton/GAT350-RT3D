@@ -49,7 +49,7 @@ namespace nc
 			//m_scene->Add(std::move(actor));
 		}
 
-		{
+		/*{
 			auto actor = CREATE_CLASS(Actor);
 			actor->name = "Camera";
 			actor->transform.position = glm::vec3{ 0, 0, 3 };
@@ -68,7 +68,7 @@ namespace nc
 
 
 			m_scene->Add(std::move(actor));
-		}
+		}*/
 
 
 		return true;
