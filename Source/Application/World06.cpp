@@ -32,21 +32,21 @@ namespace nc
 
 
 		{
-			auto actor = CREATE_CLASS(Actor);
-			actor->name = "Light 1";
-			actor->transform.position = glm::vec3{ 0, -8, -12 };
+			//auto actor = CREATE_CLASS(Actor);
+			//actor->name = "Light 1";
+			//actor->transform.position = glm::vec3{ 0, -8, -12 };
 			
 
-			auto lightComponent = CREATE_CLASS(LightComponent);
-			lightComponent->type = LightComponent::eType::Point;
-			lightComponent->color = glm::vec3{ 0, 0, 0 }; // glm::rgbColor(glm::vec3{ randomf() * 360, 1, 1 });
-			lightComponent->intensity = 1;
-			lightComponent->range = 20;
-			lightComponent->innerAngle = 10.0f;
-			lightComponent->outerAngle = 30.0f;
-			actor->AddComponent(std::move(lightComponent));
+			//auto lightComponent = CREATE_CLASS(LightComponent);
+			//lightComponent->type = LightComponent::eType::Point;
+			//lightComponent->color = glm::vec3{ 0, 0, 0 }; // glm::rgbColor(glm::vec3{ randomf() * 360, 1, 1 });
+			//lightComponent->intensity = 1;
+			//lightComponent->range = 20;
+			//lightComponent->innerAngle = 10.0f;
+			//lightComponent->outerAngle = 30.0f;
+			//actor->AddComponent(std::move(lightComponent));
 
-			m_scene->Add(std::move(actor));
+			//m_scene->Add(std::move(actor));
 		}
 
 		{

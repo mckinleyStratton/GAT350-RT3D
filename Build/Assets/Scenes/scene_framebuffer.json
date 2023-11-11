@@ -2,6 +2,26 @@
 	"actors": [
 		{
 			"type": "Actor",
+			"name": "LIGHT",
+			"persistent": true,
+			"transform": {
+				"position": [ 3, -9, -8 ],
+				"rotation": [ 0, 0, 0 ]
+			},
+			"components": [
+				{
+					"type":  "LightComponent",
+					"lightType": "point",
+					"color": [ 1, 1, 1 ],
+					"intensity": 1,
+					"range": 20,
+					"innerAngle": 10,
+					"outerAngle":  20
+				}
+			]
+		},
+		{
+			"type": "Actor",
 			"name": "COW",
 			"persistent": true,
 			"transform": {

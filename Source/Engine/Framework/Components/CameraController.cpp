@@ -11,8 +11,12 @@ namespace nc
 	{
 		glm::vec3 euler = QuaternionToEuler(m_owner->transform.rotation);
 
-		pitch = m_owner->transform.rotation.x;
-		yaw = m_owner->transform.rotation.y;
+
+		pitch = euler.x;
+		yaw = euler.y;
+
+		//pitch = m_owner->transform.rotation.x;
+		//yaw = m_owner->transform.rotation.y;
 
 		return true;
 	}
@@ -51,6 +55,13 @@ namespace nc
 		direction = m_owner->transform.rotation * direction;
 		m_owner->transform.position += direction * (speed * dt);
 	}
+
+	void CameraController::ProcessGui()
+	{
+		ImGui::DragFloat("Speed", &speed, 0.1f);
+		ImGui::DragFloat("Sensitivity", &sensitivity, 0.1f);
+	}
+
 
 	void CameraController::Read(const json_t& value)
 	{
