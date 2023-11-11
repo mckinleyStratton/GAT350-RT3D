@@ -29,48 +29,6 @@ namespace nc
 
 		}
 
-
-
-		{
-			//auto actor = CREATE_CLASS(Actor);
-			//actor->name = "Light 1";
-			//actor->transform.position = glm::vec3{ 0, -8, -12 };
-			
-
-			//auto lightComponent = CREATE_CLASS(LightComponent);
-			//lightComponent->type = LightComponent::eType::Point;
-			//lightComponent->color = glm::vec3{ 0, 0, 0 }; // glm::rgbColor(glm::vec3{ randomf() * 360, 1, 1 });
-			//lightComponent->intensity = 1;
-			//lightComponent->range = 20;
-			//lightComponent->innerAngle = 10.0f;
-			//lightComponent->outerAngle = 30.0f;
-			//actor->AddComponent(std::move(lightComponent));
-
-			//m_scene->Add(std::move(actor));
-		}
-
-		/*{
-			auto actor = CREATE_CLASS(Actor);
-			actor->name = "Camera";
-			actor->transform.position = glm::vec3{ 0, 0, 3 };
-			actor->transform.rotation = glm::radians(glm::vec3{ 0, 180, 0 });
-
-			auto cameraComponent = CREATE_CLASS(CameraComponent);
-			cameraComponent->SetPerspective(70.0f, ENGINE.GetSystem<Renderer>()->GetWidth() / (float)ENGINE.GetSystem<Renderer>()->GetHeight(), 0.1f, 100.0f);
-			actor->AddComponent(std::move(cameraComponent));
-
-			auto cameraController = CREATE_CLASS(CameraController);
-			cameraController->speed = 5;
-			cameraController->sensitivity = 0.5f;
-			cameraController->m_owner = actor.get();
-			cameraController->Initialize();
-			actor->AddComponent(std::move(cameraController));
-
-
-			m_scene->Add(std::move(actor));
-		}*/
-
-
 		return true;
 	};
 

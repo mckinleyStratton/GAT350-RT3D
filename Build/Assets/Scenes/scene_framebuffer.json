@@ -38,7 +38,7 @@
 				{
 					"type": "CameraController",
 					"speed": 5.0,
-					"sensitivity":  0.5
+					"sensitivity": 0.5
 				}
 			]
 		},
@@ -56,6 +56,10 @@
 					"type": "ModelComponent",
 					"modelName": "models/moo.obj",
 					"materialName": "materials/moo.mtrl"
+				},
+				{
+					"type": "RotateComponent",
+					"eulerRotation": [ 0, 50, 0 ]
 				}
 			]
 		},
