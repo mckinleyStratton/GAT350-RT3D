@@ -77,11 +77,11 @@ namespace nc
 
 
 //SCANLINE
-		//effect = m_params & SCANLINE_MASK;
-		//if (ImGui::Checkbox("ScanLine", &effect))
-		//{
-		//	(effect) ? m_params |= SCANLINE_MASK : m_params ^= SCANLINE_MASK;
-		//}
+		effect = m_params & SCANLINE_MASK;
+		if (ImGui::Checkbox("Scanline", &effect))
+		{
+			(effect) ? m_params |= SCANLINE_MASK : m_params ^= SCANLINE_MASK;
+		}
 
 
 

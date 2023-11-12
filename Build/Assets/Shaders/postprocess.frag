@@ -42,6 +42,7 @@ vec4 colortint(in vec4 color)
 
 
 // grain mask 
+// can not include our rand.h and those funtions in a .frag
 float rand(vec2 co)
 {
     return fract(sin(dot(co.xy, vec2(12.9898, 78.233))) * 43758.5453);
@@ -55,13 +56,21 @@ vec4 grain(in vec4 color)
     return vec4(grainColor, color.a);
 }
 
+// scan line mask
+vec4 scanline(in vec4 color)
+{
+    float scanlineIntensity = 1;
+    float scanlineSpacing = 1.0;
+    float scanlineThickness = 0.5;
 
+    float scanlinePosition = mod(ftexcoord.y * 100.0, scanlineSpacing);
 
+    float scanlineMask = smoothstep(0.0, scanlineThickness, abs(mod(scanlinePosition, scanlineSpacing) - scanlineSpacing / 2.0));
 
+    color.rgb -= color.rgb * scanlineIntensity * scanlineMask;
 
-// scan line - every other pixel line is black
-
-
+    return color;
+}
 
 
 
@@ -74,7 +83,7 @@ void main()
 	if (bool(params & INVERT_MASK))		postprocess = invert(postprocess);
 	if (bool(params & GRAYSCALE_MASK))	postprocess = grayscale(postprocess);
 	if (bool(params & GRAIN_MASK))		postprocess = grain(postprocess);
-	//if (bool(params & SCANLINE_MASK))	postprocess = scaline(postprocess);
+	if (bool(params & SCANLINE_MASK))	postprocess = scanline(postprocess);
 	//if (bool(params & PIXEL_MASK))	postprocess = pixel(postprocess);
 	if (bool(params & COLORTINT_MASK))	postprocess = colortint(postprocess);
 	
