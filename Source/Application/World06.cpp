@@ -52,7 +52,7 @@ namespace nc
 
 
 
-		// create effects on gui
+		// GUI EFFECTS
 //INVERT
 		bool effect = m_params & INVERT_MASK;
 		if (ImGui::Checkbox("Invert", &effect))
@@ -84,20 +84,12 @@ namespace nc
 		}
 
 
-
-
-
-//PIXEL
-		//effect = m_params & PIXEL_MASK;
-		//if (ImGui::Checkbox("Pixel", &effect))
-		//{
-		//	(effect) ? m_params |= PIXEL_MASK : m_params ^= PIXEL_MASK;
-		//}
-
-
-
-
-
+//BLURRY
+		effect = m_params & BLURRY_MASK;
+		if (ImGui::Checkbox("Blurry", &effect))
+		{
+			(effect) ? m_params |= BLURRY_MASK : m_params ^= BLURRY_MASK;
+		}
 
 
 //COLOR TINT
@@ -110,13 +102,17 @@ namespace nc
 		}
 		if (m_params & COLORTINT_MASK)
 		{
-			ImGui::SliderFloat("RED TINT", &m_rTint, 0, 1);
-			ImGui::SliderFloat("BLUE TINT", &m_bTint, 0, 1);
-			ImGui::SliderFloat("GREEN TINT", &m_gTint, 0, 1);
+			ImGui::SliderFloat("RED Tint", &m_rTint, 0, 1);
+			ImGui::SliderFloat("BLUE Tint", &m_bTint, 0, 1);
+			ImGui::SliderFloat("GREEN Tint", &m_gTint, 0, 1);
 		}
 
-
-
+//ITS GIVING CYBERPUNK
+		effect = m_params & CP_MASK;
+		if (ImGui::Checkbox("Its Giving CyberPunk", &effect))
+		{
+			(effect) ? m_params |= CP_MASK : m_params ^= CP_MASK;
+		}
 
 		ImGui::End();
 
@@ -133,12 +129,9 @@ namespace nc
 			program->SetUniform("rTint", m_rTint);
 			program->SetUniform("bTint", m_bTint);
 			program->SetUniform("gTint", m_gTint);
-
-
 		}
 
 		ENGINE.GetSystem<Gui>()->EndFrame();
-
 	}
 
 	void World06::Draw(Renderer& renderer)

@@ -2,7 +2,7 @@
 	"actors": [
 		{
 			"type": "Actor",
-			"name": "LIGHT",
+			"name": "Light",
 			"persistent": true,
 			"transform": {
 				"position": [ 3, -9, -8 ],
@@ -22,7 +22,7 @@
 		},
 		{
 			"type": "Actor",
-			"name": "CAMERA",
+			"name": "Camera",
 			"persistent": true,
 			"transform": {
 				"position": [ 0, 0, 3 ],
@@ -44,7 +44,7 @@
 		},
 		{
 			"type": "Actor",
-			"name": "COW",
+			"name": "Cow",
 			"persistent": true,
 			"transform": {
 				"position": [ 0, 0, 0 ],
