@@ -59,7 +59,7 @@
 				},
 				{
 					"type": "RotateComponent",
-					"eulerRotation": [ 0, 50, 0 ]
+					"eulerRotation": [ 0, 5, 0 ]
 				}
 			]
 		},

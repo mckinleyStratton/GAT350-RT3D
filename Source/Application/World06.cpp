@@ -50,16 +50,33 @@ namespace nc
 		ImGui::Begin("Post-Process");
 		ImGui::SliderFloat("Blend", &m_blend, 0, 1);
 
+
+
 		// create effects on gui
 		bool effect = m_params & INVERT_MASK;
 		if (ImGui::Checkbox("Invert", &effect))
 		{
 			(effect) ? m_params |= INVERT_MASK : m_params ^= INVERT_MASK;
 		}
+
 		effect = m_params & GRAYSCALE_MASK;
 		if (ImGui::Checkbox("Greyscale", &effect))
 		{
 			(effect) ? m_params |= GRAYSCALE_MASK : m_params ^= GRAYSCALE_MASK;
+		}
+
+		effect = m_params & COLORTINT_MASK;
+		if (ImGui::Checkbox("Color Tint", &effect))
+		{
+
+			(effect) ? m_params |= COLORTINT_MASK : m_params ^= COLORTINT_MASK;
+
+		}
+		if (m_params & COLORTINT_MASK)
+		{
+			ImGui::SliderFloat("RED TINT", &m_rTint, 0, 1);
+			ImGui::SliderFloat("BLUE TINT", &m_bTint, 0, 1);
+			ImGui::SliderFloat("GREEN TINT", &m_gTint, 0, 1);
 		}
 
 
@@ -75,6 +92,13 @@ namespace nc
 			program->Use();
 			program->SetUniform("blend", m_blend);
 			program->SetUniform("params", m_params);
+			
+			//ASSIGNMENT
+			program->SetUniform("rTint", m_rTint);
+			program->SetUniform("bTint", m_bTint);
+			program->SetUniform("gTint", m_gTint);
+
+
 		}
 
 		ENGINE.GetSystem<Gui>()->EndFrame();

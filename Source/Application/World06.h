@@ -25,9 +25,13 @@ namespace nc
 		void Draw(Renderer& renderer) override;
 
 	private:
-		float m_time = 0;
-		float m_speed = 5;
-		float m_blend = 1;
+		float m_time	= 0;
+		float m_speed	= 5;
+		float m_blend	= 1;
+
+		float m_rTint	= 1;
+		float m_bTint	= 1;
+		float m_gTint	= 1;
 
 		uint32_t m_params{ 0 };
 
