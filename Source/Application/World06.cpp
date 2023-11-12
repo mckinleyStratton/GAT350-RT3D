@@ -53,18 +53,54 @@ namespace nc
 
 
 		// create effects on gui
+//INVERT
 		bool effect = m_params & INVERT_MASK;
 		if (ImGui::Checkbox("Invert", &effect))
 		{
 			(effect) ? m_params |= INVERT_MASK : m_params ^= INVERT_MASK;
 		}
 
+//GREYSCALE
 		effect = m_params & GRAYSCALE_MASK;
 		if (ImGui::Checkbox("Greyscale", &effect))
 		{
 			(effect) ? m_params |= GRAYSCALE_MASK : m_params ^= GRAYSCALE_MASK;
 		}
 
+
+//GRAIN
+		effect = m_params & GRAIN_MASK;
+		if (ImGui::Checkbox("Grain", &effect))
+		{
+			(effect) ? m_params |= GRAIN_MASK : m_params ^= GRAIN_MASK;
+		}
+
+
+//SCANLINE
+		//effect = m_params & SCANLINE_MASK;
+		//if (ImGui::Checkbox("ScanLine", &effect))
+		//{
+		//	(effect) ? m_params |= SCANLINE_MASK : m_params ^= SCANLINE_MASK;
+		//}
+
+
+
+
+
+//PIXEL
+		//effect = m_params & PIXEL_MASK;
+		//if (ImGui::Checkbox("Pixel", &effect))
+		//{
+		//	(effect) ? m_params |= PIXEL_MASK : m_params ^= PIXEL_MASK;
+		//}
+
+
+
+
+
+
+
+//COLOR TINT
 		effect = m_params & COLORTINT_MASK;
 		if (ImGui::Checkbox("Color Tint", &effect))
 		{

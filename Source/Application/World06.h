@@ -2,6 +2,7 @@
 #include "Framework/World.h"
 #include "Renderer/Renderer.h"
 #include "Core/Math/Transform.h"
+#include "Core/Random.h"
 
 #include <vector>
 
@@ -15,7 +16,10 @@ namespace nc
 	public:
 		const uint32_t INVERT_MASK		= (1 << 0);
 		const uint32_t GRAYSCALE_MASK	= (1 << 1);
-		const uint32_t COLORTINT_MASK	= (1 << 2);
+		const uint32_t GRAIN_MASK		= (1 << 2);
+		const uint32_t SCANLINE_MASK	= (1 << 3);
+		const uint32_t CUSTOM_MASK		= (1 << 4);
+		const uint32_t COLORTINT_MASK	= (1 << 5);
 
 
 	public:
@@ -32,6 +36,7 @@ namespace nc
 		float m_rTint	= 1;
 		float m_bTint	= 1;
 		float m_gTint	= 1;
+
 
 		uint32_t m_params{ 0 };
 
