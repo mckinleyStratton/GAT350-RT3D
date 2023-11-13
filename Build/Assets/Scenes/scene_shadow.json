@@ -89,9 +89,9 @@
 			"name": "Goblin Weapon",
 			"persistent": true,
 			"transform": {
-				"position": [ 4, -3, -10 ],
+				"position": [ 4, -1, -11 ],
 				"scale": [ 1, 1, 1 ],
-				"rotation": [ 0, 90, 0 ]
+				"rotation": [ 180, 0, 5 ]
 			},
 			"components": [
 				{
@@ -107,7 +107,7 @@
 		},
 		{
 			"type": "Actor",
-			"name": "GROUND",
+			"name": "The Ground",
 			"persistent": true,
 			"transform": {
 				"position": [ 9, -4, -7 ],

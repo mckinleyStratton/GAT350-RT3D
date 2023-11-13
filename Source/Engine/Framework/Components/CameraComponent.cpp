@@ -57,11 +57,15 @@ namespace nc
 
 	void CameraComponent::ProcessGui()
 	{
+		const char* types[] = { "Perspective", "Orthographic" };
+		ImGui::Combo("Projection", (int*)(&projectionType), types, 2);
+
 		// use ImGui::DragFloat to set fov, aspect, near and far values (use speed of 0.1f)
 		ImGui::DragFloat("fov", &fov, 0.1f, 0, 70);
 		ImGui::DragFloat("aspect", &aspect, 0.1f, 0.1f, 2.0f);
 		ImGui::DragFloat("near", &near, 0.1f, 0.1f, 4.0f);
 		ImGui::DragFloat("far", &far, 0.1f, 0.1f, 100);
+		ImGui::DragFloat("size", &size, 0.1f);
 
 	}
 
@@ -72,5 +76,12 @@ namespace nc
 		READ_DATA(value, aspect);
 		READ_DATA(value, near);
 		READ_DATA(value, far);
+		
+		std::string projectionTypeName;
+		READ_NAME_DATA(value, "projectionType", projectionTypeName);
+		if (IsEqualIgnoreCase("orthographic", projectionTypeName)) projectionType = Orthographic;
+		READ_DATA(value, size);
+
+
 	}
 }
