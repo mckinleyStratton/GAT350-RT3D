@@ -5,7 +5,7 @@
 			"name": "Light",
 			"persistent": true,
 			"transform": {
-				"position": [ 3, -9, -8 ],
+				"position": [ 0, 0, 4 ],
 				"rotation": [ 0, 0, 0 ]
 			},
 			"components": [
@@ -44,22 +44,64 @@
 		},
 		{
 			"type": "Actor",
-			"name": "Cow",
+			"name": "Goblin House",
 			"persistent": true,
 			"transform": {
-				"position": [ 0, 0, 0 ],
+				"position": [ 0, -3, -15 ],
 				"scale": [ 1, 1, 1 ],
-				"rotation": [ 0, 180, 0 ]
+				"rotation": [ 0, 0, 0 ]
 			},
 			"components": [
 				{
 					"type": "ModelComponent",
-					"modelName": "models/moo.obj",
-					"materialName": "materials/moo.mtrl"
+					"modelName": "fantasy/obj/SF_Bld_Goblin_House_04.obj",
+					"materialName": "fantasy/fantasy.mtrl"
 				},
 				{
 					"type": "RotateComponent",
-					"eulerRotation": [ 0, 5, 0 ]
+					"eulerRotation": [ 0, 0, 0 ]
+				}
+			]
+		},
+		{
+			"type": "Actor",
+			"name": "Goblin Seat",
+			"persistent": true,
+			"transform": {
+				"position": [ -5, -3, -10 ],
+				"scale": [ 1, 1, 1 ],
+				"rotation": [ 0, 90, 0 ]
+			},
+			"components": [
+				{
+					"type": "ModelComponent",
+					"modelName": "fantasy/obj/SF_Prop_Goblin_Seat_02.obj",
+					"materialName": "fantasy/fantasy.mtrl"
+				},
+				{
+					"type": "RotateComponent",
+					"eulerRotation": [ 0, 0, 0 ]
+				}
+			]
+		},
+		{
+			"type": "Actor",
+			"name": "Goblin Weapon",
+			"persistent": true,
+			"transform": {
+				"position": [ 4, -3, -10 ],
+				"scale": [ 1, 1, 1 ],
+				"rotation": [ 0, 90, 0 ]
+			},
+			"components": [
+				{
+					"type": "ModelComponent",
+					"modelName": "fantasy/obj/SF_Wep_Goblin_Mace_01.obj",
+					"materialName": "fantasy/fantasy.mtrl"
+				},
+				{
+					"type": "RotateComponent",
+					"eulerRotation": [ 0, 0, 0 ]
 				}
 			]
 		},
