@@ -5,7 +5,7 @@
 			"name": "Light",
 			"persistent": true,
 			"transform": {
-				"position": [ 0, 0, 4 ],
+				"position": [ 0, 0, -8 ],
 				"rotation": [ 0, 0, 0 ]
 			},
 			"components": [
@@ -97,6 +97,27 @@
 				{
 					"type": "ModelComponent",
 					"modelName": "fantasy/obj/SF_Wep_Goblin_Mace_01.obj",
+					"materialName": "fantasy/fantasy.mtrl"
+				},
+				{
+					"type": "RotateComponent",
+					"eulerRotation": [ 0, 0, 0 ]
+				}
+			]
+		},
+		{
+			"type": "Actor",
+			"name": "GROUND",
+			"persistent": true,
+			"transform": {
+				"position": [ 9, -4, -7 ],
+				"scale": [ 2, 2, 2 ],
+				"rotation": [ 0, 90, 0 ]
+			},
+			"components": [
+				{
+					"type": "ModelComponent",
+					"modelName": "fantasy/obj/SF_Env_Tile_Grass_01.obj",
 					"materialName": "fantasy/fantasy.mtrl"
 				},
 				{
