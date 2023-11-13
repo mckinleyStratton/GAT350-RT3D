@@ -116,7 +116,6 @@ vec4 itsGivingCyberPunk(in vec4 Color)
 }
 
 
-
 void main()
 {
 	vec4 basecolor = texture(screenTexture, ftexcoord);
