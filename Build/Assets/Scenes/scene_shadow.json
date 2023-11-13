@@ -13,7 +13,7 @@
 					"type": "LightComponent",
 					"lightType": "point",
 					"color": [ 1, 1, 1 ],
-					"intensity": 1,
+					"intensity": 3,
 					"range": 20,
 					"innerAngle": 10,
 					"outerAngle": 20
@@ -123,20 +123,6 @@
 				{
 					"type": "RotateComponent",
 					"eulerRotation": [ 0, 0, 0 ]
-				}
-			]
-		},
-		{
-			"type": "Actor",
-			"name": "postprocess",
-			"persistent": true,
-			"active": true,
-			"prototype": false,
-			"components": [
-				{
-					"type": "ModelComponent",
-					"modelName": "models/quad.obj",
-					"materialName": "materials/postprocess.mtrl"
 				}
 			]
 		}
