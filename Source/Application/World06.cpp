@@ -57,14 +57,14 @@ namespace nc
 		bool effect = m_params & INVERT_MASK;
 		if (ImGui::Checkbox("Invert", &effect))
 		{
-			(effect) ? m_params |= INVERT_MASK : m_params ^= INVERT_MASK;
+			(effect) ? m_params |= INVERT_MASK : m_params &= ~INVERT_MASK;
 		}
 
 //GREYSCALE
 		effect = m_params & GRAYSCALE_MASK;
 		if (ImGui::Checkbox("Greyscale", &effect))
 		{
-			(effect) ? m_params |= GRAYSCALE_MASK : m_params ^= GRAYSCALE_MASK;
+			(effect) ? m_params |= GRAYSCALE_MASK : m_params &= ~GRAYSCALE_MASK; // changed &= ~
 		}
 
 
@@ -72,7 +72,7 @@ namespace nc
 		effect = m_params & GRAIN_MASK;
 		if (ImGui::Checkbox("Grain", &effect))
 		{
-			(effect) ? m_params |= GRAIN_MASK : m_params ^= GRAIN_MASK;
+			(effect) ? m_params |= GRAIN_MASK : m_params &= ~GRAIN_MASK;
 		}
 
 
@@ -80,7 +80,7 @@ namespace nc
 		effect = m_params & SCANLINE_MASK;
 		if (ImGui::Checkbox("Scanline", &effect))
 		{
-			(effect) ? m_params |= SCANLINE_MASK : m_params ^= SCANLINE_MASK;
+			(effect) ? m_params |= SCANLINE_MASK : m_params &= ~SCANLINE_MASK;
 		}
 
 
@@ -88,7 +88,7 @@ namespace nc
 		effect = m_params & BLURRY_MASK;
 		if (ImGui::Checkbox("Blurry", &effect))
 		{
-			(effect) ? m_params |= BLURRY_MASK : m_params ^= BLURRY_MASK;
+			(effect) ? m_params |= BLURRY_MASK : m_params &= ~BLURRY_MASK;
 		}
 
 
@@ -97,7 +97,7 @@ namespace nc
 		if (ImGui::Checkbox("Color Tint", &effect))
 		{
 
-			(effect) ? m_params |= COLORTINT_MASK : m_params ^= COLORTINT_MASK;
+			(effect) ? m_params |= COLORTINT_MASK : m_params &= ~COLORTINT_MASK;
 
 		}
 		if (m_params & COLORTINT_MASK)
@@ -111,7 +111,7 @@ namespace nc
 		effect = m_params & CP_MASK;
 		if (ImGui::Checkbox("Its Giving CyberPunk", &effect))
 		{
-			(effect) ? m_params |= CP_MASK : m_params ^= CP_MASK;
+			(effect) ? m_params |= CP_MASK : m_params &= ~CP_MASK;
 		}
 
 		ImGui::End();
