@@ -24,8 +24,17 @@ namespace nc
 		// set view matrix with glm::lookAt function, use owner position
 		view = glm::lookAt(m_owner->transform.position, m_owner->transform.position + m_owner->transform.Forward(), m_owner->transform.Up());
 
-		// set projection matrix with glm::perspective function (fov is in degrees, convert to radians)
-		projection = glm::perspective(glm::radians(fov), aspect, near, far);
+		if (projectionType == Perspective)
+		{
+			// set projection matrix with glm::perspective function (fov is in degrees, convert to radians)
+			projection = glm::perspective(glm::radians(fov), aspect, near, far);
+		}
+		else
+		{
+			projection = glm::ortho(-size * aspect, size * aspect * 0.5f, -size * aspect * 0.5f, size * aspect * 0.5f, near, far);
+			//projection = glm::ortho(-size * aspect * 0.5f, size * aspect * 0.5f, -size * aspect * 0.5f, size * aspect * 0.5f, near, far); what maple has but distorts my obj model
+		}
+
 
 	}
 
