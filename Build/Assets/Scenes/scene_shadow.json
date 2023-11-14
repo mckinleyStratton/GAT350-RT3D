@@ -110,7 +110,7 @@
 			"name": "The Ground",
 			"persistent": true,
 			"transform": {
-				"position": [ 9, -4, -7 ],
+				"position": [ 9, -3, -7 ],
 				"scale": [ 2, 2, 2 ],
 				"rotation": [ 0, 90, 0 ]
 			},
