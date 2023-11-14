@@ -14,10 +14,12 @@ namespace nc
 		m_scene->Load("Scenes/scene_shadow.json");
 		m_scene->Initialize();
 
+		// create dpeth texture
 		auto texture = std::make_shared<Texture>();
 		texture->CreateDepthTexture(1024, 1024);
 		ADD_RESOURCE("depth_texture", texture);
 
+		// create depth buffer
 		auto framebuffer = std::make_shared<Framebuffer>();
 		framebuffer->CreateDepthBuffer(texture);
 		ADD_RESOURCE("depth_buffer", framebuffer);
@@ -54,16 +56,34 @@ namespace nc
 	void World07::Draw(Renderer& renderer)
 	{
 		// **** PASS 1 *****
-		//m_scene->GetActorByName("postprocess")->active = false;
+		auto framebuffer = GET_RESOURCE(Framebuffer, "depth_buffer");
+		renderer.SetViewport(framebuffer->GetSize().x, framebuffer->GetSize().y);
+		framebuffer->Bind();
 
-		//auto framebuffer = GET_RESOURCE(Framebuffer, "fb");
-		//renderer.SetViewport(framebuffer->GetSize().x, framebuffer->GetSize().y);
-		//framebuffer->Bind();
+		renderer.ClearDepth();
+		auto program = GET_RESOURCE(Program, "shaders/shadow_depth.prog");
+		program->Use();
 
-		//renderer.BeginFrame(glm::vec3{ 0.5, 0.8, 0.5 });
+		auto lights = m_scene->GetComponents<LightComponent>();
+		for (auto light : lights)
+		{
+			if (light->castShadow)
+			{
+				glm::mat4 shadowMatrix = light->GetShadowMatrix();
+				program->SetUniform("shadowVP", shadowMatrix);
+			}
+		}
+
 		//m_scene->Draw(renderer);
 
-		//framebuffer->Unbind();
+		auto models = m_scene->GetComponents<ModelComponent>();
+		for (auto model : models)
+		{
+			program->SetUniform("model", model->m_owner->transform.GetMatrix());
+			model->model->Draw();
+		}
+
+		framebuffer->Unbind();
 
 		// ***** PASS 2 *****
 		
