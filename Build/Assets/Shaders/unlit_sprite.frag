@@ -13,7 +13,6 @@ uniform struct Material
 	vec2 tiling;
 } material;
 
-
 layout(binding = 0) uniform sampler2D tex;
 
 void main()
@@ -21,6 +20,6 @@ void main()
 	vec4 texcolor = texture(tex, ftexcoord);
 	float depth = texcolor.r;
 
-	if (texcolor.a < 0.5) discard; // also known as a cutout 
+	if (texcolor.a < 0.5) discard;
 	ocolor = vec4(vec3(depth), 1) * vec4(material.albedo, 1);
 }
