@@ -22,7 +22,8 @@ namespace nc
 		framebuffer->CreateDepthBuffer(texture);
 		ADD_RESOURCE("depth_buffer", framebuffer);
 
-		auto material = GET_RESOURCE(Material, "materials/postprocess.mtrl");
+		// set depth texture to debug
+		auto material = GET_RESOURCE(Material, "materials/sprite.mtrl");
 		if (material)
 		{
 			material->albedoTexture = texture;
