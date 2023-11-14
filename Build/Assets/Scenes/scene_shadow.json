@@ -125,6 +125,23 @@
 					"eulerRotation": [ 0, 0, 0 ]
 				}
 			]
+		},
+		{
+			"type": "Actor",
+			"name": "Depth DEBUG",
+			"persistent": true,
+			"transform": {
+				"position": [ 2.4, 1.4, -5 ],
+				"scale": [ 1, 1, 1 ],
+				"rotation": [ 0, 0, 0 ]
+			},
+			"components": [
+				{
+					"type": "ModelComponent",
+					"modelName": "models/quad.obj",
+					"materialName": "materials/sprite.mtrl"
+				}
+			]
 		}
 	]
 }
