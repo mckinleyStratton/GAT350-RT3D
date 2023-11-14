@@ -29,18 +29,6 @@ namespace nc
 		auto lights = GetComponents<LightComponent>();
 
 
-		//std::vector<LightComponent*> lights;
-		//for (auto& actor : m_actors) // go through all actors
-		//{
-		//	if (!actor->active) continue; // skip the rest if not actor 
-
-		//	auto component = actor->GetComponent<LightComponent>();
-		//	if (component)
-		//	{
-		//		lights.push_back(component);
-		//	}
-		//}
-
 
 		// get camera component
 		auto cameras = GetComponents<CameraComponent>();
@@ -48,20 +36,8 @@ namespace nc
 		CameraComponent* camera = (!cameras.empty()) ? cameras[0] : nullptr;
 
 
-		//CameraComponent* camera = nullptr;
-		//for (auto& actor : m_actors)
-		//{
-		//	if (!actor->active) continue;
-
-		//	camera = actor->GetComponent<CameraComponent>();
-		//	if (camera != nullptr) // if component is valid... 
-		//	{
-		//		break; // ... break out of for loop 
-		//	}
-		//}
-
 		// get all shader programs in the resource system
-		auto programs = ResourceManager::Instance().GetAllOfType<Program>();
+		auto programs = GET_RESOURCES(Program);
 
 		// set all shader programs camera and lights uniforms
 		for (auto& program : programs)
