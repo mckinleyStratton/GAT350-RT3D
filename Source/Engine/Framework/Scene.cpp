@@ -28,11 +28,10 @@ namespace nc
 		// get light components
 		auto lights = GetComponents<LightComponent>();
 
-
-
 		// get camera component
 		auto cameras = GetComponents<CameraComponent>();
 
+		// get first active camera component
 		CameraComponent* camera = (!cameras.empty()) ? cameras[0] : nullptr;
 
 

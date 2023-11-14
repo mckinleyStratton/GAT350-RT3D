@@ -88,7 +88,6 @@ namespace nc
 			}
 		}
 
-
 		return components;
 	}
 
