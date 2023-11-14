@@ -47,6 +47,10 @@ namespace nc
 		if (type != Directional) ImGui::DragFloat("Range", &range, 0.1f, 0.1f, 50);
 
 		ImGui::Checkbox("Cast Shadow", &castShadow);
+		if (castShadow)
+		{
+			ImGui::DragFloat("Shadow Size", &shadowSize, 0.1f, 1, 60);
+		}
 	}
 
 	glm::mat4 LightComponent::GetShadowMatrix()
