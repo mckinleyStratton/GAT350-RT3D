@@ -66,7 +66,7 @@ float attenuation(in vec3 position1, in vec3 position2, in float range)
 
 float calculateShadow(vec4 shadowcoord, float bias)
 {
-	return texture(shadowTexture, shadowcoord.xy).x < shadowcoord.z ? 0 : 1;
+	return texture(shadowTexture, shadowcoord.xy).x < shadowcoord.z - shadowBias ? 0 : 1;
 }
 
 

@@ -29,7 +29,12 @@ namespace nc
 		if (material)
 		{
 			material->albedoTexture = texture;
+		}
 
+		auto materials = GET_RESOURCES(Material);
+		for (auto material : materials)
+		{
+			material->depthTexture = texture;
 		}
 
 		return true;
