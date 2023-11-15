@@ -28,6 +28,7 @@ namespace nc
 		if (castShadow)
 		{
 			program->SetUniform("shadowVP", GetShadowMatrix());
+			program->SetUniform("shadowBias", shadowBias);
 		}
 	}
 
@@ -50,6 +51,7 @@ namespace nc
 		if (castShadow)
 		{
 			ImGui::DragFloat("Shadow Size", &shadowSize, 0.1f, 1, 60);
+			ImGui::DragFloat("Shadow Bias", &shadowBias, 0.001f, 0, 0.5f);
 		}
 	}
 

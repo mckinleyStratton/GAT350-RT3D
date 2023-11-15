@@ -14,6 +14,8 @@
 in layout(location = 0) vec3 fposition;
 in layout(location = 1) vec3 fnormal;
 in layout(location = 2) vec2 ftexcoord;
+in layout(location = 3) vec4 fshadowcoord;
+
 
 out layout(location = 0) vec4 ocolor;
 
@@ -32,24 +34,25 @@ uniform struct Material
 
 uniform struct Light 
 {
-int type;
-vec3 position;
-vec3 direction;
-vec3 color;
-float intensity;
-float range;
-float innerAngle;
-float outerAngle;
-
+	int type;
+	vec3 position;
+	vec3 direction;
+	vec3 color;
+	float intensity;
+	float range;
+	float innerAngle;
+	float outerAngle;
 } lights[3];
 
 uniform vec3 ambientLight;
 uniform int numLights = 3;
+uniform float shadowBias = 0.005;
 
 layout(binding = 0) uniform sampler2D albedoTexture;
 layout(binding = 1) uniform sampler2D specularTexture;
 layout(binding = 2) uniform sampler2D normalTexture;
 layout(binding = 3) uniform sampler2D emissiveTexture;
+layout(binding = 5) uniform sampler2D shadowTexture;
 
 float attenuation(in vec3 position1, in vec3 position2, in float range)
 {
@@ -60,6 +63,15 @@ float attenuation(in vec3 position1, in vec3 position2, in float range)
  
 	return attenuation;
 }
+
+float calculateShadow(vec4 shadowcoord, float bias)
+{
+	return texture(shadowTexture, shadowcoord.xy).x < shadowcoord.z ? 0 : 1;
+}
+
+
+
+
 void phong(in Light light, in vec3 position, in vec3 normal, out vec3 diffuse, out vec3 specular)
 {
 	// DIFFUSE lighting component based on the light direction and surface normal 
@@ -103,6 +115,8 @@ void main()
 	// set ambient light // modulated by albedoColor
 	ocolor = vec4(ambientLight, 1) * albedoColor + emissiveColor;
  
+	float shadow = calculateShadow(fshadowcoord, shadowBias);
+
 	// set lights
 	for (int i = 0; i < numLights; i++)
 	{
@@ -112,7 +126,7 @@ void main()
 		float attenuation = (lights[i].type == DIRECTIONAL) ? 1 : attenuation(lights[i].position, fposition, lights[i].range);
  
 		phong(lights[i], fposition, fnormal, diffuse, specular);
-		ocolor += ((vec4(diffuse, 1) * albedoColor) + (vec4(specular, 1)) * specularColor) * lights[i].intensity * attenuation;
+		ocolor += ((vec4(diffuse, 1) * albedoColor) + (vec4(specular, 1)) * specularColor) * lights[i].intensity * attenuation * shadow;
 	}
 }
 	
