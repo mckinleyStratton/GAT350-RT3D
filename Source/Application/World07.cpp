@@ -74,13 +74,14 @@ namespace nc
 			}
 		}
 
-		//m_scene->Draw(renderer);
-
 		auto models = m_scene->GetComponents<ModelComponent>();
 		for (auto model : models)
 		{
-			program->SetUniform("model", model->m_owner->transform.GetMatrix());
-			model->model->Draw();
+			if (model->castShadow)
+			{
+				program->SetUniform("model", model->m_owner->transform.GetMatrix());
+				model->model->Draw();
+			}
 		}
 
 		framebuffer->Unbind();
