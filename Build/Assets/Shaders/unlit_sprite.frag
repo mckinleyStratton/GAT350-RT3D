@@ -23,3 +23,4 @@ void main()
 	if (texcolor.a < 0.5) discard;
 	ocolor = vec4(vec3(depth), 1) * vec4(material.albedo, 1);
 }
+
