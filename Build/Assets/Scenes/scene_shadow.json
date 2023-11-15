@@ -6,7 +6,7 @@
 			"persistent": true,
 			"transform": {
 				"position": [ 0, 3, -8 ],
-				"rotation": [ 90, 0, 0 ]
+				"rotation": [ 60, 0, 0 ]
 			},
 			"components": [
 				{
@@ -60,7 +60,7 @@
 				},
 				{
 					"type": "RotateComponent",
-					"eulerRotation": [ 0, 0, 0 ]
+					"eulerRotation": [ 0, 30, 0 ]
 				}
 			]
 		},
@@ -71,7 +71,7 @@
 			"transform": {
 				"position": [ -5, -3, -10 ],
 				"scale": [ 1, 1, 1 ],
-				"rotation": [ 0, 90, 0 ]
+				"rotation": [ 0, 30, 0 ]
 			},
 			"components": [
 				{
@@ -81,7 +81,7 @@
 				},
 				{
 					"type": "RotateComponent",
-					"eulerRotation": [ 0, 0, 0 ]
+					"eulerRotation": [ 0, 30, 0 ]
 				}
 			]
 		},

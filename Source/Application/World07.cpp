@@ -16,7 +16,7 @@ namespace nc
 
 		// create dpeth texture
 		auto texture = std::make_shared<Texture>();
-		texture->CreateDepthTexture(1024, 1024);
+		texture->CreateDepthTexture(512, 512);
 		ADD_RESOURCE("depth_texture", texture);
 
 		// create depth buffer
