@@ -5,16 +5,16 @@
 			"name": "Light",
 			"persistent": true,
 			"transform": {
-				"position": [ 0, 3, -8 ],
-				"rotation": [ 60, 0, 0 ],
-				"scale": [0.5, 0.5, 0.5]
+				"position": [ 0, 12, 10 ],
+				"rotation": [ 0, 180, 0 ],
+				"scale": [ 0.5, 0.5, 0.5 ]
 			},
 			"components": [
 				{
 					"type": "LightComponent",
 					"lightType": "directional",
 					"color": [ 1, 1, 1 ],
-					"intensity": 3,
+					"intensity": 2,
 					"range": 20,
 					"innerAngle": 10,
 					"outerAngle": 20,
@@ -32,13 +32,14 @@
 			"name": "Camera",
 			"persistent": true,
 			"transform": {
-				"position": [ 0, 0, 3 ],
-				"rotation": [ 0, 180, 0 ]
+				"position": [ 0, 10, 20 ],
+				"rotation": [ 0, 0, 0 ]
 			},
 			"components": [
 				{
 					"type": "CameraComponent",
 					"fov": 70.0,
+					"aspect": 2,
 					"near": 0.1,
 					"far": 100
 				},
@@ -54,56 +55,140 @@
 			"name": "Goblin House",
 			"persistent": true,
 			"transform": {
-				"position": [ 0, -3, -15 ],
+				"position": [ -3, 0, 0 ],
 				"scale": [ 1, 1, 1 ],
+				"rotation": [ 0, 15, 0 ]
+			},
+			"components": [
+				{
+					"type": "ModelComponent",
+					"modelName": "fantasy/obj/SF_Bld_Goblin_House_02.obj",
+					"materialName": "fantasy/fantasy.mtrl"
+				},
+				{
+					"type": "RotateComponent",
+					"eulerRotation": [ 0, 0, 0 ]
+				}
+			]
+		},
+		{
+			"type": "Actor",
+			"name": "Skull",
+			"persistent": true,
+			"transform": {
+				"position": [ -11, 0.9, 7.5 ],
+				"scale": [ 0.15, 0.15, 0.15 ],
+				"rotation": [ -9, 50, 110 ]
+			},
+			"components": [
+				{
+					"type": "ModelComponent",
+					"modelName": "fantasy/obj/SF_Bld_Goblin_Skull_01.obj",
+					"materialName": "fantasy/fantasy.mtrl"
+				},
+				{
+					"type": "RotateComponent",
+					"eulerRotation": [ 0, 0, 0 ]
+				}
+			]
+		},
+		{
+			"type": "Actor",
+			"name": "Skull2",
+			"persistent": true,
+			"transform": {
+				"position": [ -9, 1, 9 ],
+				"scale": [ 0.15, 0.15, 0.15 ],
+				"rotation": [ 0, -25, 180 ]
+			},
+			"components": [
+				{
+					"type": "ModelComponent",
+					"modelName": "fantasy/obj/SF_Bld_Goblin_Skull_01.obj",
+					"materialName": "fantasy/fantasy.mtrl"
+				},
+				{
+					"type": "RotateComponent",
+					"eulerRotation": [ 0, 0, 0 ]
+				}
+			]
+		},
+		{
+			"type": "Actor",
+			"name": "Skull3",
+			"persistent": true,
+			"transform": {
+				"position": [ -8, 0, 6 ],
+				"scale": [ 0.15, 0.15, 0.15 ],
+				"rotation": [ 0, 64, -9 ]
+			},
+			"components": [
+				{
+					"type": "ModelComponent",
+					"modelName": "fantasy/obj/SF_Bld_Goblin_Skull_01.obj",
+					"materialName": "fantasy/fantasy.mtrl"
+				},
+				{
+					"type": "RotateComponent",
+					"eulerRotation": [ 0, 0, 0 ]
+				}
+			]
+		},
+		{
+			"type": "Actor",
+			"name": "Ribcage",
+			"persistent": true,
+			"transform": {
+				"position": [ 8, 2, -1 ],
+				"scale": [ 0.3, 0.3, 0.3 ],
+				"rotation": [ 180, -130, 15 ]
+			},
+			"components": [
+				{
+					"type": "ModelComponent",
+					"modelName": "fantasy/obj/SF_Bld_Goblin_Ribcage_01.obj",
+					"materialName": "fantasy/fantasy.mtrl"
+				},
+				{
+					"type": "RotateComponent",
+					"eulerRotation": [ 0, 0, 0 ]
+				}
+			]
+		},			
+		{
+			"type": "Actor",
+			"name": "Rock",
+			"persistent": true,
+			"transform": {
+				"position": [ 7, 0, 7 ],
+				"scale": [ 0.4, 0.3, 0.3 ],
 				"rotation": [ 0, 0, 0 ]
 			},
 			"components": [
 				{
 					"type": "ModelComponent",
-					"modelName": "fantasy/obj/SF_Bld_Goblin_House_04.obj",
+					"modelName": "fantasy/obj/SF_Env_Rock_02.obj",
 					"materialName": "fantasy/fantasy.mtrl"
 				},
 				{
 					"type": "RotateComponent",
-					"eulerRotation": [ 0, 30, 0 ]
+					"eulerRotation": [ 0, 0, 0 ]
 				}
 			]
-		},
+		},		
 		{
 			"type": "Actor",
-			"name": "Goblin Seat",
+			"name": "Flag",
 			"persistent": true,
 			"transform": {
-				"position": [ -5, -3, -10 ],
+				"position": [ 3, 0, 5 ],
 				"scale": [ 1, 1, 1 ],
-				"rotation": [ 0, 30, 0 ]
+				"rotation": [ 0, -20, 0 ]
 			},
 			"components": [
 				{
 					"type": "ModelComponent",
-					"modelName": "fantasy/obj/SF_Prop_Goblin_Seat_02.obj",
-					"materialName": "fantasy/fantasy.mtrl"
-				},
-				{
-					"type": "RotateComponent",
-					"eulerRotation": [ 0, 30, 0 ]
-				}
-			]
-		},
-		{
-			"type": "Actor",
-			"name": "Goblin Weapon",
-			"persistent": true,
-			"transform": {
-				"position": [ 4, -1, -11 ],
-				"scale": [ 1, 1, 1 ],
-				"rotation": [ 180, 0, 5 ]
-			},
-			"components": [
-				{
-					"type": "ModelComponent",
-					"modelName": "fantasy/obj/SF_Wep_Goblin_Mace_01.obj",
+					"modelName": "fantasy/obj/SF_Prop_Flag_010.obj",
 					"materialName": "fantasy/fantasy.mtrl"
 				},
 				{
@@ -117,9 +202,9 @@
 			"name": "The Ground",
 			"persistent": true,
 			"transform": {
-				"position": [ 9, -3, -7 ],
-				"scale": [ 2, 2, 2 ],
-				"rotation": [ 0, 90, 0 ]
+				"position": [ -15, 0, 11 ],
+				"scale": [ 3, 2, 2 ],
+				"rotation": [ 0, 0, 0 ]
 			},
 			"components": [
 				{
@@ -139,7 +224,7 @@
 			"persistent": true,
 			"active": false,
 			"transform": {
-				"position": [ 2.4, 0, 0 ],
+				"position": [ 5, 8, 15 ],
 				"scale": [ 1, 1, 1 ],
 				"rotation": [ 0, 0, 0 ]
 			},
