@@ -94,11 +94,18 @@ void phong(in Light light, in vec3 position, in vec3 normal, out vec3 diffuse, o
 	specular = vec3(0);
 	if (intensity > 0) // checks whether the surface is facing the light source 
 	{
-		vec3 reflection = reflect(-lightDir, normal); // calculate reflection vector (which direction light bounces off surface)
-		vec3 viewDir = normalize(-position); // calc view dir vector (normalized vector pointing from frag position to camera)
-		float intensity = max(dot(reflection, viewDir), 0); // dot product of reflection vector and view direction (angle between ref vector and view vector)
-		intensity = pow(intensity, material.shininess); // raise intensity to power of shininess setting in material 
-		specular = vec3(intensity * spotIntensity); // final specular color 
+		vec3 viewDir = normalize(-position);
+		// phong
+		//vec3 reflection = reflect(-lightDir, normal); 
+		//float intensity = max(dot(reflection, viewDir), 0); 
+		
+		// blinn-phong
+		vec3 h = normalize( viewDir + lightDir);
+		intensity = max(dot(h, normal), 0); 
+
+
+		intensity = pow(intensity, material.shininess);
+		specular = vec3(intensity * spotIntensity); 
 	}
 
 }
