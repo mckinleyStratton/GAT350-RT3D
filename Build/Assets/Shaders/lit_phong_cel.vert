@@ -11,6 +11,7 @@ out layout(location = 0) vec3 oposition;
 out layout(location = 1) vec3 onormal;
 out layout(location = 2) vec2 otexcoord;
 out layout(location = 3) vec4 oshadowcoord;
+out layout(location = 4) vec3 oviewdir;
 
 // pass in model matrix from world - used to transform vertex positions and normals
 uniform mat4 model; 
@@ -40,11 +41,15 @@ void main()
 	// transforms  vertex positions to view space
 	oposition = vec3(modelView * vec4(vposition, 1));
 
-	// transforms the normal vectors to view space and normalizes them 
+	// convert position and normal to world-view space
+	oposition = vec3(modelView * vec4(vposition, 1));
 	onormal = normalize(mat3(modelView) * vnormal);
-
-	// calculate texture coordinates, applying tiling and offset as defined in the material struct 
 	otexcoord = (vtexcoord * material.tiling) + material.offset;
+
+
+	// calculate view direction, the oposition has already been moved into world-view space
+	oviewdir = normalize(-oposition);
+
 
 	oshadowcoord = shadowVP * model * vec4(vposition, 1);
 

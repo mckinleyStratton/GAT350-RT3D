@@ -51,6 +51,7 @@ uniform float shadowBias = 0.005;
 
 uniform int celLevels = 4;
 uniform float celSpecularCutoff = 0.1;
+uniform float celOutline = 0.3;
  
 const float celScaleFactor = 1.0 / celLevels;
 
@@ -137,6 +138,16 @@ void main()
 	// set lights
 	for (int i = 0; i < numLights; i++)
 	{
+
+	vec3 fviewDir = normalize(fnormal - fposition);
+	float outline = dot(fnormal, fviewDir);
+	if (outline < celOutline)
+	{
+    ocolor = vec4(1);
+    return; // done rendering this fragment (pixel)
+	}
+
+
 		vec3 diffuse;
 		vec3 specular;
  
