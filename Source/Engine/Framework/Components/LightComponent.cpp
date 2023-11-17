@@ -64,11 +64,11 @@ namespace nc
 
 	glm::mat4 LightComponent::GetShadowMatrix()
 	{
-		glm::mat4 projetion = glm::ortho(-shadowSize * 0.5f, shadowSize * 0.5f, -shadowSize * 0.5f, shadowSize * 0.5f, 0.1f, 50.0f);
+		glm::mat4 projection = glm::ortho(-shadowSize * 0.5f, shadowSize * 0.5f, -shadowSize * 0.5f, shadowSize * 0.5f, 0.1f, 50.0f);
 		glm::mat4 view = glm::lookAt(m_owner->transform.position, m_owner->transform.position + m_owner->transform.Forward(), glm::vec3{ 0, 1, 0});
 
 
-		return projetion * view;
+		return projection * view;
 	}
 
 	void LightComponent::Read(const nc::json_t& value)
