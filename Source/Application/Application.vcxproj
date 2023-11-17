@@ -169,6 +169,7 @@
   <ItemGroup>
     <None Include="..\..\Build\Assets\Fantasy\fantasy.mtrl" />
     <None Include="..\..\Build\Assets\Materials\cel.mtrl" />
+    <None Include="..\..\Build\Assets\Materials\fantasy_cell.mtrl" />
     <None Include="..\..\Build\Assets\Materials\framebuffer.mtrl" />
     <None Include="..\..\Build\Assets\Materials\grid.mtrl" />
     <None Include="..\..\Build\Assets\Materials\moo.mtrl" />
