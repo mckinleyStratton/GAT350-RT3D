@@ -38,6 +38,10 @@ namespace nc
 		float m_bTint	= 1;
 		float m_gTint	= 1;
 
+		int m_celLevels = 4;
+		float m_celSpecularCutoff = 0.1;
+		float m_outline = 0.3;
+
 		uint32_t m_params{ 0 };
 
 		float m_refraction{ 1 };

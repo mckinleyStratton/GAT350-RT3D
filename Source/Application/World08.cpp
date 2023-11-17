@@ -54,6 +54,25 @@ namespace nc
 		m_scene->Update(dt);
 		m_scene->ProcessGui();
 
+		ImGui::Begin("Cel");
+
+
+		ImGui::SliderInt("Cel Levels", &m_celLevels, 1, 10);
+		ImGui::SliderFloat("Specular Curoff", &m_celSpecularCutoff, 0, 0.8);
+		ImGui::SliderFloat("Toon Outline", &m_outline, 0, 1);
+
+		ImGui::End();
+
+		auto program = GET_RESOURCE(Program, "shaders/lit_phong_cel.prog");
+		if (program)
+		{
+			program->Use();
+			program->SetUniform("celLevels", m_celLevels);
+			program->SetUniform("celSpecularCutoff", m_celSpecularCutoff);
+			program->SetUniform("celOutline", m_outline);
+
+		}
+
 		ENGINE.GetSystem<Gui>()->EndFrame();
 
 	}
@@ -100,6 +119,7 @@ namespace nc
 
 		// post-render
 		ENGINE.GetSystem<Gui>()->Draw();
+
 		renderer.EndFrame();
 	}
 }
