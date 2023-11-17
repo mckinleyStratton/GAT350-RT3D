@@ -185,6 +185,7 @@
     <None Include="..\..\Build\Assets\Scenes\scene.json" />
     <None Include="..\..\Build\Assets\Scenes\scene_framebuffer.json" />
     <None Include="..\..\Build\Assets\Scenes\scene_shadow.json" />
+    <None Include="..\..\Build\Assets\Scenes\scene_toon.json" />
     <None Include="..\..\Build\Assets\Shaders\cubemap.frag" />
     <None Include="..\..\Build\Assets\Shaders\lit_phong.frag" />
     <None Include="..\..\Build\Assets\Shaders\lit_phong.prog" />

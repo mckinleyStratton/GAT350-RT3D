@@ -1,0 +1,268 @@
+{
+	"actors": [
+		{
+			"type": "Actor",
+			"name": "Light",
+			"persistent": true,
+			"transform": {
+				"position": [ 0, 8, 20 ],
+				"rotation": [ 0, 180, 0 ],
+				"scale": [ 0.5, 0.5, 0.5 ]
+			},
+			"components": [
+				{
+					"type": "LightComponent",
+					"lightType": "directional",
+					"color": [ 1, 1, 1 ],
+					"intensity": 1,
+					"range": 20,
+					"innerAngle": 10,
+					"outerAngle": 20,
+					"castShadow": true
+				},
+				{
+					"type": "ModelComponent",
+					"modelName": "models/quad.obj",
+					"materialName": "materials/ui_light.mtrl"
+				}
+			]
+		},
+		{
+			"type": "Actor",
+			"name": "Camera",
+			"persistent": true,
+			"transform": {
+				"position": [ 0, 7, 14 ],
+				"rotation": [ 0, 0, 0 ]
+			},
+			"components": [
+				{
+					"type": "CameraComponent",
+					"fov": 70.0,
+					"aspect": 2,
+					"near": 0.1,
+					"far": 100
+				},
+				{
+					"type": "CameraController",
+					"speed": 10,
+					"sensitivity": 0.5
+				}
+			]
+		},
+		{
+			"type": "Actor",
+			"name": "OGRE",
+			"persistent": true,
+			"transform": {
+				"position": [ 0, 3, 4 ],
+				"scale": [ 3, 3, 3 ],
+				"rotation": [ 0, 0, 0 ]
+			},
+			"components": [
+				{
+					"type": "ModelComponent",
+					"modelName": "models/ogre.obj",
+					"materialName": "materials/ogre.mtrl"
+				},
+				{
+					"type": "RotateComponent",
+					"eulerRotation": [ 0, 30, 0 ]
+				}
+			]
+		},
+		{
+			"type": "Actor",
+			"name": "Goblin House",
+			"persistent": true,
+			"active": false,
+			"transform": {
+				"position": [ -3, 0, 0 ],
+				"scale": [ 1, 1, 1 ],
+				"rotation": [ 0, 15, 0 ]
+			},
+			"components": [
+				{
+					"type": "ModelComponent",
+					"modelName": "fantasy/obj/SF_Bld_Goblin_House_02.obj",
+					"materialName": "fantasy/fantasy.mtrl"
+				},
+				{
+					"type": "RotateComponent",
+					"eulerRotation": [ 0, 0, 0 ]
+				}
+			]
+		},
+		{
+			"type": "Actor",
+			"name": "Skull",
+			"persistent": true,
+			"active": false,
+			"transform": {
+				"position": [ -11, 0.9, 7.5 ],
+				"scale": [ 0.15, 0.15, 0.15 ],
+				"rotation": [ -9, 50, 110 ]
+			},
+			"components": [
+				{
+					"type": "ModelComponent",
+					"modelName": "fantasy/obj/SF_Bld_Goblin_Skull_01.obj",
+					"materialName": "fantasy/fantasy.mtrl"
+				},
+				{
+					"type": "RotateComponent",
+					"eulerRotation": [ 0, 0, 0 ]
+				}
+			]
+		},
+		{
+			"type": "Actor",
+			"name": "Skull2",
+			"persistent": true,
+			"active": false,
+			"transform": {
+				"position": [ -9, 1, 9 ],
+				"scale": [ 0.15, 0.15, 0.15 ],
+				"rotation": [ 0, -25, 180 ]
+			},
+			"components": [
+				{
+					"type": "ModelComponent",
+					"modelName": "fantasy/obj/SF_Bld_Goblin_Skull_01.obj",
+					"materialName": "fantasy/fantasy.mtrl"
+				},
+				{
+					"type": "RotateComponent",
+					"eulerRotation": [ 0, 0, 0 ]
+				}
+			]
+		},
+		{
+			"type": "Actor",
+			"name": "Skull3",
+			"persistent": true,
+			"active": false,
+			"transform": {
+				"position": [ -8, 0, 6 ],
+				"scale": [ 0.15, 0.15, 0.15 ],
+				"rotation": [ 0, 64, -9 ]
+			},
+			"components": [
+				{
+					"type": "ModelComponent",
+					"modelName": "fantasy/obj/SF_Bld_Goblin_Skull_01.obj",
+					"materialName": "fantasy/fantasy.mtrl"
+				},
+				{
+					"type": "RotateComponent",
+					"eulerRotation": [ 0, 0, 0 ]
+				}
+			]
+		},
+		{
+			"type": "Actor",
+			"name": "Ribcage",
+			"persistent": true,
+			"active": false,
+			"transform": {
+				"position": [ 8, 2, -1 ],
+				"scale": [ 0.3, 0.3, 0.3 ],
+				"rotation": [ 180, -130, 15 ]
+			},
+			"components": [
+				{
+					"type": "ModelComponent",
+					"modelName": "fantasy/obj/SF_Bld_Goblin_Ribcage_01.obj",
+					"materialName": "fantasy/fantasy.mtrl"
+				},
+				{
+					"type": "RotateComponent",
+					"eulerRotation": [ 0, 0, 0 ]
+				}
+			]
+		},
+		{
+			"type": "Actor",
+			"name": "Rock",
+			"persistent": true,
+			"active": false,
+			"transform": {
+				"position": [ 7, 0, 7 ],
+				"scale": [ 0.4, 0.3, 0.3 ],
+				"rotation": [ 0, 0, 0 ]
+			},
+			"components": [
+				{
+					"type": "ModelComponent",
+					"modelName": "fantasy/obj/SF_Env_Rock_02.obj",
+					"materialName": "fantasy/fantasy.mtrl"
+				},
+				{
+					"type": "RotateComponent",
+					"eulerRotation": [ 0, 0, 0 ]
+				}
+			]
+		},
+		{
+			"type": "Actor",
+			"name": "Flag",
+			"persistent": true,
+			"active": false,
+			"transform": {
+				"position": [ 3, 0, 5 ],
+				"scale": [ 1, 1, 1 ],
+				"rotation": [ 0, -20, 0 ]
+			},
+			"components": [
+				{
+					"type": "ModelComponent",
+					"modelName": "fantasy/obj/SF_Prop_Flag_010.obj",
+					"materialName": "fantasy/fantasy.mtrl"
+				},
+				{
+					"type": "RotateComponent",
+					"eulerRotation": [ 0, 0, 0 ]
+				}
+			]
+		},
+		{
+			"type": "Actor",
+			"name": "The Ground",
+			"persistent": true,
+			"transform": {
+				"position": [ -15, 0, 11 ],
+				"scale": [ 3, 2, 2 ],
+				"rotation": [ 0, 0, 0 ]
+			},
+			"components": [
+				{
+					"type": "ModelComponent",
+					"modelName": "fantasy/obj/SF_Env_Tile_Grass_01.obj",
+					"materialName": "fantasy/fantasy.mtrl"
+				},
+				{
+					"type": "RotateComponent",
+					"eulerRotation": [ 0, 0, 0 ]
+				}
+			]
+		},
+		{
+			"type": "Actor",
+			"name": "Depth DEBUG",
+			"persistent": true,
+			"active": false,
+			"transform": {
+				"position": [ 5, 8, 15 ],
+				"scale": [ 1, 1, 1 ],
+				"rotation": [ 0, 0, 0 ]
+			},
+			"components": [
+				{
+					"type": "ModelComponent",
+					"modelName": "models/quad.obj",
+					"materialName": "materials/sprite.mtrl"
+				}
+			]
+		}
+	]
+}

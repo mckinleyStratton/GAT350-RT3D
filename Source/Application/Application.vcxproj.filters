@@ -245,5 +245,8 @@
     <None Include="..\..\Build\Assets\Materials\ui_light.mtrl">
       <Filter>Materials</Filter>
     </None>
+    <None Include="..\..\Build\Assets\Scenes\scene_toon.json">
+      <Filter>Scenes</Filter>
+    </None>
   </ItemGroup>
 </Project>
