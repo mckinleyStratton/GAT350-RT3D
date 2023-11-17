@@ -59,6 +59,8 @@ float attenuation(in vec3 position1, in vec3 position2, in float range)
  
 	return attenuation;
 }
+
+
 void phong(in Light light, in vec3 position, in vec3 normal, out vec3 diffuse, out vec3 specular)
 {
 	// DIFFUSE lighting component based on the light direction and surface normal 
