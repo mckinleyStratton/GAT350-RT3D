@@ -49,8 +49,8 @@ uniform int numLights = 3;
 uniform float shadowBias = 0.005;
 
 
-uniform int celLevels = 5;
-uniform float celSpecularCutoff = 0.3;
+uniform int celLevels = 4;
+uniform float celSpecularCutoff = 0.1;
  
 const float celScaleFactor = 1.0 / celLevels;
 
@@ -113,7 +113,9 @@ void phong(in Light light, in vec3 position, in vec3 normal, out vec3 diffuse, o
 
 
 		intensity = pow(intensity, material.shininess);
-		specular = vec3(intensity * spotIntensity); 
+		intensity = (intensity < celSpecularCutoff) ? 0 : 1;
+		specular = vec3(intensity * spotIntensity);
+
 	}
 
 }
