@@ -248,5 +248,17 @@
     <None Include="..\..\Build\Assets\Scenes\scene_toon.json">
       <Filter>Scenes</Filter>
     </None>
+    <None Include="..\..\Build\Assets\Shaders\lit_phong_cel.vert">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="..\..\Build\Assets\Shaders\lit_phong_cel.prog">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="..\..\Build\Assets\Shaders\lit_phong_cel.frag">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="..\..\Build\Assets\Materials\cel.mtrl">
+      <Filter>Materials</Filter>
+    </None>
   </ItemGroup>
 </Project>
