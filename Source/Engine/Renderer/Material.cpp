@@ -126,7 +126,18 @@ namespace nc
 	}
 	void Material::ProcessGui()
 	{
-		ImGui::ColorEdit4("Albedo", glm::value_ptr(albedo));
+		ImGui::TextColored(ImVec4{ 0, 1, 0, 1 }, "Name: %s", name.c_str());
+		ImGui::Text("Albedo  ");
+		ImGui::SameLine();
+		ImGui::ColorEdit3("Albedo", glm::value_ptr(albedo), ImGuiColorEditFlags_NoLabel | ImGuiColorEditFlags_NoInputs);
+		if (albedoTexture)
+		{
+			ImGui::SameLine();
+			ImGui::Text("%s", albedoTexture->name.c_str());
+		}
+
+
+		//ImGui::ColorEdit4("Albedo", glm::value_ptr(albedo));
 		ImGui::ColorEdit4("Specular", glm::value_ptr(specular));
 		ImGui::DragFloat("Shininess", &shininess, 0.1f, 2.0f, 200.0f);
 		ImGui::ColorEdit4("Emissive", glm::value_ptr(emissive));
