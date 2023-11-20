@@ -136,11 +136,38 @@ namespace nc
 			ImGui::Text("%s", albedoTexture->name.c_str());
 		}
 
-
-		//ImGui::ColorEdit4("Albedo", glm::value_ptr(albedo));
-		ImGui::ColorEdit4("Specular", glm::value_ptr(specular));
+		// specuar
+		ImGui::TextColored(ImVec4{ 0, 1, 0, 1 }, "Name: %s", name.c_str());
+		ImGui::Text("Specular  ");
+		ImGui::SameLine();
+		ImGui::ColorEdit3("Specualr", glm::value_ptr(specular), ImGuiColorEditFlags_NoLabel | ImGuiColorEditFlags_NoInputs);
+		if (specularTexture)
+		{
+			ImGui::SameLine();
+			ImGui::Text("%s", specularTexture->name.c_str());
+		}
 		ImGui::DragFloat("Shininess", &shininess, 0.1f, 2.0f, 200.0f);
-		ImGui::ColorEdit4("Emissive", glm::value_ptr(emissive));
+
+		// emissive
+		ImGui::TextColored(ImVec4{ 0, 1, 0, 1 }, "Name: %s", name.c_str());
+		ImGui::Text("Emissive  ");
+		ImGui::SameLine();
+		ImGui::ColorEdit3("Emissive", glm::value_ptr(emissive), ImGuiColorEditFlags_NoLabel | ImGuiColorEditFlags_NoInputs);
+		if (emissiveTexture)
+		{
+			ImGui::SameLine();
+			ImGui::Text("%s", emissiveTexture->name.c_str());
+		}
+
+		//  normal
+		ImGui::Text("Normal  ");
+		if (normalTexture)
+		{
+			ImGui::SameLine();
+			ImGui::Text("%s", normalTexture->name.c_str());
+		}
+
+		// uv
 		ImGui::DragFloat2("Tiling", glm::value_ptr(tiling), 0.1f);
 		ImGui::DragFloat2("Offset", glm::value_ptr(offset), 0.1f);
 	}
