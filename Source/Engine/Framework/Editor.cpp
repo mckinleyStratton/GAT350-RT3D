@@ -45,6 +45,16 @@ namespace nc
 		if (m_selected)
 		{
 			m_selected->ProcessGui();
+			// delete selected actor
+			if (ImGui::IsKeyPressed(ImGuiKey_Delete))
+			{
+				auto actor = dynamic_cast<Actor*>(m_selected);
+				if (actor)
+				{
+					scene->Remove(actor);
+					m_selected = nullptr;
+				}
+			}
 		}
 		ImGui::End();
 
