@@ -126,14 +126,11 @@ namespace nc
 	}
 	void Material::ProcessGui()
 	{
-		ImGui::Begin("Material");
 		ImGui::ColorEdit4("Albedo", glm::value_ptr(albedo));
 		ImGui::ColorEdit4("Specular", glm::value_ptr(specular));
 		ImGui::DragFloat("Shininess", &shininess, 0.1f, 2.0f, 200.0f);
 		ImGui::ColorEdit4("Emissive", glm::value_ptr(emissive));
 		ImGui::DragFloat2("Tiling", glm::value_ptr(tiling), 0.1f);
 		ImGui::DragFloat2("Offset", glm::value_ptr(offset), 0.1f);
-
-		ImGui::End();
 	}
 }

@@ -36,19 +36,16 @@ namespace nc
 			}
 		}
 
-		/*
+		
 
 		ImGui::End();
 
+		// show inspector
 		ImGui::Begin("Inspector");
-		auto iter = std::find_if(m_actors.begin(), m_actors.end(), [](auto& a) { return a->guiSelect; });
-		if (iter != m_actors.end())
+		if (m_selected)
 		{
-			(*iter)->ProcessGui();
+			m_selected->ProcessGui();
 		}
-
-		*/
-
 		ImGui::End();
 
 
