@@ -131,6 +131,12 @@ namespace nc
 	}
 	void Material::ProcessGui()
 	{
+		// shader
+		ImGui::Text("Shader:");
+		ImGui::SameLine();
+		ImGui::Text("%s", m_program->name.c_str());
+		Gui::GetDialogResource<Program>(m_program, "ShaderTextureDialog", "Open Shader", "Shader file (*.prog){.prog},.*");
+
 		// albedo
 		ImGui::TextColored(ImVec4{ 0, 1, 0, 1 }, "Name: %s", name.c_str());
 		ImGui::Text("Albedo  ");
@@ -138,19 +144,8 @@ namespace nc
 		ImGui::ColorEdit3("Albedo", glm::value_ptr(albedo), ImGuiColorEditFlags_NoLabel | ImGuiColorEditFlags_NoInputs);
 		ImGui::SameLine();
 		(albedoTexture) ? ImGui::Text("%s", albedoTexture->name.c_str()) : ImGui::Text("None");
-		if (ImGui::IsItemClicked(0))
-		{
-			ifd::FileDialog::Instance().Open("AlbedoTextureDialog", "Open texture", "Image file (*.png;*.jpg;*.jpeg;*.bmp;*.tga){.png,.jpg,.jpeg,.bmp,.tga},.*", false);
-		}
-		if (ifd::FileDialog::Instance().IsDone("AlbedoTextureDialog"))
-		{
-			if (ifd::FileDialog::Instance().HasResult())
-			{
-				auto textureName = getRelativePath(ifd::FileDialog::Instance().GetResult());
-				albedoTexture = GET_RESOURCE(Texture, textureName);
-			}
-			ifd::FileDialog::Instance().Close();
-		}
+		Gui::GetDialogResource<Texture>(albedoTexture, "AlbedoTextureDialog", "Open texture", "Image file (*.png;*.jpg;*.jpeg;*.bmp;*.tga){.png,.jpg,.jpeg,.bmp,.tga},.*");
+
 
 
 		// specualr
@@ -161,6 +156,7 @@ namespace nc
 		ImGui::SameLine();
 		(specularTexture) ? ImGui::Text("%s", specularTexture->name.c_str()) : ImGui::Text("None");
 		ImGui::DragFloat("Shininess", &shininess, 0.1f, 2.0f, 200.0f);
+		Gui::GetDialogResource<Texture>(specularTexture, "SpecularTextureDialog", "Open texture", "Image file (*.png;*.jpg;*.jpeg;*.bmp;*.tga){.png,.jpg,.jpeg,.bmp,.tga},.*");
 
 		// emissive
 		ImGui::TextColored(ImVec4{ 0, 1, 0, 1 }, "Name: %s", name.c_str());
@@ -169,11 +165,13 @@ namespace nc
 		ImGui::ColorEdit3("Emissive", glm::value_ptr(emissive), ImGuiColorEditFlags_NoLabel | ImGuiColorEditFlags_NoInputs);
 		ImGui::SameLine();
 		(emissiveTexture) ? ImGui::Text("%s", emissiveTexture->name.c_str()) : ImGui::Text("None");
+		Gui::GetDialogResource<Texture>(emissiveTexture, "EmissiveTextureDialog", "Open texture", "Image file (*.png;*.jpg;*.jpeg;*.bmp;*.tga){.png,.jpg,.jpeg,.bmp,.tga},.*");
 
 
 		//  normal
 		ImGui::Text("Normal  ");
 		(normalTexture) ? ImGui::Text("%s", normalTexture->name.c_str()) : ImGui::Text("None");
+		Gui::GetDialogResource<Texture>(normalTexture, "NormalTextureDialog", "Open texture", "Image file (*.png;*.jpg;*.jpeg;*.bmp;*.tga){.png,.jpg,.jpeg,.bmp,.tga},.*");
 
 
 		// uv
