@@ -1,5 +1,6 @@
 #include "Editor.h"
 #include "Scene.h"
+#include "Components/CameraComponent.h"
 
 namespace nc 
 {
@@ -36,6 +37,9 @@ namespace nc
 		// actor controls
 		if (ImGui::BeginPopupContextWindow())
 		{
+			auto cameras = scene->GetComponents<CameraComponent>();
+			auto camera = (!cameras.empty()) ? cameras[0] : nullptr;
+
 			if (ImGui::MenuItem("Create Empty")) 
 			{
 				auto actor = CREATE_CLASS(Actor);
@@ -49,6 +53,10 @@ namespace nc
 			{
 				auto actor = CREATE_CLASS_BASE(Actor, "Sphere");
 				actor->name = CreateUnique(actor->name);
+				if (camera)
+				{
+					actor->transform.position = camera->m_owner->transform.position + camera->m_owner->transform.Forward() * 3.0f;
+				}
 				actor->Initialize();
 				m_selected = actor.get();
 				scene->Add(std::move(actor));
