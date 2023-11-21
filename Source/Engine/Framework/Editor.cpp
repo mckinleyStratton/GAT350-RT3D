@@ -65,8 +65,23 @@ namespace nc
 			}
 
 
-			if (ImGui::MenuItem("Camera")) {}
-			if (ImGui::MenuItem("Light")) {}
+			if (ImGui::MenuItem("Camera")) 
+			{
+				auto actor = CREATE_CLASS_BASE(Actor, "Camera");
+				actor->name = CreateUnique(actor->name);
+				actor->Initialize();
+				m_selected = actor.get();
+				scene->Add(std::move(actor));
+			}
+
+			if (ImGui::MenuItem("Light")) 
+			{
+				auto actor = CREATE_CLASS_BASE(Actor, "Light");
+				actor->name = CreateUnique(actor->name);
+				actor->Initialize();
+				m_selected = actor.get();
+				scene->Add(std::move(actor));
+			}
 
 			ImGui::EndPopup();
 		}
