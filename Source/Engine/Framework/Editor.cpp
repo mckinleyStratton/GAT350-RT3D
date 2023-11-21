@@ -30,7 +30,20 @@ namespace nc
 		ImGui::Begin("Scene");
 		scene->ProcessGui();
 		ImGui::Separator();
+		
 		// show actors
+		ImGui::BeginChild("Actors");
+		// actor controls
+		if (ImGui::BeginPopupContextWindow())
+		{
+			if (ImGui::MenuItem("Create Empty")) {}
+			if (ImGui::MenuItem("Sphere")) {}
+			if (ImGui::MenuItem("Cube")) {}
+			if (ImGui::MenuItem("Camera")) {}
+			if (ImGui::MenuItem("Light")) {}
+
+			ImGui::EndPopup();
+		}
 
 
 		for (auto& actor : scene->m_actors)
@@ -42,7 +55,7 @@ namespace nc
 		}
 
 		
-
+		ImGui::EndChild();
 		ImGui::End();
 
 		// show inspector
