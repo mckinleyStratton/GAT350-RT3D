@@ -168,6 +168,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\Build\Assets\Fantasy\fantasy.mtrl" />
+    <None Include="..\..\Build\Assets\Materials\basic.mtrl" />
     <None Include="..\..\Build\Assets\Materials\cel.mtrl" />
     <None Include="..\..\Build\Assets\Materials\fantasy_cell.mtrl" />
     <None Include="..\..\Build\Assets\Materials\framebuffer.mtrl" />
@@ -183,8 +184,10 @@
     <None Include="..\..\Build\Assets\Materials\skybox.mtrl" />
     <None Include="..\..\Build\Assets\Materials\sprite.mtrl" />
     <None Include="..\..\Build\Assets\Materials\tree.mtrl" />
+    <None Include="..\..\Build\Assets\Materials\ui_camera.mtrl" />
     <None Include="..\..\Build\Assets\Materials\ui_light.mtrl" />
     <None Include="..\..\Build\Assets\Scenes\scene.json" />
+    <None Include="..\..\Build\Assets\Scenes\scene_editor.json" />
     <None Include="..\..\Build\Assets\Scenes\scene_framebuffer.json" />
     <None Include="..\..\Build\Assets\Scenes\scene_shadow.json" />
     <None Include="..\..\Build\Assets\Scenes\scene_toon.json" />

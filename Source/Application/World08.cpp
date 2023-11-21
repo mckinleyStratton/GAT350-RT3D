@@ -11,6 +11,7 @@ namespace nc
 	bool World08::Initialize()
 	{
 		m_scene = std::make_unique<Scene>();
+		m_scene->Load("Scenes/scene_editor.json");
 		m_scene->Load("Scenes/scene_toon.json");
 		m_scene->Initialize();
 

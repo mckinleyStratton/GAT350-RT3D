@@ -36,7 +36,16 @@ namespace nc
 		// actor controls
 		if (ImGui::BeginPopupContextWindow())
 		{
-			if (ImGui::MenuItem("Create Empty")) {}
+			if (ImGui::MenuItem("Create Empty")) 
+			{
+				auto actor = CREATE_CLASS(Actor);
+				actor->name = CreateUnique(actor->GetClassName());
+				actor->Initialize();
+				m_selected = actor.get();
+				scene->Add(std::move(actor));
+			}
+
+
 			if (ImGui::MenuItem("Sphere")) {}
 			if (ImGui::MenuItem("Cube")) {}
 			if (ImGui::MenuItem("Camera")) {}
