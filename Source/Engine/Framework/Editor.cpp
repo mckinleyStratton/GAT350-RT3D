@@ -45,9 +45,26 @@ namespace nc
 				scene->Add(std::move(actor));
 			}
 
+			if (ImGui::MenuItem("Sphere")) 
+			{
+				auto actor = CREATE_CLASS_BASE(Actor, "Sphere");
+				actor->name = CreateUnique(actor->name);
+				actor->Initialize();
+				m_selected = actor.get();
+				scene->Add(std::move(actor));
+			}
 
-			if (ImGui::MenuItem("Sphere")) {}
-			if (ImGui::MenuItem("Cube")) {}
+
+			if (ImGui::MenuItem("Cube")) 
+			{
+				auto actor = CREATE_CLASS_BASE(Actor, "Cube");
+				actor->name = CreateUnique(actor->name);
+				actor->Initialize();
+				m_selected = actor.get();
+				scene->Add(std::move(actor));
+			}
+
+
 			if (ImGui::MenuItem("Camera")) {}
 			if (ImGui::MenuItem("Light")) {}
 
