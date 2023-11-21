@@ -3,6 +3,7 @@
 #include "Texture.h"
 #include "Cubemap.h"
 #include "Core/Core.h"
+#include <imgui/ImFileDialog.h>
 
 namespace nc
 {
@@ -28,7 +29,6 @@ namespace nc
 		READ_NAME_DATA(document, "albedoTexture", albedoTextureName);
 		if (!albedoTextureName.empty())
 		{
-			params |= ALBEDO_TEXTURE_MASK;
 			albedoTexture = GET_RESOURCE(Texture, albedoTextureName);
 		}
 
@@ -36,7 +36,6 @@ namespace nc
 		READ_NAME_DATA(document, "specularTexture", specularTextureName);
 		if (!specularTextureName.empty())
 		{
-			params |= SPECULAR_TEXTURE_MASK;
 			specularTexture = GET_RESOURCE(Texture, specularTextureName);
 		}
 
@@ -44,7 +43,6 @@ namespace nc
 		READ_NAME_DATA(document, "emissiveTexture", emissiveTextureName);
 		if (!emissiveTextureName.empty())
 		{
-			params |= EMISSIVE_TEXTURE_MASK;
 
 			emissiveTexture = GET_RESOURCE(Texture, emissiveTextureName);
 		}
@@ -53,7 +51,6 @@ namespace nc
 		READ_NAME_DATA(document, "normalTexture", normalTextureName);
 		if (!normalTextureName.empty())
 		{
-			params |= NORMAL_TEXTURE_MASK;
 
 			normalTexture = GET_RESOURCE(Texture, normalTextureName);
 		}
@@ -62,7 +59,6 @@ namespace nc
 		std::string cubemapName;
 		if (READ_NAME_DATA(document, "cubemap", cubemapName))
 		{
-			params |= CUBEMAP_TEXTURE_MASK;
 			std::vector<std::string> cubemaps;
 			READ_DATA(document, cubemaps);
 			cubemapTexture = GET_RESOURCE(Cubemap, cubemapName, cubemaps);
@@ -91,29 +87,38 @@ namespace nc
 
 		if (albedoTexture)
 		{
+			params |= ALBEDO_TEXTURE_MASK;
 			albedoTexture->SetActive(GL_TEXTURE0);
 			albedoTexture->Bind();
 		}
 
 		if (specularTexture)
 		{
+			params |= SPECULAR_TEXTURE_MASK;
+
 			specularTexture->SetActive(GL_TEXTURE1);
 			specularTexture->Bind();
 		}
 
 		if (normalTexture)
 		{
+			params |= NORMAL_TEXTURE_MASK;
+
 			normalTexture->SetActive(GL_TEXTURE2);
 			normalTexture->Bind();
 		}
 
 		if (emissiveTexture)
 		{
+			params |= EMISSIVE_TEXTURE_MASK;
+
 			emissiveTexture->SetActive(GL_TEXTURE3);
 			emissiveTexture->Bind();
 		}		
 		if (cubemapTexture)
 		{
+			params |= CUBEMAP_TEXTURE_MASK;
+
 			cubemapTexture->SetActive(GL_TEXTURE4);
 			cubemapTexture->Bind();
 		}
@@ -126,26 +131,35 @@ namespace nc
 	}
 	void Material::ProcessGui()
 	{
+		// albedo
 		ImGui::TextColored(ImVec4{ 0, 1, 0, 1 }, "Name: %s", name.c_str());
 		ImGui::Text("Albedo  ");
 		ImGui::SameLine();
 		ImGui::ColorEdit3("Albedo", glm::value_ptr(albedo), ImGuiColorEditFlags_NoLabel | ImGuiColorEditFlags_NoInputs);
-		if (albedoTexture)
+		ImGui::SameLine();
+		(albedoTexture) ? ImGui::Text("%s", albedoTexture->name.c_str()) : ImGui::Text("None");
+		if (ImGui::IsItemClicked(0))
 		{
-			ImGui::SameLine();
-			ImGui::Text("%s", albedoTexture->name.c_str());
+			ifd::FileDialog::Instance().Open("AlbedoTextureDialog", "Open texture", "Image file (*.png;*.jpg;*.jpeg;*.bmp;*.tga){.png,.jpg,.jpeg,.bmp,.tga},.*", false);
+		}
+		if (ifd::FileDialog::Instance().IsDone("AlbedoTextureDialog"))
+		{
+			if (ifd::FileDialog::Instance().HasResult())
+			{
+				auto textureName = getRelativePath(ifd::FileDialog::Instance().GetResult());
+				albedoTexture = GET_RESOURCE(Texture, textureName);
+			}
+			ifd::FileDialog::Instance().Close();
 		}
 
-		// specuar
+
+		// specualr
 		ImGui::TextColored(ImVec4{ 0, 1, 0, 1 }, "Name: %s", name.c_str());
 		ImGui::Text("Specular  ");
 		ImGui::SameLine();
 		ImGui::ColorEdit3("Specualr", glm::value_ptr(specular), ImGuiColorEditFlags_NoLabel | ImGuiColorEditFlags_NoInputs);
-		if (specularTexture)
-		{
-			ImGui::SameLine();
-			ImGui::Text("%s", specularTexture->name.c_str());
-		}
+		ImGui::SameLine();
+		(specularTexture) ? ImGui::Text("%s", specularTexture->name.c_str()) : ImGui::Text("None");
 		ImGui::DragFloat("Shininess", &shininess, 0.1f, 2.0f, 200.0f);
 
 		// emissive
@@ -153,19 +167,14 @@ namespace nc
 		ImGui::Text("Emissive  ");
 		ImGui::SameLine();
 		ImGui::ColorEdit3("Emissive", glm::value_ptr(emissive), ImGuiColorEditFlags_NoLabel | ImGuiColorEditFlags_NoInputs);
-		if (emissiveTexture)
-		{
-			ImGui::SameLine();
-			ImGui::Text("%s", emissiveTexture->name.c_str());
-		}
+		ImGui::SameLine();
+		(emissiveTexture) ? ImGui::Text("%s", emissiveTexture->name.c_str()) : ImGui::Text("None");
+
 
 		//  normal
 		ImGui::Text("Normal  ");
-		if (normalTexture)
-		{
-			ImGui::SameLine();
-			ImGui::Text("%s", normalTexture->name.c_str());
-		}
+		(normalTexture) ? ImGui::Text("%s", normalTexture->name.c_str()) : ImGui::Text("None");
+
 
 		// uv
 		ImGui::DragFloat2("Tiling", glm::value_ptr(tiling), 0.1f);

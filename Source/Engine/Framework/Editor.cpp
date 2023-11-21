@@ -27,7 +27,6 @@ namespace nc
 		ImGui::End();
 
 		// show scene
-
 		ImGui::Begin("Scene");
 		scene->ProcessGui();
 		ImGui::Separator();
