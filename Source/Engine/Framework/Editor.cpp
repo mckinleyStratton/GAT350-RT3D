@@ -3,9 +3,15 @@
 
 namespace nc 
 {
+	void Editor::Update()
+	{
+		if (ImGui::IsKeyPressed(ImGuiKey_GraveAccent)) m_active = !m_active;
+	}
 
 	void Editor::ProgessGui(Scene* scene)
 	{
+		if (!m_active) return;
+
 		// show resources
 		ImGui::Begin("Resources");
 

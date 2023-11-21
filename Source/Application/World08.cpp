@@ -54,6 +54,8 @@ namespace nc
 		ENGINE.GetSystem<Gui>()->BeginFrame();
 
 		m_scene->Update(dt);
+
+		m_editor->Update();
 		m_editor->ProgessGui(m_scene.get());
 
 
