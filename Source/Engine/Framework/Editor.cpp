@@ -25,6 +25,7 @@ namespace nc
 			}
 		}
 
+
 		ImGui::End();
 
 		// show scene
