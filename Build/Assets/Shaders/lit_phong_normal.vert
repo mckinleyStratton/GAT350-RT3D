@@ -8,9 +8,14 @@ in layout(location = 2) vec3 vnormal;
 in layout(location = 3) vec3 vtangent;
 
 // attributes passed to fragment shader
+//out layout(location = 0) vec3 oposition;
+//out layout(location = 1) vec2 otexcoord;
+//out layout(location = 2) mat3 otbn;
+
 out layout(location = 0) vec3 oposition;
 out layout(location = 1) vec2 otexcoord;
-out layout(location = 2) mat3 otbn;
+out layout(location = 2) vec4 oshadowcoord;
+out layout(location = 3) mat3 otbn;
 
 // pass in model matrix from world - used to transform vertex positions and normals
 uniform mat4 model; 
