@@ -32,7 +32,7 @@
 			"name": "Camera",
 			"persistent": true,
 			"transform": {
-				"position": [ 0, 7, 14 ],
+				"position": [ 31, 32, 54 ],
 				"rotation": [ 0, 0, 0 ]
 			},
 			"components": [
@@ -206,28 +206,6 @@
 		},
 		{
 			"type": "Actor",
-			"name": "Flag",
-			"persistent": true,
-			"active": true,
-			"transform": {
-				"position": [ 3, 0, 5 ],
-				"scale": [ 1, 1, 1 ],
-				"rotation": [ 0, -20, 0 ]
-			},
-			"components": [
-				{
-					"type": "ModelComponent",
-					"modelName": "fantasy/obj/SF_Prop_Flag_010.obj",
-					"materialName": "fantasy/fantasy.mtrl"
-				},
-				{
-					"type": "RotateComponent",
-					"eulerRotation": [ 0, 0, 0 ]
-				}
-			]
-		},
-		{
-			"type": "Actor",
 			"name": "The Ground",
 			"persistent": true,
 			"transform": {
@@ -244,6 +222,593 @@
 				{
 					"type": "RotateComponent",
 					"eulerRotation": [ 0, 0, 0 ]
+				}
+			]
+		},
+		{
+			"type": "Actor",
+			"name": "Goblin Hut 1",
+			"persistent": true,
+			"transform": {
+				"position": [ 69, 0, 30 ],
+				"scale": [ 1.5, 1, 1 ],
+				"rotation": [ 0, 98, 0 ]
+			},
+			"components": [
+				{
+					"type": "ModelComponent",
+					"modelName": "fantasy/obj/SF_Bld_Goblin_Hut_01.obj",
+					"materialName": "fantasy/fantasy.mtrl"
+				},
+				{
+					"type": "RotateComponent",
+					"eulerRotation": [ 0, 0, 0 ]
+				}
+			]
+		},
+		{
+			"type": "Actor",
+			"name": "Goblin Bed1",
+			"persistent": true,
+			"transform": {
+				"position": [ 36, 0, -12 ],
+				"scale": [ 1, 1, 1 ],
+				"rotation": [ 0, 21, 0 ]
+			},
+			"components": [
+				{
+					"type": "ModelComponent",
+					"modelName": "fantasy/obj/SF_Bld_Goblin_Hut_02.obj",
+					"materialName": "fantasy/fantasy.mtrl"
+				},
+				{
+					"type": "RotateComponent",
+					"eulerRotation": [ 0, 0, 0 ]
+				}
+			]
+		},
+		{
+			"type": "Actor",
+			"name": "Goblin Bed2",
+			"persistent": true,
+			"transform": {
+				"position": [ 47, 0, -13 ],
+				"scale": [ 1, 1, 1 ],
+				"rotation": [ 0, -32, 0 ]
+			},
+			"components": [
+				{
+					"type": "ModelComponent",
+					"modelName": "fantasy/obj/SF_Bld_Goblin_Hut_02.obj",
+					"materialName": "fantasy/fantasy.mtrl"
+				},
+				{
+					"type": "RotateComponent",
+					"eulerRotation": [ 0, 0, 0 ]
+				}
+			]
+		},
+		{
+			"type": "Actor",
+			"name": "Fire Pit1",
+			"persistent": true,
+			"transform": {
+				"position": [ 42, 0, -5 ],
+				"scale": [ 1, 1, 1 ],
+				"rotation": [ 0, 0, 0 ]
+			},
+			"components": [
+				{
+					"type": "ModelComponent",
+					"modelName": "fantasy/obj/SF_Prop_Firepit_03.obj",
+					"materialName": "fantasy/fantasy.mtrl"
+				},
+				{
+					"type": "RotateComponent",
+					"eulerRotation": [ 0, 0, 0 ]
+				}
+			]
+		},
+		{
+			"type": "Actor",
+			"name": "Goblin Hut 3",
+			"persistent": true,
+			"transform": {
+				"position": [ 63, 0, 20 ],
+				"scale": [ 2, 2, 2 ],
+				"rotation": [ 0, 129, 0 ]
+			},
+			"components": [
+				{
+					"type": "ModelComponent",
+					"modelName": "fantasy/obj/SF_Bld_Goblin_Hut_01.obj",
+					"materialName": "fantasy/fantasy.mtrl"
+				},
+				{
+					"type": "RotateComponent",
+					"eulerRotation": [ 0, 0, 0 ]
+				}
+			]
+		},
+		{
+			"type": "Actor",
+			"name": "Forge 1",
+			"persistent": true,
+			"transform": {
+				"position": [ 8, 0, -23 ],
+				"scale": [ 2, 2, 2 ],
+				"rotation": [ 0, -38, 0 ]
+			},
+			"components": [
+				{
+					"type": "ModelComponent",
+					"modelName": "fantasy/obj/SF_Prop_Goblin_Forge_01.obj",
+					"materialName": "fantasy/fantasy.mtrl"
+				},
+				{
+					"type": "RotateComponent",
+					"eulerRotation": [ 0, 0, 0 ]
+				}
+			]
+		},
+		{
+			"type": "Actor",
+			"name": "Forge 2",
+			"persistent": true,
+			"transform": {
+				"position": [ 56, 0, 40 ],
+				"scale": [ 1, 1, 1 ],
+				"rotation": [ 0, -58, 0 ]
+			},
+			"components": [
+				{
+					"type": "ModelComponent",
+					"modelName": "fantasy/obj/SF_Prop_Goblin_Forge_01.obj",
+					"materialName": "fantasy/fantasy.mtrl"
+				},
+				{
+					"type": "RotateComponent",
+					"eulerRotation": [ 0, 0, 0 ]
+				}
+			]
+		},
+		{
+			"type": "Actor",
+			"name": "Tree",
+			"persistent": true,
+			"transform": {
+				"position": [ 5, 0, -31 ],
+				"scale": [ 2, 2, 2 ],
+				"rotation": [ 0, 0, 0 ]
+			},
+			"components": [
+				{
+					"type": "ModelComponent",
+					"modelName": "fantasy/obj/SF_Prop_Tree_05.obj",
+					"materialName": "fantasy/fantasy.mtrl"
+				},
+				{
+					"type": "RotateComponent",
+					"eulerRotation": [ 0, 0, 0 ]
+				}
+			]
+		},
+		{
+			"type": "Actor",
+			"name": "Tree 6",
+			"persistent": true,
+			"transform": {
+				"position": [ -5, 0, 26 ],
+				"scale": [ 2, 2, 2 ],
+				"rotation": [ 0, 0, 0 ]
+			},
+			"components": [
+				{
+					"type": "ModelComponent",
+					"modelName": "fantasy/obj/SF_Prop_Tree_05.obj",
+					"materialName": "fantasy/fantasy.mtrl"
+				},
+				{
+					"type": "RotateComponent",
+					"eulerRotation": [ 0, 0, 0 ]
+				}
+			]
+		},
+		{
+			"type": "Actor",
+			"name": "Tree 8",
+			"persistent": true,
+			"transform": {
+				"position": [ 66, 0, 38 ],
+				"scale": [ 2, 2, 2 ],
+				"rotation": [ 0, 0, 0 ]
+			},
+			"components": [
+				{
+					"type": "ModelComponent",
+					"modelName": "fantasy/obj/SF_Prop_Tree_05.obj",
+					"materialName": "fantasy/fantasy.mtrl"
+				},
+				{
+					"type": "RotateComponent",
+					"eulerRotation": [ 0, 0, 0 ]
+				}
+			]
+		},
+		{
+			"type": "Actor",
+			"name": "Tree 9",
+			"persistent": true,
+			"transform": {
+				"position": [ 68, 0, -4 ],
+				"scale": [ 2, 2, 2 ],
+				"rotation": [ 0, 0, 0 ]
+			},
+			"components": [
+				{
+					"type": "ModelComponent",
+					"modelName": "fantasy/obj/SF_Prop_Tree_05.obj",
+					"materialName": "fantasy/fantasy.mtrl"
+				},
+				{
+					"type": "RotateComponent",
+					"eulerRotation": [ 0, 0, 0 ]
+				}
+			]
+		},
+		{
+			"type": "Actor",
+			"name": "Tree 7",
+			"persistent": true,
+			"transform": {
+				"position": [ 8, 0, 40 ],
+				"scale": [ 2, 2, 2 ],
+				"rotation": [ 0, 0, 0 ]
+			},
+			"components": [
+				{
+					"type": "ModelComponent",
+					"modelName": "fantasy/obj/SF_Prop_Tree_05.obj",
+					"materialName": "fantasy/fantasy.mtrl"
+				},
+				{
+					"type": "RotateComponent",
+					"eulerRotation": [ 0, 0, 0 ]
+				}
+			]
+		},
+		{
+			"type": "Actor",
+			"name": "Tree 1",
+			"persistent": true,
+			"transform": {
+				"position": [ 61, 0, -23 ],
+				"scale": [ 2, 2, 2 ],
+				"rotation": [ 0, 0, 0 ]
+			},
+			"components": [
+				{
+					"type": "ModelComponent",
+					"modelName": "fantasy/obj/SF_Prop_Tree_05.obj",
+					"materialName": "fantasy/fantasy.mtrl"
+				},
+				{
+					"type": "RotateComponent",
+					"eulerRotation": [ 0, 0, 0 ]
+				}
+			]
+		},
+		{
+			"type": "Actor",
+			"name": "Tree 2",
+			"persistent": true,
+			"transform": {
+				"position": [ 72, 0, -26 ],
+				"scale": [ 3, 3, 3 ],
+				"rotation": [ 0, -78, 0 ]
+			},
+			"components": [
+				{
+					"type": "ModelComponent",
+					"modelName": "fantasy/obj/SF_Prop_Tree_05.obj",
+					"materialName": "fantasy/fantasy.mtrl"
+				},
+				{
+					"type": "RotateComponent",
+					"eulerRotation": [ 0, 0, 0 ]
+				}
+			]
+		},
+		{
+			"type": "Actor",
+			"name": "Tree 3",
+			"persistent": true,
+			"transform": {
+				"position": [ -4, 0, -26 ],
+				"scale": [ 3, 3, 3 ],
+				"rotation": [ 0, -25, 0 ]
+			},
+			"components": [
+				{
+					"type": "ModelComponent",
+					"modelName": "fantasy/obj/SF_Prop_Tree_05.obj",
+					"materialName": "fantasy/fantasy.mtrl"
+				},
+				{
+					"type": "RotateComponent",
+					"eulerRotation": [ 0, 0, 0 ]
+				}
+			]
+		},
+		{
+			"type": "Actor",
+			"name": "Tree 4",
+			"persistent": true,
+			"transform": {
+				"position": [ 79, 0, 22 ],
+				"scale": [ 3, 3, 3 ],
+				"rotation": [ 0, 13, 0 ]
+			},
+			"components": [
+				{
+					"type": "ModelComponent",
+					"modelName": "fantasy/obj/SF_Prop_Tree_05.obj",
+					"materialName": "fantasy/fantasy.mtrl"
+				},
+				{
+					"type": "RotateComponent",
+					"eulerRotation": [ 0, 0, 0 ]
+				}
+			]
+		},
+		{
+			"type": "Actor",
+			"name": "Tree 5",
+			"persistent": true,
+			"transform": {
+				"position": [ 20, 0, -34 ],
+				"scale": [ 1, 1, 1 ],
+				"rotation": [ 0, 193, 0 ]
+			},
+			"components": [
+				{
+					"type": "ModelComponent",
+					"modelName": "fantasy/obj/SF_Env_TwistedTree_01.obj",
+					"materialName": "fantasy/fantasy.mtrl"
+				},
+				{
+					"type": "RotateComponent",
+					"eulerRotation": [ 0, 0, 0 ]
+				}
+			]
+		},
+		{
+			"type": "Actor",
+			"name": "Sone Grinder",
+			"persistent": true,
+			"transform": {
+				"position": [ 11, 0, 27 ],
+				"scale": [ 1, 1, 1 ],
+				"rotation": [ 0, -45, 0 ]
+			},
+			"components": [
+				{
+					"type": "ModelComponent",
+					"modelName": "fantasy/obj/SF_Prop_GrindStone_01.obj",
+					"materialName": "fantasy/fantasy.mtrl"
+				},
+				{
+					"type": "RotateComponent",
+					"eulerRotation": [ 0, 0, 0 ]
+				}
+			]
+		},
+		{
+			"type": "Actor",
+			"name": "Stone Grinder",
+			"persistent": true,
+			"transform": {
+				"position": [ 11, 0, 27 ],
+				"scale": [ 1, 1, 1 ],
+				"rotation": [ 0, -45, 0 ]
+			},
+			"components": [
+				{
+					"type": "ModelComponent",
+					"modelName": "fantasy/obj/SF_Prop_GrindStone_01.obj",
+					"materialName": "fantasy/fantasy.mtrl"
+				},
+				{
+					"type": "RotateComponent",
+					"eulerRotation": [ 0, 0, 0 ]
+				}
+			]
+		},
+		{
+			"type": "Actor",
+			"name": "Sword",
+			"persistent": true,
+			"transform": {
+				"position": [ 8, 0, 27 ],
+				"scale": [ 1, 1, 1 ],
+				"rotation": [ 90, 0, 0 ]
+			},
+			"components": [
+				{
+					"type": "ModelComponent",
+					"modelName": "fantasy/obj/SF_Wep_Goblin_Longsword_01.obj",
+					"materialName": "fantasy/fantasy.mtrl"
+				},
+				{
+					"type": "RotateComponent",
+					"eulerRotation": [ 0, 0, 0 ]
+				}
+			]
+		},
+		{
+			"type": "Actor",
+			"name": "Sword",
+			"persistent": true,
+			"transform": {
+				"position": [ 9, 0, 27 ],
+				"scale": [ 1, 1, 1 ],
+				"rotation": [ 90, 12, 0 ]
+			},
+			"components": [
+				{
+					"type": "ModelComponent",
+					"modelName": "fantasy/obj/SF_Wep_Goblin_Longsword_01.obj",
+					"materialName": "fantasy/fantasy.mtrl"
+				},
+				{
+					"type": "RotateComponent",
+					"eulerRotation": [ 0, 0, 0 ]
+				}
+			]
+		},
+		{
+			"type": "Actor",
+			"name": "Sword",
+			"persistent": true,
+			"transform": {
+				"position": [ 7, 0, 27 ],
+				"scale": [ 1, 1, 1 ],
+				"rotation": [ 90, 45, 0 ]
+			},
+			"components": [
+				{
+					"type": "ModelComponent",
+					"modelName": "fantasy/obj/SF_Wep_Goblin_Longsword_01.obj",
+					"materialName": "fantasy/fantasy.mtrl"
+				},
+				{
+					"type": "RotateComponent",
+					"eulerRotation": [ 0, 0, 0 ]
+				}
+			]
+		},
+		{
+			"type": "Actor",
+			"name": "Mace",
+			"persistent": true,
+			"transform": {
+				"position": [ 9, 0, 30 ],
+				"scale": [ 1, 1, 1 ],
+				"rotation": [ 90, 134, 0 ]
+			},
+			"components": [
+				{
+					"type": "ModelComponent",
+					"modelName": "fantasy/obj/SF_Wep_Goblin_Mace_01.obj",
+					"materialName": "fantasy/fantasy.mtrl"
+				},
+				{
+					"type": "RotateComponent",
+					"eulerRotation": [ 0, 0, 0 ]
+				}
+			]
+		},
+		{
+			"type": "Actor",
+			"name": "Stump",
+			"persistent": true,
+			"transform": {
+				"position": [ 14, 0, 26 ],
+				"scale": [ 1, 1, 1 ],
+				"rotation": [ 0, 0, 0 ]
+			},
+			"components": [
+				{
+					"type": "ModelComponent",
+					"modelName": "fantasy/obj/SF_Prop_AxeStump_01.obj",
+					"materialName": "fantasy/fantasy.mtrl"
+				},
+				{
+					"type": "RotateComponent",
+					"eulerRotation": [ 0, 0, 0 ]
+				}
+			]
+		},
+		{
+			"type": "Actor",
+			"name": "Big Firepit",
+			"persistent": true,
+			"transform": {
+				"position": [ 34, 0, 14 ],
+				"scale": [ 1, 1, 1 ],
+				"rotation": [ 0, -2, 0 ]
+			},
+			"components": [
+				{
+					"type": "ModelComponent",
+					"modelName": "fantasy/obj/SF_Prop_Firepit_01.obj",
+					"materialName": "fantasy/fantasy.mtrl"
+				},
+				{
+					"type": "RotateComponent",
+					"eulerRotation": [ 0, 0, 0 ]
+				}
+			]
+		},
+		{
+			"type": "Actor",
+			"name": "Boar Head",
+			"persistent": true,
+			"transform": {
+				"position": [ 38, -1, 13 ],
+				"scale": [ 1, 1, 1 ],
+				"rotation": [ 0, -2, 5 ]
+			},
+			"components": [
+				{
+					"type": "ModelComponent",
+					"modelName": "fantasy/obj/SF_Prop_Goblin_Deadboar_02.obj",
+					"materialName": "fantasy/fantasy.mtrl"
+				},
+				{
+					"type": "RotateComponent",
+					"eulerRotation": [ 0, 0, 0 ]
+				}
+			]
+		},
+		{
+			"type": "Actor",
+			"name": "Boar",
+			"persistent": true,
+			"transform": {
+				"position": [ 39, -1, 13 ],
+				"scale": [ 1, 1, 1 ],
+				"rotation": [ 0, -2, -12 ]
+			},
+			"components": [
+				{
+					"type": "ModelComponent",
+					"modelName": "fantasy/obj/SF_Prop_Goblin_Deadboar_01.obj",
+					"materialName": "fantasy/fantasy.mtrl"
+				},
+				{
+					"type": "RotateComponent",
+					"eulerRotation": [ 0, 0, 0 ]
+				}
+			]
+		},
+		{
+			"type": "Actor",
+			"name": "skybox",
+			"persistent": true,
+			"active": false,
+			"transform": {
+				"position": [ 0, 0, 1 ],
+				"scale": [ 1, 1, 1 ],
+				"rotation": [ 0, 0, 0 ]
+			},
+			"components": [
+				{
+					"type": "ModelComponent",
+					"modelName": "models/cube.obj",
+					"materialName": "materials/skybox.mtrl",
+					"enableDepth": false,
+					"cullface": "front"
 				}
 			]
 		},
