@@ -54,6 +54,7 @@
 			"type": "Actor",
 			"name": "OGRE",
 			"persistent": true,
+			"active": false,
 			"transform": {
 				"position": [ 0, 3, 4 ],
 				"scale": [ 3, 3, 3 ],
@@ -75,7 +76,7 @@
 			"type": "Actor",
 			"name": "Goblin House",
 			"persistent": true,
-			"active": false,
+			"active": true,
 			"transform": {
 				"position": [ -3, 0, 0 ],
 				"scale": [ 1, 1, 1 ],
@@ -97,7 +98,7 @@
 			"type": "Actor",
 			"name": "Skull",
 			"persistent": true,
-			"active": false,
+			"active": true,
 			"transform": {
 				"position": [ -11, 0.9, 7.5 ],
 				"scale": [ 0.15, 0.15, 0.15 ],
@@ -119,7 +120,7 @@
 			"type": "Actor",
 			"name": "Skull2",
 			"persistent": true,
-			"active": false,
+			"active": true,
 			"transform": {
 				"position": [ -9, 1, 9 ],
 				"scale": [ 0.15, 0.15, 0.15 ],
@@ -141,7 +142,7 @@
 			"type": "Actor",
 			"name": "Skull3",
 			"persistent": true,
-			"active": false,
+			"active": true,
 			"transform": {
 				"position": [ -8, 0, 6 ],
 				"scale": [ 0.15, 0.15, 0.15 ],
@@ -163,7 +164,7 @@
 			"type": "Actor",
 			"name": "Ribcage",
 			"persistent": true,
-			"active": false,
+			"active": true,
 			"transform": {
 				"position": [ 8, 2, -1 ],
 				"scale": [ 0.3, 0.3, 0.3 ],
@@ -185,7 +186,7 @@
 			"type": "Actor",
 			"name": "Rock",
 			"persistent": true,
-			"active": false,
+			"active": true,
 			"transform": {
 				"position": [ 7, 0, 7 ],
 				"scale": [ 0.4, 0.3, 0.3 ],
@@ -207,7 +208,7 @@
 			"type": "Actor",
 			"name": "Flag",
 			"persistent": true,
-			"active": false,
+			"active": true,
 			"transform": {
 				"position": [ 3, 0, 5 ],
 				"scale": [ 1, 1, 1 ],
@@ -230,8 +231,8 @@
 			"name": "The Ground",
 			"persistent": true,
 			"transform": {
-				"position": [ -15, 0, 11 ],
-				"scale": [ 3, 2, 2 ],
+				"position": [ -15, 0, 50 ],
+				"scale": [ 10, 10, 10 ],
 				"rotation": [ 0, 0, 0 ]
 			},
 			"components": [
