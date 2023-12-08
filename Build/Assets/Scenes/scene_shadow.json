@@ -2,11 +2,11 @@
 	"actors": [
 		{
 			"type": "Actor",
-			"name": "Light",
+			"name": "Light 1",
 			"persistent": true,
 			"transform": {
-				"position": [ 0, 8, 20 ],
-				"rotation": [ 0, 180, 0 ],
+				"position": [ 5, 4, -53 ],
+				"rotation": [ 54, 146, 0 ],
 				"scale": [ 0.5, 0.5, 0.5 ]
 			},
 			"components": [
@@ -14,7 +14,7 @@
 					"type": "LightComponent",
 					"lightType": "directional",
 					"color": [ 1, 1, 1 ],
-					"intensity": 1,
+					"intensity": 1.7,
 					"range": 20,
 					"innerAngle": 10,
 					"outerAngle": 20,
@@ -32,7 +32,7 @@
 			"name": "Camera",
 			"persistent": true,
 			"transform": {
-				"position": [ 31, 32, 54 ],
+				"position": [ 33, 5, 32 ],
 				"rotation": [ 0, 0, 0 ]
 			},
 			"components": [
